@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>WriterTaskManagement</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? "#{yield(:title)} | WriterTask" : "WriterTask ライター案件管理ツール" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= yield %>
+</body>
 </html>

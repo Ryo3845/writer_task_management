@@ -1,24 +1,19 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ライター案件管理ツールの作成です。
 
-Things you may want to cover:
+ログイン前のホームページのヘッダーは次の通りです。
+・機能
+・新規登録
+・ログイン
 
-* Ruby version
+ログイン前のフッターは次の通りです。
+・ヘルプ
+・お問い合わせ
 
-* System dependencies
+ログイン後のユーザー用ホームページのヘッダーは次の通りです。
+・案件進捗管理
+・月間報酬
+・推敲（後から実装予定）
+・案件一覧（後から実装予定）
+・設定
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
