@@ -4,13 +4,13 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @base_title = "WriterTask"
-    @hp_title = "WriterTask ライター案件管理ツール"
+    @home_title = "WriterTask - ライター案件管理ツール"
   end
 
   test "should get root" do
     get root_url
     assert_response :success
-    assert_select "title", @hp_title
+    assert_select "title", @home_title
   end
 
   test "should get help" do

@@ -3,13 +3,26 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? "#{yield(:title)} | WriterTask" : "WriterTask ライター案件管理ツール" %></title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="icon" href=<%= asset_path "WriterTaskLogo" %>>
   </head>
-<body>
-  <%= yield %>
-</body>
+  <body>
+    <header>
+      <div class="container">
+        <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 100, height: 100), root_url, id: "logo" %></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><%= link_to "機能", static_pages_function_url, id: "logo" %></li>
+          <li><%= link_to "新規登録", "#", id: "logo" %></li>
+          <li><%= link_to "ログイン", "#", id: "logo" %></li>
+        </ul>
+      </nav>
+    </header>
+    <%= yield %>
+  </body>
 </html>
