@@ -15,4 +15,4 @@
  */
 
 /* custom.scssを反映 */
- @import "custom";
+@import "app/assets/stylesheets/custom";

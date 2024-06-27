@@ -13,4 +13,7 @@ class StaticPagesController < ApplicationController
 
   def function
   end
+
+  def pricing
+  end
 end

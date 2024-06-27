@@ -1,10 +1,154 @@
+@charset "utf-8";
 
 /* universal */
 
-h1 {
+html, body {
+  margin: 0;
   padding: 0;
+  height: 100%;
+  font-family: verdana, sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
 p {
-  color: red;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+:root {
+  --main-color: #ee7800;
+  --menu--color: #323232;
+}
+
+/* header */
+
+header {
+  margin: 0 50px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: auto;
+  background: whitesmoke;
+}
+
+#logo-container {
+  padding: 0 15px;
+}
+
+#logo-container img {
+  display: block;
+  margin: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+#nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+#nav-list li {
+  margin: 0 50px;
+  border-bottom: 2px solid transparent;
+}
+
+#nav-list li:hover {
+  border-bottom: 2px solid var(--main-color);
+}
+
+#nav-list a{
+  color: var(--menu--color);
+}
+
+#nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#nav-button button {
+  margin: 0 50px;
+  padding: 5px 15px;
+  border: 3px solid var(--main-color);
+  border-radius: 10px;
+  a {
+    font-weight: bold;
+  }
+}
+
+#nav-button button:first-child {
+  background-color: white;
+  color: var(--main-color);
+  a {
+    color: var(--main-color);
+  }
+}
+
+#nav-button button:first-child:hover {
+  background: whitesmoke;
+}
+
+#nav-button button:nth-child(2) {
+  background-color: var(--main-color);
+  a {
+    color: white;
+  }
+}
+
+#nav-button button:nth-child(2):hover {
+  opacity: .7;
+}
+
+/* footer */
+
+footer {
+  padding: 10px 10px;
+  background: darkgray;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer li {
+  margin: 0 100px;
+  border-bottom: 2px solid transparent;
+}
+
+footer li:hover {
+  margin: 0 100px;
+  border-bottom: 2px solid white;
+}
+
+footer a {
+  color: white;
 }
