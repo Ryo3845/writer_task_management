@@ -13,24 +13,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", @home_title
   end
 
-  test "should get help" do
-    get help_path
-    assert_response :success
-    assert_select "title", "ヘルプ | #{@base_title}"
-  end
-
-  test "should get about" do
-    get about_path
-    assert_response :success
-    assert_select "title", "運営者 | #{@base_title}"
-  end
-
-  test "should get contact" do
-    get contact_path
-    assert_response :success
-    assert_select "title", "お問い合わせ | #{@base_title}"
-  end
-
   test "should get function" do
     get function_path
     assert_response :success
@@ -41,5 +23,23 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get pricing_path
     assert_response :success
     assert_select "title", "料金 | #{@base_title}"
+  end
+
+  test "should get help" do
+    get help_path
+    assert_response :success
+    assert_select "title", "ヘルプ | #{@base_title}"
+  end
+
+  test "should get contact" do
+    get contact_path
+    assert_response :success
+    assert_select "title", "お問い合わせ | #{@base_title}"
+  end
+
+  test "should get about" do
+    get about_path
+    assert_response :success
+    assert_select "title", "運営者 | #{@base_title}"
   end
 end
