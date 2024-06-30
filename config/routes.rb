@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get "/function", to: "static_pages#function"
   get "/pricing", to: "static_pages#pricing"
   get "/signup", to: "users#new"
+  resources :users
 end
