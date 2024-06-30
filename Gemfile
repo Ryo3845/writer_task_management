@@ -14,6 +14,7 @@ gem 'jbuilder'
 gem 'sassc-rails', '2.1.2'
 gem 'win32console', '~> 1.3', '>= 1.3.2'
 gem 'rails-controller-testing'
+gem 'bcrypt', '3.1.13'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
