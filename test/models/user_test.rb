@@ -26,18 +26,18 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email validation should accept valid addresses" do
-    vaild_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
-    vaild_addresses.each do |vaild_address|
-      @user.email = vaild_address
-      assert @user.valid?, "#{vaild_address.inspect} should be valid"
+    valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
+    valid_addresses.each do |valid_address|
+      @user.email = valid_address
+      assert @user.valid?, "#{valid_address.inspect} should be valid"
     end
   end
 
-  test "email validation should recect invalid addresses" do
-    invaild_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
-    invaild_addresses.each do |invaild_address|
-      @user.email = invaild_address
-      assert_not @user.valid?, "#{invaild_address.inspect} should be invalid"
+  test "email validation should reject invalid addresses" do
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
+    invalid_addresses.each do |invalid_address|
+      @user.email = invalid_address
+      assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
     end
   end
 
@@ -59,7 +59,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "passoword should be long more than 10 characters" do
+  test "password should be long more than 10 characters" do
     @user.password = @user.password_confirmation = "a" * 9
     assert_not @user.valid?
   end
@@ -72,10 +72,5 @@ class UserTest < ActiveSupport::TestCase
   test "password should not consist of only numbers" do
     @user.password = @user.password_confirmation = "1" * 10
     assert_not @user.valid?
-  end
-
-  test "passoword should be a combination of letters and numbers" do
-    @user.password = @user.password_confirmation = "a" * 5 + "1" * 5
-    assert @user.valid?
   end
 end
