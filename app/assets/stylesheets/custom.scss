@@ -30,6 +30,24 @@ li {
   cursor: pointer;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid silver;
+}
+
+th, td {
+  padding: 8px; 
+}
+
+th {
+  font-weight: normal;
+  text-align: center;
+}
+
 .btn {
   display: inline-block;
   cursor: pointer;

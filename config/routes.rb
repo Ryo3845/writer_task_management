@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "/pricing", to: "static_pages#pricing"
   get "/signup", to: "users#new"
   resources :users
+  resources :projects
 end
