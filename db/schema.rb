@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_02_152745) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_03_132338) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.decimal "compensation"
@@ -32,6 +32,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_02_152745) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_attachments_on_article_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "milestones", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.string "name"
+    t.date "due_date"
+    t.date "completion_date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_milestones_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -62,5 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_02_152745) do
 
   add_foreign_key "articles", "projects"
   add_foreign_key "attachments", "articles"
+  add_foreign_key "milestones", "projects"
   add_foreign_key "revisions", "articles"
 end
