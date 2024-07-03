@@ -1,10 +1,9 @@
-class CreateMilestones < ActiveRecord::Migration[7.0]
+class CreateDeadlines < ActiveRecord::Migration[7.0]
   def change
-    create_table :milestones do |t|
+    create_table :deadlines do |t|
       t.references :project, null: false, foreign_key: true
-      t.string :name
       t.date :due_date
-      t.date :completion_date
+      t.string :description
       t.string :status
 
       t.timestamps

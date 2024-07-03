@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MilestoneTest < ActiveSupport::TestCase
+class DeadlineTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

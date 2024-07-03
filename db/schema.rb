@@ -10,28 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_03_132338) do
-  create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.decimal "compensation"
-    t.date "deadline"
-    t.date "initial_draft_date"
-    t.date "completion_date"
-    t.string "progress"
-    t.float "work_hours"
-    t.integer "project_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_articles_on_project_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2024_07_03_153927) do
   create_table "attachments", force: :cascade do |t|
-    t.string "file"
-    t.string "link"
-    t.integer "article_id", null: false
+    t.integer "project_id", null: false
+    t.string "description"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_attachments_on_article_id"
+    t.index ["project_id"], name: "index_attachments_on_project_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -40,32 +26,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_03_132338) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "milestones", force: :cascade do |t|
+  create_table "deadlines", force: :cascade do |t|
     t.integer "project_id", null: false
-    t.string "name"
     t.date "due_date"
-    t.date "completion_date"
+    t.string "description"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_milestones_on_project_id"
+    t.index ["project_id"], name: "index_deadlines_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.string "client"
+    t.string "title"
+    t.integer "client_id", null: false
+    t.decimal "compensation"
+    t.date "final_deadline"
+    t.float "target_working_hours"
+    t.float "actual_working_hours"
     t.decimal "hourly_rate"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "revisions", force: :cascade do |t|
-    t.date "due_date"
-    t.date "completion_date"
-    t.integer "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_revisions_on_article_id"
+    t.index ["client_id"], name: "index_projects_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,8 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_03_132338) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "articles", "projects"
-  add_foreign_key "attachments", "articles"
-  add_foreign_key "milestones", "projects"
-  add_foreign_key "revisions", "articles"
+  add_foreign_key "attachments", "projects"
+  add_foreign_key "deadlines", "projects"
+  add_foreign_key "projects", "clients"
 end

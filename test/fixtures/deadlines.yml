@@ -2,14 +2,12 @@
 
 one:
   project: one
-  name: MyString
-  due_date: 2024-07-03
-  completion_date: 2024-07-03
+  due_date: 2024-07-04
+  description: MyString
   status: MyString
 
 two:
   project: two
-  name: MyString
-  due_date: 2024-07-03
-  completion_date: 2024-07-03
+  due_date: 2024-07-04
+  description: MyString
   status: MyString

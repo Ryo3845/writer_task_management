@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  file: MyString
-  link: MyString
-  article: one
+  project: one
+  description: MyString
+  url: MyString
 
 two:
-  file: MyString
-  link: MyString
-  article: two
+  project: two
+  description: MyString
+  url: MyString
