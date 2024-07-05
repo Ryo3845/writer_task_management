@@ -64,7 +64,6 @@ th {
 /* header */
 
 header {
-  margin: 0 50px;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
@@ -151,11 +150,11 @@ nav,
 
 /* body */
 
-main {
-  margin: 15px 30px;
+body {
+  margin: 0 30px;
 }
 
-/* signup-form */
+/* signup and login form */
 
 .form-container {
   display: flex;
@@ -206,7 +205,7 @@ main {
   margin: 20px auto;
 }
 
-/* errors-form */
+/* errors form */
 
 .alert {
   background-color: #FFF0F5;
@@ -225,6 +224,18 @@ main {
 
 .field_with_errors .form-text {
   margin-left: 0;
+}
+
+/* alert message */
+
+.alert {
+  margin: 30px auto;
+  width: 480px;
+  text-align: center;
+}
+
+.alert-danger {
+  color: red;
 }
 
 /* footer */
