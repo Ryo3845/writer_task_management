@@ -2,7 +2,8 @@
 
 /* universal */
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -35,17 +36,28 @@ table {
   width: 100%;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid silver;
 }
 
-th, td {
-  padding: 8px; 
+th,
+td {
+  padding: 8px;
 }
 
 th {
   font-weight: normal;
   text-align: center;
+}
+
+header,
+main,
+footer {
+  padding: 0 30px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .btn {
@@ -58,22 +70,21 @@ th {
 
 :root {
   --main-color: #ee7800;
+  --sub-color: #fff8f2;
   --menu--color: #323232;
 }
 
 /* header */
 
 header {
-  padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: whitesmoke;
+  background: white;
 }
 
 #logo-container img {
   display: block;
-  margin: auto;
 }
 
 nav,
@@ -148,21 +159,24 @@ nav,
   opacity: .7;
 }
 
-/* body */
+/* main */
 
-body {
-  margin: 0 30px;
+main {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: var(--sub-color);
 }
 
 /* signup and login form */
 
 .form-container {
+  background: white;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   max-width: 600px;
   padding: 30px;
-  margin: 50px auto;
+  margin: 30px auto;
 }
 
 .form-container h1 {
@@ -229,7 +243,7 @@ body {
 /* alert message */
 
 .alert {
-  margin: 30px auto;
+  margin: 0 auto;
   width: 480px;
   text-align: center;
 }
@@ -241,7 +255,8 @@ body {
 /* footer */
 
 footer {
-  padding: 10px 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background: darkgray;
 }
 
@@ -252,12 +267,11 @@ footer ul {
 }
 
 footer li {
-  margin: 0 100px;
+  margin: 10px 50px;
   border-bottom: 2px solid transparent;
 }
 
 footer li:hover {
-  margin: 0 100px;
   border-bottom: 2px solid white;
 }
 
@@ -276,4 +290,52 @@ footer a {
   padding: 10px;
   color: red;
   background-color: #FFF0F5;
+}
+
+/* tablet breakpoint =< 960px */
+
+@media (max-width: 960px) {
+  header {
+    background: pink;
+  }
+}
+
+/* smart phone breakpoint =< 768px */
+
+@media (max-width: 768px) {
+  header {
+    background: orange;
+  }
+
+  /* header */
+
+  header nav {
+    display: none;
+  }
+
+  #nav-button {
+    margin: 0 auto;
+  }
+
+  /* alert message */
+
+  .alert {
+    width: 80%;
+    text-align: center;
+  }
+
+  /* footer */
+
+  footer ul {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    flex-direction: column;
+  }
+
+  footer li:hover {
+    border-bottom: none;
+    border-bottom: 2px solid transparent;
+  }
 }
