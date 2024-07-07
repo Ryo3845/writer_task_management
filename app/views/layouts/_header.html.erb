@@ -4,12 +4,24 @@
   </div>
   <nav>
     <ul id="nav-list">
-      <li><%= link_to "機能", function_path %></li>
-      <li><%= link_to "料金", pricing_path %></li>
+      <% if logged_in? %>
+        <li class=<%= "#{current_page?(projects_path) ? 'active' : '' }" %>><%= link_to "進捗管理", projects_path %></li>
+        <li class=<%= "#{current_page?("#") ? 'active' : '' }" %>><%= link_to "月間報酬", "#" %></li>
+      <% else %>
+        <li class=<%= "#{current_page?(function_path) ? 'active' : '' }" %>><%= link_to "機能", function_path %></li>
+        <li class=<%= "#{current_page?(pricing_path) ? 'active' : '' }" %>><%= link_to "料金", pricing_path %></li>
+      <% end %>
     </ul>
   </nav>
+  <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
   <div id="nav-button">
-    <%= link_to "新規登録", signup_path, class: "btn btn-outline" %>
-    <%= link_to "ログイン", login_path , class: "btn btn-fill" %>
+    <% if logged_in? %>
+      <%= link_to "設定", "#" %>
+      <%= button_to "ログアウト", logout_path, method: :delete %>
+      <%# ↑解決しないので、いったんボタンに %>
+    <% else %>
+      <%= link_to "新規登録", signup_path, class: "btn btn-outline" %>
+      <%= link_to "ログイン", login_path , class: "btn btn-fill" %>
+    <% end %>
   </div>
 </header>
