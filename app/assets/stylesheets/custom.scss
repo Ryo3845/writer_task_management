@@ -28,6 +28,7 @@ ul {
 }
 
 li {
+  list-style: none;
   cursor: pointer;
 }
 
@@ -121,6 +122,55 @@ nav,
 #nav-name {
   margin: 0 20px;
   margin-left: auto;
+}
+
+#opened-menu {
+  cursor: pointer;
+}
+
+#overlay {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: fixed;
+  top: 70px;
+  right: 30px;
+  background: white;
+  width: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+#overlay.show-menu {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#overlay a {
+  width: 100%;
+  color: var(--menu--color);
+  padding: 5px 0;
+  transition: background-color 0.3s, color 0.3s;
+  display: block;
+}
+
+#overlay a:last-child {
+  margin-bottom: 0;
+}
+
+#overlay a:hover {
+  color: white;
+  background: var(--main-color);
+}
+
+#overlay #show-menu {
+  display: flex;
 }
 
 #nav-button {

@@ -14,14 +14,18 @@
     </ul>
   </nav>
   <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
-  <div id="nav-button">
-    <% if logged_in? %>
+  <% if logged_in? %>
+    <div id="opened-menu">
+      <%= image_tag("menu", alt: "menu", width: 40, height: 40) %>
+    </div>
+    <nav id="overlay">
       <%= link_to "設定", "#" %>
-      <%= button_to "ログアウト", logout_path, method: :delete %>
-      <%# ↑解決しないので、いったんボタンに %>
-    <% else %>
+      <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
+    </nav>
+  <% else %>
+    <div id="nav-button">
       <%= link_to "新規登録", signup_path, class: "btn btn-outline" %>
       <%= link_to "ログイン", login_path , class: "btn btn-fill" %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </header>
