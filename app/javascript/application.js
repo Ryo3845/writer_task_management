@@ -3,7 +3,3 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "custom/menu"
-
-document.addEventListener("turbo:before-fetch-request", (event) => {
-  console.log("Turbo request method:", event.detail.fetchOptions.method);
-});
