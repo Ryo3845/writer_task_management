@@ -66,6 +66,10 @@ footer {
   border: none;
 }
 
+.container {
+  background-color: white;
+}
+
 :root {
   --main-color: #ee7800;
   --sub-color: #fff8f2;
@@ -81,21 +85,29 @@ header {
   background: white;
 }
 
-#logo-container img {
-  display: block;
-}
 
-nav,
-#nav-list,
-#nav-button {
+nav {
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
 }
 
 #nav-list {
-  align-items: center;
+  display: flex;
+  justify-content: center;
   padding: 0;
   margin: 0;
+  list-style-type: none;
+}
+
+#nav-name, #opened-menu, #nav-button {
+  flex: 0 0 auto;
+}
+
+#nav-list {
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
 
 #nav-list li {
@@ -228,7 +240,6 @@ main {
 /* signup and login form */
 
 .form-container {
-  background: white;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -310,6 +321,66 @@ main {
 
 .alert-danger {
   color: red;
+}
+
+/* terms & privacy_policy */
+
+.terms-policy-container {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.terms-policy-container h1,
+.terms-policy-container h2 {
+  margin: 24px 0;
+}
+
+.terms-policy-date {
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.terms-policy {
+  padding: 15px 30px;
+  background-color: white;
+}
+
+.terms-policy p, .terms-policy li {
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.terms-policy li {
+  list-style:decimal;
+}
+
+/* loggedin-container */
+
+.loggedin-container {
+  margin: 0 16px;
+  padding: 30px;
+}
+
+/* projects */
+
+#projects-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  gap: 150px;
+}
+
+#project-form {
+  width: 50%;
+  padding: 16px;
+  background-color: #fffaf4;
+}
+
+#project-form input {
+  width: 90%;
+  margin: 8px 0;
+  padding: 8px;
 }
 
 /* footer */

@@ -1,12 +1,17 @@
 <header>
-  <div id="logo-container">
-    <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 70, height: 70), root_path %></h1>
+  <div id="container logo-container">
+    <% if logged_in? %>
+      <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 70, height: 70), projects_path %></h1>
+    <% else %>
+      <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 70, height: 70), root_path %></h1>
+    <% end %>
   </div>
   <nav>
     <ul id="nav-list">
       <% if logged_in? %>
         <li class=<%= "#{current_page?(projects_path) ? 'active' : '' }" %>><%= link_to "進捗管理", projects_path %></li>
         <li class=<%= "#{current_page?("#") ? 'active' : '' }" %>><%= link_to "月間報酬", "#" %></li>
+        <li class=<%= "#{current_page?("#") ? 'active' : '' }" %>><%= link_to "案件一覧", "#" %></li>
       <% else %>
         <li class=<%= "#{current_page?(function_path) ? 'active' : '' }" %>><%= link_to "機能", function_path %></li>
         <li class=<%= "#{current_page?(pricing_path) ? 'active' : '' }" %>><%= link_to "料金", pricing_path %></li>

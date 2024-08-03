@@ -1,20 +1,57 @@
 <% provide(:title, "#{Date.today.strftime('%Y年%m月')}の案件一覧") %>
-<h1><%= yield(:title) %></h1>
-<table>
-  <thead>
+
+<div class="container loggedin-container">
+  <h1><%= yield(:title) %></h1>
+
+  <div id="projects-top">
+  
+  <form id="project-form">
+    <input list="client-list" id="clients" placeholder="クライアント" />
+    <datalist id="client-list">
+      <option value="新規追加"></option>
+    </datalist>
+    <input type="text" id="project" placeholder="案件" required><br>
+    <input type="number" id="reward" placeholder="報酬" required><br>
+    <input type="date" id="next-task-date" required><br>
+    <input type="date" id="final-deadline" required><br>
+    <input type="number" id="progress" placeholder="進捗 (%)" required min="0" max="100"><br>
+    <input type="time" id="target-hours" placeholder="目標作業時間" required><br>
+    <input type="time" id="actual-hours" placeholder="開始時刻"><br>
+    <input type="url" id="urls" placeholder="URL（ドキュメントなど）"><br>
+    <input type="text" id="notes" placeholder="備考"><br>
+    <input type="file" id="files" placeholder="添付ファイル"><br>
+    <button type="submit">追加</button><br>
+  </form>
+  <table>
     <tr>
-      <th>クライアント</th>
-      <th>案件</th>
-      <th>報酬</th>
-      <th>最終納期</th>
-      <th>次の期日</th>
-      <th>進捗</th>
-      <th>目標作業時間</th>
-      <th>実際の作業時間</th>
-      <th>時給</th>
-      <th>添付ファイル</th>
+      <th>目標の売上</th>
+      <th>今月の売上</th>
     </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  </div>
+
+  <table id="projects-table">
+    <thead>
+      <tr>
+        <th>クライアント</th>
+        <th>案件</th>
+        <th>報酬</th>
+        <th>次のタスクの期日</th>
+        <th>最終納期</th>
+        <th>進捗</th>
+        <th>目標作業時間</th>
+        <th>実際の作業時間</th>
+        <th>時給</th>
+        <th>ドキュメントURL</th>
+        <th>添付ファイル</th>
+        <th>備考</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>

@@ -25,3 +25,10 @@ document.addEventListener("turbo:load", () => {
     });
   }
 });
+
+// クライアントリストの追加
+const client = document.getElementById("clients")
+const clientList = document.getElementById("client-list")
+
+client.addEventListener(``)
+

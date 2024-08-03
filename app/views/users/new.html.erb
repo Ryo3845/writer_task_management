@@ -21,6 +21,9 @@
       <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードを再入力' %>
     </div>
     <div class="form-group">
+      <small>WriterTaskへのアカウント登録で<%= link_to "利用規約", terms_path %>および<%= link_to "プライバシーポリシー", privacy_policy_path %>に同意したものとみなします。</small>
+    </div>
+    <div class="form-group">
       <%= f.submit "アカウント作成", class: 'btn btn-fill btn-submit' %>
     </div>
   <% end %>

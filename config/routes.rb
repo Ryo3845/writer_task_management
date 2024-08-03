@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/contact", to: "static_pages#contact"
   get "/function", to: "static_pages#function"
   get "/pricing", to: "static_pages#pricing"
+  get "/terms", to: "static_pages#terms"
+  get "/privacy_policy", to: "static_pages#privacy_policy"
   get "/signup", to: "users#new"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
