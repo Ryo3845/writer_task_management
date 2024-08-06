@@ -3,19 +3,19 @@
 one:
   title: MyString
   client: one
-  compensation: 9.99
-  final_deadline: 2024-07-04
-  target_working_hours: 1.5
-  actual_working_hours: 1.5
-  hourly_rate: 9.99
   status: MyString
+  compensation: 9.99
+  url: MyString
+  note: MyText
+  total_working_hours: 1.5
+  hourly_rate: 9.99
 
 two:
   title: MyString
   client: two
-  compensation: 9.99
-  final_deadline: 2024-07-04
-  target_working_hours: 1.5
-  actual_working_hours: 1.5
-  hourly_rate: 9.99
   status: MyString
+  compensation: 9.99
+  url: MyString
+  note: MyText
+  total_working_hours: 1.5
+  hourly_rate: 9.99

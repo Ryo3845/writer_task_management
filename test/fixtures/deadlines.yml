@@ -1,13 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  project: one
-  due_date: 2024-07-04
-  description: MyString
-  status: MyString
+  task: one
+  due_date: 2024-08-07
 
 two:
-  project: two
-  due_date: 2024-07-04
-  description: MyString
-  status: MyString
+  task: two
+  due_date: 2024-08-07
