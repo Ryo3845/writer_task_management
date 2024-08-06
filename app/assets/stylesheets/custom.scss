@@ -8,6 +8,7 @@ body {
   padding: 0;
   height: 100%;
   font-family: verdana, sans-serif;
+  color: #333;;
 }
 
 h1,
@@ -64,6 +65,7 @@ footer {
 .btn {
   cursor: pointer;
   border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -361,26 +363,83 @@ main {
   padding: 30px;
 }
 
+.loggedin-container h1 {
+  border-bottom: 1px solid var(--main-color);
+}
+
 /* projects */
 
 #projects-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin: 16px 0;
-  gap: 150px;
+  gap: 30%;
 }
 
 #project-form {
   width: 50%;
   padding: 16px;
   background-color: #fffaf4;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#project-form input {
-  width: 90%;
-  margin: 8px 0;
+#project-form h2 {
+  margin-bottom: 20px;
+  color: var(--main-color);
+  border-bottom: 1px solid #ccc;
+}
+
+.project-form-group {
+  margin-bottom: 15px;
+}
+
+.project-form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.project-form-group span {
+  color: red;
+  margin-left: 5px;
+}
+
+.project-form-group input,
+.project-form-group select {
+  width: 100%;
   padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.project-form-group input[type="file"] {
+  border: none;
+  padding: 0;
+}
+
+.date-group {
+  transition: opacity 0.3s ease;
+}
+
+.date-group input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.project-submit-group {
+  text-align: center;
+}
+
+#project-submit {
+  width: 100px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+  padding: 4px 8px;
 }
 
 /* footer */
