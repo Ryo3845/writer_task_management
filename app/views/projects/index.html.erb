@@ -4,7 +4,7 @@
   <h1><%= yield(:title) %></h1>
 
   <div id="projects-top">
-    <%= form_with(model: @project,  local: true, html: { id: 'project-form'}) do |f| %>
+    <%= form_with(model: @project, html: { id: 'project-form'}) do |f| %>
       <h2>タスク登録</h2>
 
       <div class="project-form-group">
@@ -56,10 +56,10 @@
 
       <div class="project-form-group date-group editor-date">
         <div class="label-checkbox-container">
-          <%= f.label :cms_deadline, "編集業務・その他タスクの期日" %>
+          <%= f.label :editor_deadline, "編集業務・その他タスクの期日" %>
           <div class="checkbox-wrapper">
-            <%= f.check_box :cms_deadline_not_applicable, class: 'task-deadline-checkbox' %>
-            <%= f.label :cms_deadline_not_applicable, "編集業務・その他タスクなし", class: 'checkbox-label' %>
+            <%= f.check_box :editor_deadline_not_applicable, class: 'task-deadline-checkbox' %>
+            <%= f.label :editor_deadline_not_applicable, "編集業務・その他タスクなし", class: 'checkbox-label' %>
           </div>
         </div>
         <%= f.date_field :cms_deadline, class: 'form-control' %>

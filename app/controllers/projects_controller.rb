@@ -1,7 +1,10 @@
 class ProjectsController < ApplicationController
+
   def index
     @projects = Project.all
-    @project = Project.new  # indexでも新規プロジェクト用のフォームを表示する場合
+  end
+
+  def show
   end
 
   def create
@@ -9,14 +12,15 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_path, notice: 'プロジェクトが正常に作成されました。'
     else
-      @projects = Project.all
-      render :index, status: :unprocessable_entity
+      render 'new', status: :unprocessable_entity
     end
   end
 
   private
 
-  def project_params
-    params.require(:project).permit(:client, :title, :task_type, :name, :formation_deadline, :manuscript_deadline, :cms_deadline, :other_deadline, :status, :compensation, :url, :note)
-  end
+    def project_params
+      params.require(:project).permit(:title, :client_id)
+    end
+
+
 end
