@@ -2,20 +2,22 @@
 
 one:
   title: MyString
-  client: one
   status: MyString
   compensation: 9.99
   url: MyString
   note: MyText
   total_working_hours: 1.5
   hourly_rate: 9.99
+  client: one
+  user: one
 
 two:
   title: MyString
-  client: two
   status: MyString
   compensation: 9.99
   url: MyString
   note: MyText
   total_working_hours: 1.5
   hourly_rate: 9.99
+  client: two
+  user: two

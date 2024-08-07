@@ -378,7 +378,7 @@ main {
 }
 
 #project-form {
-  width: 50%;
+  width: 30%;
   padding: 16px;
   background-color: #fffaf4;
   border-radius: 8px;
@@ -389,6 +389,10 @@ main {
   margin-bottom: 20px;
   color: var(--main-color);
   border-bottom: 1px solid #ccc;
+}
+
+#project-form span {
+  color: red;
 }
 
 .project-form-group {
@@ -421,13 +425,39 @@ main {
   padding: 0;
 }
 
-.date-group {
-  transition: opacity 0.3s ease;
+.label-checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
 }
 
-.date-group input:disabled {
-  background-color: #f0f0f0;
-  cursor: not-allowed;
+.label-checkbox-container label:first-child {
+  margin-right: 10px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  margin-right: 3px;
+}
+
+.checkbox-label {
+  font-weight: normal;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.project-form-group .form-control {
+  width: 100%;
+  margin-top: 5px; 
+}
+
+.task-name {
+  display: none;
 }
 
 .project-submit-group {

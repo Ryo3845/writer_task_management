@@ -1,5 +1,6 @@
-'use strict'
+"use strict";
 
+// ログイン後の三本線メニューの制御
 document.addEventListener("turbo:load", () => {
   const openedMenu = document.getElementById('opened-menu')
   const overlay = document.getElementById('overlay')
@@ -26,84 +27,91 @@ document.addEventListener("turbo:load", () => {
   }
 });
 
-// 進捗管理ページ
 
 document.addEventListener('DOMContentLoaded', () => {
-  const taskSelect = document.getElementById('task-list');
-  const dateGroups = document.querySelectorAll('.date-group');
+  const structureDate = document.querySelector('.structure-date');
+  const writingDate = document.querySelector('.writing-date');
+  const cmsDate = document.querySelector('.cms-date');
+  const editorDate = document.querySelector('.editor-date');
+  const statusList = document.getElementById('status-list');
 
-  function updateDateFields() {
-    const selectedValue = taskSelect.value;
-    dateGroups.forEach(group => {
-      group.style.opacity = '0.5';
-      group.querySelector('input').disabled = true;
+  const dateFields = [
+    {
+      container: structureDate,
+      checkbox: structureDate.querySelector('input[type="checkbox"]'),
+      dateInput: structureDate.querySelector('input[type="date"]'),
+      type: 'structure'
+    },
+    {
+      container: writingDate,
+      checkbox: writingDate.querySelector('input[type="checkbox"]'),
+      dateInput: writingDate.querySelector('input[type="date"]'),
+      type: 'writing'
+    },
+    {
+      container: cmsDate,
+      checkbox: cmsDate.querySelector('input[type="checkbox"]'),
+      dateInput: cmsDate.querySelector('input[type="date"]'),
+      type: 'cms'
+    },
+    {
+      container: editorDate,
+      checkbox: editorDate.querySelector('input[type="checkbox"]'),
+      dateInput: editorDate.querySelector('input[type="date"]'),
+      type: 'editor'
+    }
+  ];
+
+  const allStatuses = [
+    {value: '', text: '--リストから選んでください--'},
+    {value: 'before-starting', text: '着手前'},
+    {value: 'structure-create', text: '構成作成中', type: 'structure'},
+    {value: 'structure-collection', text: '構成修正中', type: 'structure'},
+    {value: 'writing-create', text: '原稿執筆中', type: 'writing'},
+    {value: 'writing-collection', text: '原稿修正中', type: 'writing'},
+    {value: 'cms-create', text: 'CMS入稿中', type: 'cms'},
+    {value: 'cms-collection', text: 'CMS入稿記事修正中', type: 'cms'},
+    {value: 'structure-checking', text: '構成チェック中（編集業務）', type: 'editor'},
+    {value: 'writing-checking', text: '原稿チェック中（編集業務）', type: 'editor'},
+    {value: 'cms-checking', text: '入稿チェック中（編集業務）', type: 'editor'},
+    {value: 'writer-checking', text: 'ライター対応中（編集業務）', type: 'editor'},
+    {value: 'client-checking', text: 'クライアント確認中'}
+  ];
+
+  function preventDateEntry(field) {
+    field.checkbox.addEventListener('change', () => {
+      if (field.checkbox.checked) {
+        field.dateInput.disabled = true;
+        field.dateInput.value = '';
+      } else {
+        field.dateInput.disabled = false;
+      }
+      updateStatusList();
+    });
+  }
+
+  function updateStatusList() {
+    const checkedTypes = dateFields
+      .filter(field => field.checkbox.checked)
+      .map(field => field.type);
+
+    const availableStatuses = allStatuses.filter(status => {
+      if (!status.type) return true;
+      if (status.type === 'editor') {
+        return !checkedTypes.includes('editor');
+      }
+      return !checkedTypes.includes(status.type) || checkedTypes.includes('editor');
     });
 
-    // 最初にすべてのケースでタスク名を非表示にする
-    hideTaskName();
-
-    switch(selectedValue) {
-      case 'structure':
-        enableDateGroup('structure-date');
-        break;
-      case 'writing':
-        enableDateGroup('writing-date');
-        break;
-      case 'cms':
-        enableDateGroup('cms-date');
-        break;
-      case 'structure-writing':
-        enableDateGroup('structure-date');
-        enableDateGroup('writing-date');
-        break;
-      case 'writing-cms':
-        enableDateGroup('writing-date');
-        enableDateGroup('cms-date');
-        break;
-      case 'structure-writing-cms':
-        enableDateGroup('structure-date');
-        enableDateGroup('writing-date');
-        enableDateGroup('cms-date');
-        break;
-      case 'structure-check':
-      case 'writing-check':
-      case 'cms-check':
-      case 'select-keyword':
-        enableDateGroup('other-date');
-        break;
-      case 'other':
-        displayTaskName();
-        enableDateGroup('other-date');
-        break;
-      default:
-        // デフォルトでは何も有効にしない
-        break;
-    }
-  }
-  
-  // タスクに応じて期日の項目を入力できるようにする
-  function enableDateGroup(className) {
-    const group = document.querySelector(`.${className}`);
-    if (group) {
-      group.style.opacity = '1';
-      group.querySelector('input').disabled = false;
-    }
+    statusList.innerHTML = '';
+    availableStatuses.forEach(status => {
+      const option = document.createElement('option');
+      option.value = status.value;
+      option.textContent = status.text;
+      statusList.appendChild(option);
+    });
   }
 
-  // タスク名を非表示にする関数
-  function hideTaskName() {
-    const taskName = document.querySelector('.task-name');
-    taskName.style.display = "none";
-  }
-
-  // 「その他タスク」を選択した場合、「タスク名」を表示させる
-  function displayTaskName() {
-    const taskName = document.querySelector('.task-name');
-    taskName.style.display = "block";
-  }
-  
-  taskSelect.addEventListener('change', updateDateFields);
-  
-  // 初期状態を設定
-  updateDateFields();
+  dateFields.forEach(field => preventDateEntry(field));
+  updateStatusList(); // 初期状態を設定
 });

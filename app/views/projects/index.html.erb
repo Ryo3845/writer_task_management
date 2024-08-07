@@ -4,146 +4,158 @@
   <h1><%= yield(:title) %></h1>
 
   <div id="projects-top">
-  <form id="project-form">
-    <h2>タスク登録</h2>
-    <div class="project-form-group">
-      <label for="client-list">クライアント名<span>※</span></label>
-      <select id="client-list">
-        <option value="">--リストから選んでください--</option>
-        <option value="">Ａ社</option>
-      </select>
-    </div>
+    <%= form_with(model: @project,  local: true, html: { id: 'project-form'}) do |f| %>
+      <h2>タスク登録</h2>
 
-    <div class="project-form-group">
-      <label for="project">案件名（キーワードなど）<span>※</span></label>
-      <input type="text" name="project" id="project" placeholder="案件名" required>
-    </div>
+      <div class="project-form-group">
+        <%= f.label :client, "クライアント" do %>
+          クライアント<span>※</span>
+        <% end %>
+        <%= f.select :client, options_for_select([['--リストから選んでください--', ''], ['Ａ社', 'A社']]), {}, { class: 'form-control' } %>
+      </div>
 
-    <div class="project-form-group">
-      <label for="task-list">タスクの種類</label>
-      <select id="task-list">
-        <option value="">--リストから選んでください--</option>
-        <option value="structure">構成作成のみ</option>
-        <option value="writing">原稿執筆のみ</option>
-        <option value="cms">CMS入稿のみ</option>
-        <option value="structure-writing">構成作成+原稿執筆</option>
-        <option value="writing-cms">原稿執筆+CMS入稿</option>
-        <option value="structure-writing-cms">構成作成+原稿執筆+CMS入稿</option>
-        <option value="structure-check">ライターの構成チェック</option>
-        <option value="writing-check">ライターの原稿チェック</option>
-        <option value="cms-check">ライターの入稿記事チェック</option>
-        <option value="select-keyword">キーワード選定</option>
-        <option value="other">その他タスク</option>
-      </select>
-    </div>
+      <div class="project-form-group">
+        <%= f.label :title, "案件名" do %>
+          案件名（キーワードなど）<span>※</span>
+        <% end %>
+        <%= f.text_field :title, placeholder: "案件名", required: true, class: 'form-control'%>
+      </div>
 
-    <div class="project-form-group task-name">
-      <label for="other-task">タスク名</label>
-      <input type="text" name="other-task" id="other-task" placeholder="タスク名" required>
-    </div>
+      <div class="project-form-group date-group structure-date">
+        <div class="label-checkbox-container">
+          <%= f.label :structure_deadline, "構成の期日" %>
+          <div class="checkbox-wrapper">
+            <%= f.check_box :structure_deadline_not_applicable, class: 'task-deadline-checkbox' %>
+            <%= f.label :structure_deadline_not_applicable, "構成の作成なし", class: 'checkbox-label' %>
+          </div>
+        </div>
+        <%= f.date_field :structure_deadline, class: 'form-control' %>
+      </div>
 
-    <div class="project-form-group date-group structure-date">
-      <label for="formation-deadline">構成の期日</label>
-      <input type="date" name="formation-deadline" id="formation-deadline" required>
-    </div>
+      <div class="project-form-group date-group writing-date">
+        <div class="label-checkbox-container">
+          <%= f.label :writing_deadline, "原稿の期日" %>
+          <div class="checkbox-wrapper">
+            <%= f.check_box :writing_deadline_not_applicable, class: 'task-deadline-checkbox' %>
+            <%= f.label :writing_deadline_not_applicable, "原稿の執筆なし", class: 'checkbox-label' %>
+          </div>
+        </div>
+        <%= f.date_field :writing_deadline, class: 'form-control' %>
+      </div>
 
-    <div class="project-form-group date-group writing-date">
-      <label for="manuscript-deadline">原稿執筆の期日</label>
-      <input type="date" name="manuscript-deadline" id="manuscript-deadline" required>
-    </div>
+      <div class="project-form-group date-group cms-date">
+        <div class="label-checkbox-container">
+          <%= f.label :cms_deadline, "CMS入稿の期日" %>
+          <div class="checkbox-wrapper">
+            <%= f.check_box :cms_deadline_not_applicable, class: 'task-deadline-checkbox' %>
+            <%= f.label :cms_deadline_not_applicable, "CMS入稿なし", class: 'checkbox-label' %>
+          </div>
+        </div>
+        <%= f.date_field :cms_deadline, class: 'form-control' %>
+      </div>
 
-    <div class="project-form-group date-group cms-date">
-      <label for="cms-deadline">CMS入稿の期日</label>
-      <input type="date" name="cms-deadline" id="cms-deadline" required>
-    </div>
+      <div class="project-form-group date-group editor-date">
+        <div class="label-checkbox-container">
+          <%= f.label :cms_deadline, "編集業務・その他タスクの期日" %>
+          <div class="checkbox-wrapper">
+            <%= f.check_box :cms_deadline_not_applicable, class: 'task-deadline-checkbox' %>
+            <%= f.label :cms_deadline_not_applicable, "編集業務・その他タスクなし", class: 'checkbox-label' %>
+          </div>
+        </div>
+        <%= f.date_field :cms_deadline, class: 'form-control' %>
+      </div>
 
-    <div class="project-form-group date-group other-date">
-      <label for="other-deadline">タスクの期日</label>
-      <input type="date" name="other-deadline" id="other-deadline" required>
-    </div>
+      <div class="project-form-group">
+        <%= f.label :status, "タスクのステータス" %>
+        <%= f.select :status, options_for_select([
+          ['--リストから選んでください--', ''],
+          ['着手前', 'before-starting'],
+          ['構成作成中', 'structure-create'],
+          ['構成修正中', 'structure-collection'],
+          ['原稿執筆中', 'writing-create'],
+          ['原稿修正中', 'writing-collection'],
+          ['CMS入稿中', 'cms-create'],
+          ['CMS入稿記事修正中', 'cms-collection'],
+          ['構成チェック中（編集業務）', 'structure-checking'],
+          ['原稿チェック中（編集業務）', 'writing-checking'],
+          ['入稿チェック中（編集業務）', 'cms-checking'],
+          ['ライター対応中（編集業務）', 'writer-checking'],
+          ['クライアント確認中', 'client-checking'],
+          ]), {}, { id: 'status-list', class: 'form-control' } %>
+      </div>
 
-    <div class="project-form-group">
-      <label for="reward">報酬</label>
-      <input type="text" inputmode="numeric" name="reward" id="reward" placeholder="報酬" required>
-    </div>
+      <div class="project-form-group task-name">
+        <%= f.label :name, "タスク名" %>
+        <%= f.text_field :name, placeholder: "タスク名", class: 'form-control'%>
+      </div>
 
-    <div class="project-form-group">
-      <label for="url">URL</label>
-      <input type="url" name="url" id="url" placeholder="Googleドキュメントのリンクなど">
-    </div>
+      <div class="project-form-group">
+        <%= f.label :compensation, "報酬" %>
+        <%= f.text_field :compensation, inputmode: "numeric", placeholder: "報酬", class: 'form-control' %>
+      </div>
 
-    <div class="project-form-group">
-      <label for="note">備考</label>
-      <input type="text" name="note" id="note" placeholder="備考">
-    </div>
+      <div class="project-form-group">
+        <%= f.label :url, "URL" %>
+        <%= f.url_field :url, placeholder: "Googleドキュメントのリンクなど", class: 'form-control' %>
+      </div>
 
-    <div class="project-form-group project-submit-group">
-      <button type="submit" class="btn btn-fill" id="project-submit">登録</button>
+      <div class="project-form-group">
+        <%= f.label :note, "備考" %>
+        <%= f.text_field :note, placeholder: "備考", class: 'form-control' %>
+      </div>
+
+      <small><span>※</span>は必須項目です</small><br>
+      <small>※期日が決まっていない箇所は空欄で大丈夫です</small>
+      <div class="project-form-group project-submit-group">
+        <%= f.submit "登録", class: "btn btn-fill", id: "project-submit" %>
+      </div>
+    <% end %>
+    <div>
+      <table>
+        <tr>
+          <th>目標の売上</th>
+          <th>今月の売上</th>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
     </div>
-  
-  </form>
-  <table>
-    <tr>
-      <th>目標の売上</th>
-      <th>今月の売上</th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-  </table>
   </div>
 
- <table id="projects-table">
+<table id="projects-table">
   <thead>
     <tr>
-      <th rowspan="2">編集</th>
-      <th rowspan="2">ステータス</th>
-      <th rowspan="2">クライアント</th>
-      <th rowspan="2">案件名</th>
-      <th colspan="3">タスク</th>
-      <th rowspan="2">報酬</th>
-      <th rowspan="2">URL</th>
-      <th rowspan="2">合計作業時間</th>
-      <th rowspan="2">時給</th>
-      <th rowspan="2">備考</th>
-    </tr>
-    <tr>
-      <th>種類</th>
-      <th>期日</th>
-      <th>状態</th>
+      <th>編集</th>
+      <th>クライアント</th>
+      <th>案件名</th>
+      <th>タスクのステータス</th>
+      <th>タスク期日</th>
+      <th>最終納期</th>
+      <th>報酬</th>
+      <th>URL</th>
+      <th>作業時間</th>
+      <th>時給</th>
+      <th>備考</th>
+      <th>タスク完了</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td rowspan="4"><button>編集</button></td>
-      <td rowspan="4">進行中</td>
-      <td rowspan="4">A社</td>
-      <td rowspan="4">商品紹介記事</td>
-      <td>構成作成</td>
-      <td>2023/08/10</td>
-      <td>完了</td>
-      <td rowspan="4">40,000円</td>
-      <td rowspan="4"><a href="#">URL</a></td>
-      <td rowspan="4">5時間</td>
-      <td rowspan="4">6,000円</td>
-      <td rowspan="4">修正2回まで</td>
-    </tr>
-    <tr>
-      <td>記事執筆</td>
-      <td>2023/08/20</td>
-      <td>進行中</td>
-    </tr>
-    <tr>
-      <td>入稿</td>
-      <td>2023/08/25</td>
-      <td>未着手</td>
-    </tr>
-    <tr>
-      <td>その他タスク</td>
-      <td>2024/09/25</td>
-      <td>未着手</td>
-    </tr>
+    <% @projects.each do |p| %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= p.title %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-</div>
