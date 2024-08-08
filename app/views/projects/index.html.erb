@@ -21,51 +21,7 @@
         <%= f.text_field :title, placeholder: "案件名", required: true, class: 'form-control'%>
       </div>
 
-      <div class="project-form-group date-group structure-date">
-        <div class="label-checkbox-container">
-          <%= f.label :structure_deadline, "構成の期日" %>
-          <div class="checkbox-wrapper">
-            <%= f.check_box :structure_deadline_not_applicable, class: 'task-deadline-checkbox' %>
-            <%= f.label :structure_deadline_not_applicable, "構成の作成なし", class: 'checkbox-label' %>
-          </div>
-        </div>
-        <%= f.date_field :structure_deadline, class: 'form-control' %>
-      </div>
-
-      <div class="project-form-group date-group writing-date">
-        <div class="label-checkbox-container">
-          <%= f.label :writing_deadline, "原稿の期日" %>
-          <div class="checkbox-wrapper">
-            <%= f.check_box :writing_deadline_not_applicable, class: 'task-deadline-checkbox' %>
-            <%= f.label :writing_deadline_not_applicable, "原稿の執筆なし", class: 'checkbox-label' %>
-          </div>
-        </div>
-        <%= f.date_field :writing_deadline, class: 'form-control' %>
-      </div>
-
-      <div class="project-form-group date-group cms-date">
-        <div class="label-checkbox-container">
-          <%= f.label :cms_deadline, "CMS入稿の期日" %>
-          <div class="checkbox-wrapper">
-            <%= f.check_box :cms_deadline_not_applicable, class: 'task-deadline-checkbox' %>
-            <%= f.label :cms_deadline_not_applicable, "CMS入稿なし", class: 'checkbox-label' %>
-          </div>
-        </div>
-        <%= f.date_field :cms_deadline, class: 'form-control' %>
-      </div>
-
-      <div class="project-form-group date-group editor-date">
-        <div class="label-checkbox-container">
-          <%= f.label :editor_deadline, "編集業務・その他タスクの期日" %>
-          <div class="checkbox-wrapper">
-            <%= f.check_box :editor_deadline_not_applicable, class: 'task-deadline-checkbox' %>
-            <%= f.label :editor_deadline_not_applicable, "編集業務・その他タスクなし", class: 'checkbox-label' %>
-          </div>
-        </div>
-        <%= f.date_field :cms_deadline, class: 'form-control' %>
-      </div>
-
-      <div class="project-form-group">
+            <div class="project-form-group">
         <%= f.label :status, "タスクのステータス" %>
         <%= f.select :status, options_for_select([
           ['--リストから選んでください--', ''],
@@ -82,6 +38,20 @@
           ['ライター対応中（編集業務）', 'writer-checking'],
           ['クライアント確認中', 'client-checking'],
           ]), {}, { id: 'status-list', class: 'form-control' } %>
+      </div>
+
+      <div class="project-form-group date-group date task_deadline">
+        <%= f.label :task_deadline, "期日を設定してください" %>
+        <%= f.date_field :task_deadline, class: 'form-control' %>
+      </div>
+
+      <div class="project-form-group date-group final-deadline">
+        <%= f.label :final_deadline, "最終納期" %>
+        <%= f.date_field :final_deadline, class: 'form-control', id: 'final_deadline_input' %>
+        <div class="checkbox-wrapper">
+            <%= f.check_box :final_deadline_not_applicable, class: 'final-deadline-checkbox', id: 'final_deadline_checkbox' %>
+            <%= f.label :final_deadline_not_applicable, "上記の期日と同じ", class: 'checkbox-label' %>
+        </div>
       </div>
 
       <div class="project-form-group task-name">
@@ -130,10 +100,9 @@
       <th>編集</th>
       <th>クライアント</th>
       <th>案件名</th>
-      <th>タスクのステータス</th>
+      <th>ステータス</th>
       <th>タスク期日</th>
       <th>最終納期</th>
-      <th>報酬</th>
       <th>URL</th>
       <th>作業時間</th>
       <th>時給</th>

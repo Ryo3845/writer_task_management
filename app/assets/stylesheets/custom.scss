@@ -396,13 +396,12 @@ main {
 }
 
 .project-form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .project-form-group label {
   display: block;
   font-size: 14px;
-  margin-bottom: 0px;
 }
 
 .project-form-group span {
@@ -420,37 +419,6 @@ main {
   box-sizing: border-box;
 }
 
-.project-form-group input[type="file"] {
-  border: none;
-  padding: 0;
-}
-
-.label-checkbox-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 5px;
-}
-
-.label-checkbox-container label:first-child {
-  margin-right: 10px;
-}
-
-.checkbox-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.checkbox-wrapper input[type="checkbox"] {
-  margin-right: 3px;
-}
-
-.checkbox-label {
-  font-weight: normal;
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
 .project-form-group .form-control {
   width: 100%;
   margin-top: 5px; 
@@ -458,6 +426,30 @@ main {
 
 .task-name {
   display: none;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.project-form-group input[type="date"] {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.checkbox-label {
+  font-size: 12px !important;;
+  margin-left: 5px;
+  font-weight: normal;
 }
 
 .project-submit-group {
