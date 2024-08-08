@@ -3,8 +3,9 @@
 <div class="container loggedin-container">
   <h1><%= yield(:title) %></h1>
 
+
   <div id="projects-top">
-    <%= form_with(model: @project, html: { id: 'project-form'}) do |f| %>
+    <%= form_with(model: @project, local: true, scope: :project, html: { id: 'project-form'}) do |f| %>
       <h2>タスク登録</h2>
 
       <div class="project-form-group">
@@ -21,27 +22,18 @@
         <%= f.text_field :title, placeholder: "案件名", required: true, class: 'form-control'%>
       </div>
 
-            <div class="project-form-group">
+      <div class="project-form-group">
         <%= f.label :status, "タスクのステータス" %>
-        <%= f.select :status, options_for_select([
-          ['--リストから選んでください--', ''],
-          ['着手前', 'before-starting'],
-          ['構成作成中', 'structure-create'],
-          ['構成修正中', 'structure-collection'],
-          ['原稿執筆中', 'writing-create'],
-          ['原稿修正中', 'writing-collection'],
-          ['CMS入稿中', 'cms-create'],
-          ['CMS入稿記事修正中', 'cms-collection'],
-          ['構成チェック中（編集業務）', 'structure-checking'],
-          ['原稿チェック中（編集業務）', 'writing-checking'],
-          ['入稿チェック中（編集業務）', 'cms-checking'],
-          ['ライター対応中（編集業務）', 'writer-checking'],
-          ['クライアント確認中', 'client-checking'],
-          ]), {}, { id: 'status-list', class: 'form-control' } %>
+        <%= f.select :status, Project.statuses.keys.map { |s| [Project.new(status: s).status_text, s] }, {}, { id: 'status-list', class: 'form-control' } %>
+      </div>
+
+      <div class="project-form-group other-task">
+        <%= f.label :other_task, "その他タスクの詳細" %>
+        <%= f.text_field :other_task, placeholder: "その他タスクの名称", class: 'form-control'%>
       </div>
 
       <div class="project-form-group date-group date task_deadline">
-        <%= f.label :task_deadline, "期日を設定してください" %>
+        <%= f.label :task_deadline, "タスクの期日" %>
         <%= f.date_field :task_deadline, class: 'form-control' %>
       </div>
 
@@ -54,13 +46,8 @@
         </div>
       </div>
 
-      <div class="project-form-group task-name">
-        <%= f.label :name, "タスク名" %>
-        <%= f.text_field :name, placeholder: "タスク名", class: 'form-control'%>
-      </div>
-
       <div class="project-form-group">
-        <%= f.label :compensation, "報酬" %>
+        <%= f.label :compensation, "報酬（税抜）" %>
         <%= f.text_field :compensation, inputmode: "numeric", placeholder: "報酬", class: 'form-control' %>
       </div>
 
@@ -76,6 +63,7 @@
 
       <small><span>※</span>は必須項目です</small><br>
       <small>※期日が決まっていない箇所は空欄で大丈夫です</small>
+
       <div class="project-form-group project-submit-group">
         <%= f.submit "登録", class: "btn btn-fill", id: "project-submit" %>
       </div>
@@ -103,6 +91,7 @@
       <th>ステータス</th>
       <th>タスク期日</th>
       <th>最終納期</th>
+      <th>報酬（税抜）</th>
       <th>URL</th>
       <th>作業時間</th>
       <th>時給</th>
@@ -113,16 +102,17 @@
   <tbody>
     <% @projects.each do |p| %>
       <tr>
-        <td></td>
-        <td></td>
+        <td><%= link_to "編集" %></td>
+        <td><%= p.client %></td>
         <td><%= p.title %></td>
+        <td><%= p.status_text %></td>
+        <td><%= p.task_deadline %></td>
+        <td><%= p.final_deadline %></td>
+        <td><%= p.compensation %>円</td>
+        <td><%= p.url %></td>
         <td></td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= p.note %></td>
         <td></td>
       </tr>
     <% end %>

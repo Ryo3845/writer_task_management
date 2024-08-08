@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 10 }, format: { with: LETTER_NUMBER_MIXED, message: 'は半角英数字の両方を含んでください' }
   validates :password_confirmation, presence: true
   has_secure_password
+  has_many :projects
 end

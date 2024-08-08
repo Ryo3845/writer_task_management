@@ -10,66 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_07_194854) do
-  create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "deadlines", force: :cascade do |t|
-    t.date "due_date"
-    t.integer "task_group_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_group_id"], name: "index_deadlines_on_task_group_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2024_08_08_125828) do
   create_table "projects", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "client"
     t.string "title"
-    t.string "status"
-    t.decimal "compensation"
+    t.integer "status"
+    t.string "other_task"
+    t.date "task_deadline"
+    t.date "final_deadline"
+    t.boolean "final_deadline_not_applicable"
+    t.string "name"
+    t.decimal "compensation", precision: 10, scale: 2
     t.string "url"
     t.text "note"
-    t.float "total_working_hours"
-    t.decimal "hourly_rate"
-    t.integer "client_id", null: false
-    t.integer "user_id", null: false
+    t.decimal "total_working_hours", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_projects_on_client_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
-  end
-
-  create_table "task_groups", force: :cascade do |t|
-    t.string "group_type"
-    t.string "status"
-    t.integer "project_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_task_groups_on_project_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "status"
-    t.integer "task_group_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["task_group_id"], name: "index_tasks_on_task_group_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
   end
 
-  add_foreign_key "deadlines", "task_groups"
-  add_foreign_key "projects", "clients"
   add_foreign_key "projects", "users"
-  add_foreign_key "task_groups", "projects"
-  add_foreign_key "tasks", "task_groups"
 end

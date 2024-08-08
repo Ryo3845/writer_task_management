@@ -6,3 +6,21 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+  enums:
+    project:
+      status:
+        pending: '--リストから選んでください--'
+        before_starting: '着手前'
+        structure_create: '構成作成中'
+        structure_collection: '構成修正中'
+        writing_create: '原稿執筆中'
+        writing_collection: '原稿修正中'
+        cms_create: 'CMS入稿中'
+        cms_collection: 'CMS入稿記事修正中'
+        structure_checking: '構成チェック中（編集業務）'
+        writing_checking: '原稿チェック中（編集業務）'
+        cms_checking: '入稿チェック中（編集業務）'
+        writer_checking: 'ライター対応中（編集業務）'
+        select_keyword: 'キーワード選定'
+        client_checking: 'クライアント確認中'
+        other_task: 'その他タスク'
