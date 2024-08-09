@@ -20,7 +20,7 @@
   </nav>
   <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
   <% if logged_in? %>
-    <div id="opened-menu">
+    <div id="open-menu">
       <%= image_tag("menu", alt: "menu", width: 40, height: 40) %>
     </div>
     <nav id="overlay">
