@@ -85,6 +85,8 @@ header {
   justify-content: flex-start;
   align-items: center;
   background: white;
+  position: fixed;
+  width: 100%;
 }
 
 
@@ -102,7 +104,7 @@ nav {
   list-style-type: none;
 }
 
-#nav-name, #opened-menu, #nav-button {
+#nav-name, #open-menu, #nav-button {
   flex: 0 0 auto;
 }
 
@@ -142,12 +144,17 @@ nav {
   cursor: pointer;
 }
 
+#sp-close-menu {
+  display: none;
+}
+
+
 #overlay {
   display: flex;
   flex-direction: column;
   text-align: center;
   position: fixed;
-  top: 70px;
+  top: 55px;
   right: 30px;
   background: white;
   width: 150px;
@@ -234,7 +241,7 @@ nav {
 /* main */
 
 main {
-  padding-top: 30px;
+  padding-top: 96px;
   padding-bottom: 30px;
   background: var(--sub-color);
 }
@@ -359,7 +366,7 @@ main {
 /* loggedin-container */
 
 .loggedin-container {
-  margin: 0 16px;
+  margin: 0 16px 16px;
   padding: 30px;
 }
 

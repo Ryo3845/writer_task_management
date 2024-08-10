@@ -2,8 +2,7 @@
 
 <div class="container loggedin-container">
   <h1><%= yield(:title) %></h1>
-
-
+  
   <div id="projects-top">
     <%= form_with(model: @project, local: true, scope: :project, html: { id: 'project-form'}) do |f| %>
       <h2>タスク登録</h2>
