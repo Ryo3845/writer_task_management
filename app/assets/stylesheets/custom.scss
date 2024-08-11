@@ -144,7 +144,7 @@ nav {
   cursor: pointer;
 }
 
-#sp-close-menu {
+#close-menu {
   display: none;
 }
 
@@ -154,7 +154,7 @@ nav {
   flex-direction: column;
   text-align: center;
   position: fixed;
-  top: 55px;
+  top: 56px;
   right: 30px;
   background: white;
   width: 150px;
@@ -536,6 +536,8 @@ footer a {
     margin: 0 auto;
   }
 
+  /* main */
+  
   /* alert message */
 
   .alert {
