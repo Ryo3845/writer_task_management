@@ -26,7 +26,7 @@
     <div id="close-menu">
       <%= image_tag("close", alt: "menu", width: 40, height: 40) %>
     </div>
-    <nav id="overlay">
+    <nav class="overlay">
       <%= link_to "設定", "#" %>
       <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
     </nav>
