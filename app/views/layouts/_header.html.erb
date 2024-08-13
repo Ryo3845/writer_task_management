@@ -12,29 +12,40 @@
         <li class=<%= "#{current_page?(projects_path) ? 'active' : '' }" %>><%= link_to "進捗管理", projects_path %></li>
         <li class=<%= "#{current_page?("#") ? 'active' : '' }" %>><%= link_to "月間報酬", "#" %></li>
         <li class=<%= "#{current_page?("#") ? 'active' : '' }" %>><%= link_to "案件一覧", "#" %></li>
-      <% else %>
-        <li class=<%= "#{current_page?(function_path) ? 'active' : '' }" %>><%= link_to "機能", function_path %></li>
-        <li class=<%= "#{current_page?(pricing_path) ? 'active' : '' }" %>><%= link_to "料金", pricing_path %></li>
       <% end %>
     </ul>
   </nav>
+  <div id="nav-button">
+    <%= link_to "新規登録", signup_path, class: "btn btn-outline" if !logged_in? %>
+    <%= link_to "ログイン", login_path , class: "btn btn-fill" if !logged_in? %>
+  </div>
   <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
-  <% if logged_in? %>
-    <div id="open-menu">
-      <%= image_tag("menu", alt: "menu", width: 40, height: 40) %>
-    </div>
-    <div id="close-menu">
-      <%= image_tag("close", alt: "menu", width: 40, height: 40) %>
-    </div>
-    <nav class="overlay">
-      <%= link_to "設定", "#" %>
-      <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
-    </nav>
-    
-  <% else %>
-    <div id="nav-button">
-      <%= link_to "新規登録", signup_path, class: "btn btn-outline" %>
-      <%= link_to "ログイン", login_path , class: "btn btn-fill" %>
-    </div>
+  <% if !logged_in? %>
+    <div class="header-icon" id="login-icon">
+      <%= link_to image_tag("login", alt: "login", width: 40, height: 40), login_path %>
+    <p>ログイン</p>
   <% end %>
+  </div>
+  <div class="header-icon" id="open-menu">
+    <%= image_tag("menu", alt: "menu", width: 40, height: 40)  %>
+    <p>メニュー</p>
+  </div>
+  <div class="header-icon" id="close-menu">
+    <%= image_tag("close", alt: "menu", width: 40, height: 40) %>
+    <p>閉じる</p>
+  </div>
+  <nav class="overlay">
+    <% if logged_in? %>
+      <li class="sp-overlay-menu <%= "#{current_page?(projects_path) ? 'active' : '' }" %>"><%= link_to "進捗管理", projects_path %></li>
+      <li class="sp-overlay-menu <%= "#{current_page?("#") ? 'active' : '' }" %>"><%= link_to "月間報酬", "#" %></li>
+      <li class="sp-overlay-menu <%= "#{current_page?("#") ? 'active' : '' }" %>"><%= link_to "案件一覧", "#" %></li>
+      <li><%= link_to "設定", "#" %></li>
+      <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></li>
+    <% else %>
+      <li class=<%= "#{current_page?(function_path) ? 'active' : '' }" %>><%= link_to "機能", function_path %></li>
+      <li class=<%= "#{current_page?(pricing_path) ? 'active' : '' }" %>><%= link_to "料金", pricing_path %></li>
+      <li><%= link_to "新規登録", signup_path %></li>
+      <li><%= link_to "ログイン", login_path %></li>
+    <% end %>
+  </nav> 
 </header>

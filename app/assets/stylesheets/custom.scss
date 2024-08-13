@@ -76,6 +76,7 @@ footer {
   --main-color: #ee7800;
   --sub-color: #fff8f2;
   --menu--color: #323232;
+  --light--silver: #f8f8f8
 }
 
 /* header */
@@ -119,10 +120,6 @@ nav {
   border-bottom: 2px solid transparent;
 }
 
-#nav-list li:hover {
-  border-bottom: 2px solid var(--main-color);
-}
-
 #nav-list li.active {
   border-bottom: 2px solid var(--main-color);
 }
@@ -140,6 +137,20 @@ nav {
   margin-left: auto;
 }
 
+.header-icon {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.header-icon p {
+  font-size: 10px;
+}
+
+#login-icon {
+  display: none;
+}
+
 #open-menu {
   cursor: pointer;
 }
@@ -148,13 +159,12 @@ nav {
   display: none;
 }
 
-
 .overlay {
   display: flex;
   flex-direction: column;
   text-align: center;
   position: fixed;
-  top: 56px;
+  top: 75px;
   right: 30px;
   background: white;
   width: 150px;
@@ -185,17 +195,16 @@ nav {
   margin-bottom: 0;
 }
 
-.overlay a:hover {
-  color: white;
-  background: var(--main-color);
-}
-
 .overlay #show-menu {
   display: flex;
 }
 
 #nav-button {
   align-items: center;
+}
+
+.sp-overlay-menu {
+  display: none;
 }
 
 .btn {
@@ -219,10 +228,6 @@ nav {
   color: var(--main-color);
 }
 
-.btn-outline:hover {
-  background: whitesmoke;
-}
-
 .btn-fill {
   background-color: var(--main-color);
   font-weight: bold;
@@ -232,10 +237,6 @@ nav {
 
 .btn-fill a {
   color: var(--main-color);
-}
-
-.btn-fill:hover {
-  opacity: .7;
 }
 
 /* main */
@@ -490,10 +491,6 @@ footer li {
   border-bottom: 2px solid transparent;
 }
 
-footer li:hover {
-  border-bottom: 2px solid white;
-}
-
 footer a {
   color: white;
 }
@@ -509,6 +506,35 @@ footer a {
   padding: 10px;
   color: red;
   background-color: #FFF0F5;
+}
+
+/* hover */
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-fill:hover {
+    opacity: .7;
+  }
+
+  .btn-outline:hover {
+    background: whitesmoke;
+  }
+
+  #nav-list li:hover {
+    border-bottom: 2px solid var(--main-color);
+  }
+
+  .header-icon:hover {
+    cursor: pointer;
+    background-color: var(--light--silver);
+  }
+  .overlay a:hover {
+    color: white;
+    background: var(--main-color);
+  }
+
+  footer li:hover {
+    border-bottom: 2px solid white;
+  }
 }
 
 /* tablet breakpoint =< 960px */
@@ -533,37 +559,52 @@ footer a {
     display: none;
   }
 
-  #close-menu:hover {
-    cursor: pointer;
+  #nav-button {
+    display: none;
+    margin: 0 auto;
   }
 
-  #nav-button {
-    margin: 0 auto;
+  #login-icon {
+    display: block;
+  }
+
+  .sp-overlay-menu {
+    display: block;
   }
 
   /* main */
 
   main {
-    padding-top: 56px;
+    padding-top: 75px;
   }
 
   body {
     overflow-x: hidden;
-  }
-
-  body.menu-open {
-    overflow: hidden;
+    -webkit-tap-highlight-color: transparent; 
   }
 
   .overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     position: fixed;
-    top: 56px;
     left: 0;
     width: 100%;
-    height: calc(100% - 56px);
+    height: auto;
+    max-height: calc(100% - 75px);
     overflow-y: auto;
-    background: white;
     z-index: 999;
+  }
+
+  .overlay li {
+    font-size: 20px;
+    padding: 15px 0;
+    background: white;
+    border-bottom: 1px solid silver;
+  }
+
+  .overlay li:first-child {
+    border-top: 1px solid silver;
   }
 
   .overlay.show-menu {
@@ -571,6 +612,12 @@ footer a {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  // スマホだと表がはみ出てブラウザ画面が遠くなるので、一時的に非表示
+  // width: 100％でも解決しない;
+  #projects-table {
+    display: none;
   }
 
   /* alert message */
@@ -588,10 +635,5 @@ footer a {
     margin: 0 auto;
     text-align: left;
     flex-direction: column;
-  }
-
-  footer li:hover {
-    border-bottom: none;
-    border-bottom: 2px solid transparent;
   }
 }
