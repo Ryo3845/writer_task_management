@@ -261,6 +261,7 @@ main {
 .form-container h1 {
   margin-bottom: 15px;
   text-align: center;
+  border-bottom: 1px solid var(--main-color);
 }
 
 .form-container .form-group {
@@ -271,6 +272,16 @@ main {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+.form-container input {
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+}
+
+.form-container input:focus {
+  border: 1px solid var(--main-color);
+  outline: none;
 }
 
 .form-control {
@@ -396,7 +407,7 @@ main {
 #project-form h2 {
   margin-bottom: 20px;
   color: var(--main-color);
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid lightgray;
 }
 
 #project-form span {
@@ -575,12 +586,20 @@ footer a {
   /* main */
 
   main {
-    padding-top: 75px;
+    padding: 70px 10px 10px;
   }
 
   body {
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent; 
+  }
+
+  .form-container .form-group {
+    margin: 15px 0;
+  }
+
+  .terms-policy-container {
+    width: 100%;
   }
 
   .overlay {
