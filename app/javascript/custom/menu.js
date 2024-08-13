@@ -15,14 +15,9 @@
       // 三本線メニュークリック確認
       console.log("三本線メニューはクリックされています");
       
-      // スマホ画面での挙動
-      if (window.innerWidth <= 768) {
-        openMenu.style.display = 'none';
-        closeMenu.style.display = 'block';
-        body.classList.add('menu-open');
-        e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
-      }
-      // PC・タブレット・スマホ画面での挙動
+      openMenu.style.display = 'none';
+      closeMenu.style.display = 'block';
+      body.classList.add('menu-open');
       overlay.classList.toggle('show-menu');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
@@ -40,6 +35,8 @@
     document.addEventListener('click', (e) => {
       if(overlay.classList.contains('show-menu') && !overlay.contains(e.target) && e.target !== openMenu) {
         overlay.classList.remove('show-menu');
+        closeMenu.style.display = 'none';
+        openMenu.style.display = 'block';
       }
     });
   });
