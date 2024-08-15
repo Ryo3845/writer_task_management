@@ -12,7 +12,6 @@ gem 'turbo-rails', '~> 2.0.6'
 gem 'stimulus-rails', '~> 1.3.3'
 gem 'jbuilder'
 gem 'sassc-rails', '2.1.2'
-gem 'win32console', '~> 1.3', '>= 1.3.2'
 gem 'rails-controller-testing'
 gem 'bcrypt', '3.1.13'
 gem 'rails-i18n', '7.0.9'
@@ -45,6 +44,7 @@ end
 
 group :development do
   gem "web-console"
+  gem 'win32console', '~> 1.3', '>= 1.3.2'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
