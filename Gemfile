@@ -15,6 +15,7 @@ gem 'sassc-rails', '2.1.2'
 gem 'rails-controller-testing'
 gem 'bcrypt', '3.1.13'
 gem 'rails-i18n', '7.0.9'
+gem 'pg'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
