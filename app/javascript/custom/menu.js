@@ -37,6 +37,7 @@
         overlay.classList.remove('show-menu');
         closeMenu.style.display = 'none';
         openMenu.style.display = 'block';
+        e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
       }
     });
   });

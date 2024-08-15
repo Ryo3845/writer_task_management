@@ -12,11 +12,9 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_08_08_125828) do
   create_table "projects", force: :cascade do |t|
-    t.integer "user_id", null: false
     t.string "client"
     t.string "title"
     t.integer "status"
-    t.string "other_task"
     t.date "task_deadline"
     t.date "final_deadline"
     t.boolean "final_deadline_not_applicable"
@@ -27,15 +25,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_08_125828) do
     t.decimal "total_working_hours", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "other_task"
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "projects", "users"
