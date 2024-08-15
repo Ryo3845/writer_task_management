@@ -5,7 +5,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   test "invalid signup information" do
     get signup_path
     assert_no_difference "User.count" do
-      post users_path, params: { user: { name: "", email: "user@invalid", password: "foo", password_confirmation: "bar" } }
+      post users_path, params: { user: { name: "", email: "user@invalid", password: "pass", password_confirmation: "word" } }
     end
     assert_response :unprocessable_entity
     assert_template 'users/new'
@@ -15,7 +15,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
   test "valid signup information" do
     assert_difference "User.count" do
-      post users_path, params: { user: { name: "Example User", email: "example@example.com", password: "foobar1234", password_confirmation: "foobar1234" } }
+      post users_path, params: { user: { name: "Example User", email: "example@example.com", password: "password1234", password_confirmation: "password1234" } }
     end
     follow_redirect!
     assert_template 'projects/index'
