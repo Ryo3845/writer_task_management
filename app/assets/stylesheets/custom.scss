@@ -8,7 +8,7 @@ body {
   padding: 0;
   height: 100%;
   font-family: verdana, sans-serif;
-  color: #333;;
+  color: #333;
 }
 
 h1,
@@ -21,6 +21,7 @@ p {
 }
 
 a {
+  color: #0000ff;
   text-decoration: none;
 }
 
@@ -224,10 +225,6 @@ nav {
   border: 2px solid var(--main-color);
 }
 
-.btn-outline a {
-  color: var(--main-color);
-}
-
 .btn-fill {
   background-color: var(--main-color);
   font-weight: bold;
@@ -235,9 +232,6 @@ nav {
   border: var(--main-color);
 }
 
-.btn-fill a {
-  color: var(--main-color);
-}
 
 /* main */
 
@@ -283,6 +277,21 @@ main {
   border: 1px solid var(--main-color);
   outline: none;
 }
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  user-select: none;
+}
+
+.checkbox input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+.checkbox span {
+  font-weight: normal;
+  font-size: 14px;
+}
 
 .form-control {
   display: block;
@@ -298,10 +307,10 @@ main {
   outline: 0;
 }
 
-.form-text {
+.not-have-account {
   display: block;
-  font-size: 12px;
-  margin-top: 5px;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .btn-submit {
