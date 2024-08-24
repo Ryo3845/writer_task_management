@@ -39,7 +39,7 @@
       <li class="sp-overlay-menu <%= "#{current_page?(projects_path) ? 'active' : '' }" %>"><%= link_to "進捗管理", projects_path %></li>
       <li class="sp-overlay-menu <%= "#{current_page?("#") ? 'active' : '' }" %>"><%= link_to "月間報酬", "#" %></li>
       <li class="sp-overlay-menu <%= "#{current_page?("#") ? 'active' : '' }" %>"><%= link_to "案件一覧", "#" %></li>
-      <li><%= link_to "設定", "#" %></li>
+      <li><%= link_to "設定", edit_user_path(current_user) %></li>
       <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></li>
     <% else %>
       <li class=<%= "#{current_page?(function_path) ? 'active' : '' }" %>><%= link_to "機能", function_path %></li>

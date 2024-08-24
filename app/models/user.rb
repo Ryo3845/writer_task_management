@@ -1,12 +1,11 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { email.downcase! unless email.nil? }
-  validates :name, presence: true, length: { maximum: 20 }
+  validate :name_validations
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, format: {with: VALID_EMAIL_REGEX}, uniqueness: {message: 'はすでに登録されています'}
+  validate :email_validations
   LETTER_NUMBER_MIXED = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-  validates :password, length: { minimum: 10 }, format: { with: LETTER_NUMBER_MIXED, message: 'は半角英数字の両方を含んでください' }
-  validates :password_confirmation, presence: true
+  validate :password_validations
   has_secure_password
   has_many :projects
 
@@ -44,4 +43,40 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  private
+
+    def name_validations
+      if name.blank?
+        errors.add(:name, 'を入力してください')
+      elsif name.length > 20
+        errors.add(:name, 'は20文字以内にしてください')
+      end
+    end
+
+    def email_validations
+      if email.blank?
+        errors.add(:email, 'を入力してください')
+      elsif email.length > 255
+        errors.add(:email, 'は255文字を超えないようにしてください')
+      elsif !email.match?(VALID_EMAIL_REGEX)
+        errors.add(:email, 'は正しいものを入力してください')
+      elsif User.where.not(id: id).exists?(email: email)
+        errors.add(:email, 'はすでに登録されています')
+      end
+    end
+
+    def password_validations
+      if password.blank?
+        errors.add(:password, 'を入力してください')
+      elsif password.length < 10
+        errors.add(:password, 'は10文字以上で入力してください')
+      elsif !password.match?(LETTER_NUMBER_MIXED)
+        errors.add(:password, 'は半角英数字の両方を含んでください')
+      end
+
+      if password_confirmation.blank?
+        errors.add(:password_confirmation, 'を入力してください')
+      end
+    end
 end
