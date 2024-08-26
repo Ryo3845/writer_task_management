@@ -30,7 +30,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      # 成功した場合に取り扱う
+      flash[:success] = "ユーザー情報が更新されました"
+      redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
     end
