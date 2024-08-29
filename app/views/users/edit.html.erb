@@ -1,7 +1,13 @@
 <% provide(:title, "ユーザー設定") %>
 
-<div class="container form-container">
+<div class="container form-container edit-container">
   <h1>ユーザー設定</h1>
+  <p>この画面では、登録しているユーザー情報の変更が可能です。</p>
+  <div class="edit-header">  
+    <div>プロフィール</div>
+    <div>メールアドレス</div>
+    <div>パスワード</div>
+  </div>
   <%= form_with(model: @user) do |f| %>
     <%= render 'shared/error_messages' %>
     <div class="form-group">

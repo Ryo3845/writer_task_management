@@ -384,6 +384,34 @@ main {
   list-style:decimal;
 }
 
+/* users_edit */
+.edit-container {
+  padding: 0;
+}
+
+.edit-container h1 {
+  margin: 15px;
+  border-bottom: none;
+  text-align: left;
+}
+
+.edit-container p {
+  margin: 0 15px;
+}
+
+.edit-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 50px;
+  border-bottom: 1px solid gray;
+}
+
+.edit-header div {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
 /* loggedin-container */
 
 .loggedin-container {
@@ -550,6 +578,12 @@ footer a {
   .overlay a:hover {
     color: white;
     background: var(--main-color);
+  }
+
+  .edit-header div:hover {
+    background: var(--sub-color);
+    border-bottom: 1px solid var(--main-color);
+    margin-bottom: 5px;
   }
 
   footer li:hover {
