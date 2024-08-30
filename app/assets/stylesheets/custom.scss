@@ -404,12 +404,31 @@ main {
   justify-content: space-between;
   margin-top: 20px;
   padding: 0 50px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid lightgray;
 }
 
-.edit-header div {
+.edit-header li {
   cursor: pointer;
-  margin-bottom: 5px;
+  margin-bottom: -1px;
+  padding: 5px 15px ;
+}
+
+.edit-header li.active {
+  background: var(--sub-color);
+  border-bottom: 2px solid var(--main-color);
+}
+
+.edit-header li.no-hover:hover {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.profile-edit-header {
+  background: var(--sub-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+.edit-mail, .edit-password {
+  display: none;
 }
 
 /* loggedin-container */
@@ -580,10 +599,9 @@ footer a {
     background: var(--main-color);
   }
 
-  .edit-header div:hover {
+  .edit-header li:hover {
     background: var(--sub-color);
     border-bottom: 1px solid var(--main-color);
-    margin-bottom: 5px;
   }
 
   footer li:hover {

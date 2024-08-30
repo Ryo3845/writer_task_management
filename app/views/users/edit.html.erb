@@ -3,29 +3,39 @@
 <div class="container form-container edit-container">
   <h1>ユーザー設定</h1>
   <p>この画面では、登録しているユーザー情報の変更が可能です。</p>
-  <div class="edit-header">  
-    <div>プロフィール</div>
-    <div>メールアドレス</div>
-    <div>パスワード</div>
-  </div>
+  <ul class="edit-header">  
+    <li class="active prfile-edit-header">プロフィール</li>
+    <li class="mail-edit-header">メールアドレス</li>
+    <li class="password-edit-header">パスワード</li>
+  </ul>
   <%= form_with(model: @user) do |f| %>
     <%= render 'shared/error_messages' %>
-    <div class="form-group">
+    <div class="edit-profile">
+      <div class="form-group">
       <%= f.label :name, "名前" %>
       <%= f.text_field :name, class: 'form-control', placeholder: '名前を入力'%>
+      </div>
     </div>
-    <div class="form-group">
+  <% end %>
+  <%= form_with(model: @user) do |f| %>
+    <div class="edit-mail">
+      <div class="form-group">
       <%= f.label :email, "メールアドレス" %>
       <%= f.email_field :email, class: 'form-control', placeholder: 'メールアドレスを入力'%>
+      </div>
     </div>
-    <div class="form-group">
+  <% end %>
+  <%= form_with(model: @user) do |f| %>
+    <div class="edit-password">
+      <div class="form-group">
       <%= f.label :password, "パスワード" %>
       <%= f.password_field :password, class: 'form-control', placeholder: 'パスワードを入力' %>
       <small class="form-text">※10文字以上、半角英数字の両方を含んでください</small>
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
       <%= f.label :password_confirmation, "パスワード（確認）" %>
       <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードを再入力' %>
+      </div>
     </div>
     <div class="form-group">
       <%= f.submit "設定を変更", class: 'btn btn-fill btn-submit' %>

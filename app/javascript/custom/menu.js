@@ -40,5 +40,22 @@
         e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
       }
     });
+    // ユーザー設定のヘッダーをクリックした時に、そのメニューに移る
+    const editHeaders = document.querySelectorAll('.edit-header li');
+    const editSections = document.querySelectorAll('.edit-profile, .edit-mail, .edit-password');
+
+    editHeaders.forEach((header, index) => {
+      header.addEventListener('click', () => {
+        // すべてのヘッダーからactiveクラスを削除
+        editHeaders.forEach(h => h.classList.remove('active'));
+        // クリックされたヘッダーにactiveクラスを追加
+        header.classList.add('active');
+        header.classList.add('no-hover');
+        // すべてのセクションを非表示にする
+        editSections.forEach(section => section.style.display = 'none');
+        // クリックされたヘッダーに対応するセクションを表示する
+        editSections[index].style.display = 'block';
+      });
+    });
   });
 }
