@@ -452,6 +452,11 @@ main {
   gap: 30%;
 }
 
+// タスクの登録方法を見直すため、一旦非表示に
+#projects-top {
+  display: none;
+}
+
 #project-form {
   width: 30%;
   padding: 16px;
@@ -537,6 +542,24 @@ main {
   text-align: center;
   font-size: 18px;
   padding: 4px 8px;
+}
+
+#edit-column {
+  width: 10%
+}
+
+#projects-table {
+  margin-top: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#client-column, 
+#title-column, 
+#status-text-column, 
+#task-deadline-column,
+#final-deadline-column {
+  width: 18%
 }
 
 /* footer */

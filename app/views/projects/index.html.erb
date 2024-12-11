@@ -3,6 +3,7 @@
 <div class="container loggedin-container">
   <h1><%= yield(:title) %></h1>
   
+  <%# タスクの登録方法を見直すため、一旦非表示に %>
   <div id="projects-top">
     <%= form_with(model: @project, local: true, scope: :project, html: { id: 'project-form'}) do |f| %>
       <h2>タスク登録</h2>
@@ -22,7 +23,7 @@
       </div>
 
       <div class="project-form-group">
-        <%= f.label :status, "タスクのステータス" %>
+        <%= f.label :status, "ステータス" %>
         <%= f.select :status, Project.statuses.keys.map { |s| [Project.new(status: s).status_text, s] }, {}, { id: 'status-list', class: 'form-control' } %>
       </div>
 
@@ -41,7 +42,7 @@
         <%= f.date_field :final_deadline, class: 'form-control', id: 'final_deadline_input' %>
         <div class="checkbox-wrapper">
             <%= f.check_box :final_deadline_not_applicable, class: 'final-deadline-checkbox', id: 'final_deadline_checkbox' %>
-            <%= f.label :final_deadline_not_applicable, "上記の期日と同じ", class: 'checkbox-label' %>
+            <%= f.label :final_deadline_not_applicable, "タスクの期日と同じ", class: 'checkbox-label' %>
         </div>
       </div>
 
@@ -84,18 +85,12 @@
 <table id="projects-table">
   <thead>
     <tr>
-      <th>編集</th>
-      <th>クライアント</th>
-      <th>案件名</th>
-      <th>ステータス</th>
-      <th>タスク期日</th>
-      <th>最終納期</th>
-      <th>報酬（税抜）</th>
-      <th>URL</th>
-      <th>作業時間</th>
-      <th>時給</th>
-      <th>備考</th>
-      <th>タスク完了</th>
+      <th id="edit-column">編集</th>
+      <th id="client-column">クライアント</th>
+      <th id="title-column">案件名</th>
+      <th id="status-text-column">ステータス</th>
+      <th id="task-deadline-column">期日</th>
+      <th id="final-deadline-column">最終納期</th>
     </tr>
   </thead>
   <tbody>
@@ -107,12 +102,6 @@
         <td><%= p.status_text %></td>
         <td><%= p.task_deadline %></td>
         <td><%= p.final_deadline %></td>
-        <td><%= p.compensation %>円</td>
-        <td><%= p.url %></td>
-        <td></td>
-        <td></td>
-        <td><%= p.note %></td>
-        <td></td>
       </tr>
     <% end %>
   </tbody>
