@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: verdana, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #333;
 }
 
@@ -34,39 +34,12 @@ li {
   cursor: pointer;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-table,
-th,
-td {
-  border: 1px solid silver;
-}
-
-th,
-td {
-  padding: 8px;
-}
-
-th {
-  font-weight: normal;
-  text-align: center;
-}
-
 header,
 main,
 footer {
-  padding: 0 30px;
+  padding: 0 15px;
   margin: 0;
   box-sizing: border-box;
-}
-
-.btn {
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -74,10 +47,10 @@ footer {
 }
 
 :root {
-  --main-color: #ee7800;
-  --sub-color: #fff8f2;
-  --menu--color: #323232;
-  --light--silver: #f8f8f8
+  --backgrond--color: #F9FAFB;
+  --border-color: #d3d3d3;
+  --blue: #00bfff;
+  --yellow: #fffacd
 }
 
 /* header */
@@ -89,8 +62,8 @@ header {
   background: white;
   position: fixed;
   width: 100%;
+  border-bottom: .5px solid var(--border-color) ;
 }
-
 
 nav {
   flex: 1 1 auto;
@@ -98,40 +71,10 @@ nav {
   justify-content: center;
 }
 
-#nav-list {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-#nav-name, #open-menu, #nav-button {
+#nav-name, #open-menu {
   flex: 0 0 auto;
 }
 
-#nav-list {
-  padding: 0;
-  margin: 0;
-  align-items: center;
-}
-
-#nav-list li {
-  margin: 0 50px;
-  border-bottom: 2px solid transparent;
-}
-
-#nav-list li.active {
-  border-bottom: 2px solid var(--main-color);
-}
-
-#nav-list a {
-  color: var(--menu--color);
-}
-
-#nav-list a.active {
-  font-weight: bold;
-}
 
 #nav-name {
   margin: 0 20px;
@@ -146,10 +89,6 @@ nav {
 
 .header-icon p {
   font-size: 10px;
-}
-
-#login-icon {
-  display: none;
 }
 
 #open-menu {
@@ -186,7 +125,7 @@ nav {
 
 .overlay a {
   width: 100%;
-  color: var(--menu--color);
+  color: var(main-background-color);
   padding: 5px 0;
   transition: background-color 0.3s, color 0.3s;
   display: block;
@@ -200,45 +139,12 @@ nav {
   display: flex;
 }
 
-#nav-button {
-  align-items: center;
-}
-
-.sp-overlay-menu {
-  display: none;
-}
-
-.btn {
-  display: inline-block;
-  border-radius: 8px;
-}
-
-#nav-button .btn {
-  margin: 0 15px;
-  padding: 5px 8px;
-}
-
-.btn-outline {
-  background-color: white;
-  font-weight: bold;
-  color: var(--main-color);
-  border: 2px solid var(--main-color);
-}
-
-.btn-fill {
-  background-color: var(--main-color);
-  font-weight: bold;
-  color: white;
-  border: var(--main-color);
-}
-
-
 /* main */
 
 main {
   padding-top: 96px;
   padding-bottom: 30px;
-  background: var(--sub-color);
+  background: var(--background-color);
 }
 
 /* signup and login form */
@@ -341,6 +247,53 @@ main {
   margin-left: 0;
 }
 
+/* projects */
+
+.projects-container {
+  background: var(--backgrond--color);
+}
+
+.project-container {
+  margin: 15px 0px;
+}
+
+.first-group {
+  display: flex;
+  gap: 50%;
+}
+
+.first-child-group {
+  display: flex;
+  gap: 20%;
+}
+
+.new-task {
+  border-radius: 5px;
+  background: var(--blue);
+  color: white;
+}
+
+.calendar-box {
+  background: var(--yellow);
+}
+
+.second-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-box {
+  border-radius: 5px;
+  background: white;
+  border: 1px solid var(--border-color);
+}
+
+.task-group {
+  border-radius: 5px;
+  background: white;
+  border: 1px solid var(--border-color);
+}
+
 /* alert message */
 
 .alert {
@@ -384,183 +337,6 @@ main {
   list-style:decimal;
 }
 
-/* users_edit */
-.edit-container {
-  padding: 0;
-}
-
-.edit-container h1 {
-  margin: 15px;
-  border-bottom: none;
-  text-align: left;
-}
-
-.edit-container p {
-  margin: 0 15px;
-}
-
-.edit-header {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding: 0 50px;
-  border-bottom: 1px solid lightgray;
-}
-
-.edit-header li {
-  cursor: pointer;
-  margin-bottom: -1px;
-  padding: 5px 15px ;
-}
-
-.edit-header li.active {
-  background: var(--sub-color);
-  border-bottom: 2px solid var(--main-color);
-}
-
-.edit-header li.no-hover:hover {
-  border-bottom: 2px solid var(--main-color);
-}
-
-.profile-edit-header {
-  background: var(--sub-color);
-  border-bottom: 1px solid var(--main-color);
-}
-
-.edit-mail, .edit-password {
-  display: none;
-}
-
-/* loggedin-container */
-
-.loggedin-container {
-  margin: 0 16px 16px;
-  padding: 30px;
-}
-
-.loggedin-container h1 {
-  border-bottom: 1px solid var(--main-color);
-}
-
-/* projects */
-
-#projects-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 16px 0;
-  gap: 30%;
-}
-
-// タスクの登録方法を見直すため、一旦非表示に
-#projects-top {
-  display: none;
-}
-
-#project-form {
-  width: 30%;
-  padding: 16px;
-  background-color: #fffaf4;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#project-form h2 {
-  margin-bottom: 20px;
-  color: var(--main-color);
-  border-bottom: 1px solid lightgray;
-}
-
-#project-form span {
-  color: red;
-}
-
-.project-form-group {
-  margin-bottom: 20px;
-}
-
-.project-form-group label {
-  display: block;
-  font-size: 14px;
-}
-
-.project-form-group span {
-  color: red;
-  margin-left: 5px;
-}
-
-.project-form-group input,
-.project-form-group select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.project-form-group .form-control {
-  width: 100%;
-  margin-top: 5px; 
-}
-
-.other-task {
-  display: none;
-}
-
-.checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.checkbox-wrapper input[type="checkbox"] {
-  margin: 0;
-  padding: 0;
-  width: auto;
-  height: auto;
-}
-
-.project-form-group input[type="date"] {
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.checkbox-label {
-  font-size: 12px !important;;
-  margin-left: 5px;
-  font-weight: normal;
-}
-
-.project-submit-group {
-  text-align: center;
-}
-
-#project-submit {
-  width: 100px;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 18px;
-  padding: 4px 8px;
-}
-
-#edit-column {
-  width: 10%
-}
-
-#projects-table {
-  margin-top: 40px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-#client-column, 
-#title-column, 
-#status-text-column, 
-#task-deadline-column,
-#final-deadline-column {
-  width: 18%
-}
 
 /* footer */
 
@@ -715,12 +491,6 @@ footer a {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-  }
-
-  // スマホだと表がはみ出てブラウザ画面が遠くなるので、一時的に非表示
-  // width: 100％でも解決しない;
-  #projects-table {
-    display: none;
   }
 
   /* alert message */
