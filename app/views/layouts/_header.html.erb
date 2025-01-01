@@ -1,4 +1,10 @@
 <header>
+  <div class="header-icon" id="open-menu">
+  <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
+  </div>
+  <div class="header-icon" id="close-menu">
+  <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
+  </div>
   <div id="container logo-container">
     <% if logged_in? %>
       <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), projects_path %></h1>
@@ -7,14 +13,6 @@
     <% end %>
   </div>
   <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
-  <div class="header-icon" id="open-menu">
-    <%= image_tag("menu", alt: "menu", width: 40, height: 40)  %>
-    <p>メニュー</p>
-  </div>
-  <div class="header-icon" id="close-menu">
-    <%= image_tag("close", alt: "menu", width: 40, height: 40) %>
-    <p>閉じる</p>
-  </div>
   <nav class="overlay">
     <% if logged_in? %>
       <li><%= link_to "設定", edit_user_path(current_user) %></li>

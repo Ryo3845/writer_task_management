@@ -4,58 +4,71 @@
   <div class="project-container first-group">
     <h1><%= yield(:title) %></h1>
     <div class="first-child-group">
-      <div class="new-task">新規タスク</div>
-      <div class="calendar-box">カレンダー表示</div>
+      <div class="first-child-box new-task">
+        <%= image_tag("add_task", alt: "add_task", width: 20, height: 20) %>
+        <p>新規タスク</p>
+      </div>
+      <div class="first-child-box calendar-box">
+        <%= image_tag("calendar_month", alt: "calendar_month", width: 20, height: 20) %>
+        <p>カレンダー表示</p>
+      </div>
     </div>
   </div>
   <div class="project-container second-group">
-    <div class="project-box">
+    <div class="project-box numerical-display">
       <div>進行中のタスク</div>
-      <div>5</div>
+      <div class="numerical-display-number">5</div>
     </div>
-    <div class="project-box">
+    <div class="project-box numerical-display">
       <div>今週の締切</div>
-      <div>3</div>
+      <div class="numerical-display-number">3</div>
     </div>
-    <div class="project-box">
+    <div class="project-box numerical-display">
       <div>完了タスク（今月）</div>
-      <div>8</div>
+      <div class="numerical-display-number">8</div>
     </div>
-    <div class="project-box">
+    <div class="project-box numerical-display">
       <div>今月の報酬</div>
-      <div>200,000円</div>
+      <div class="numerical-display-number">200,000円</div>
     </div>
   </div>
-  <div class="project-container project-box">
-    <div>
+  <div class="search-box">検索窓</div>
+  <div class="project-container project-box task-group">
+    <div class="first-task-group">
       <h2>ECサイトのブログ記事<h2>
       <div>構成作成中</div>
     </div>
     <div>
     <div>A社</div>
-    <div>
-      <%= image_tag("task_alt", alt: "task_alt", width: 40, height: 40) %>
-      <div>構成提出</div>
-      <%= image_tag("schedule", alt: "schedule", width: 40, height: 40) %>
-      <div>2024-12-20</div>
+    <div class="status-group">
+      <div class="status-child-group">
+        <%= image_tag("task_alt", alt: "task_alt", width: 20, height: 20) %>
+        <div>構成提出</div>
+      </div>
+      <div class="status-child-group right-tatus-child-group">
+        <%= image_tag("schedule", alt: "schedule", width: 20, height: 20) %>
+        <div>2024-12-20</div>
+      </div>
     </div>
-    <div>
-      <%= image_tag("task_alt", alt: "task_alt", width: 40, height: 40) %>
-      <div>構成提出</div>
-      <%= image_tag("schedule", alt: "schedule", width: 40, height: 40) %>
-      <div>2024-12-20</div>
+    <div class="status-group">
+      <div class="status-child-group">
+        <%= image_tag("task_alt", alt: "task_alt", width: 20, height: 20) %>
+        <div>構成提出</div>
+      </div>
+      <div class="status-child-group right-tatus-child-group">
+        <%= image_tag("schedule", alt: "schedule", width: 20, height: 20) %>
+        <div>2024-12-20</div>
+      </div>
     </div>
-    <div>
-      <%= image_tag("task_alt", alt: "task_alt", width: 40, height: 40) %>
-      <div>初稿提出</div>
-      <%= image_tag("schedule", alt: "schedule", width: 40, height: 40) %>
-      <div>2024-12-25</div>
-    </div>
-    <div>
-      <%= image_tag("task_alt", alt: "task_alt", width: 40, height: 40) %>
-      <div>CMS入稿</div>
-      <%= image_tag("schedule", alt: "schedule", width: 40, height: 40) %>
-      <div>2024-12-31</div>
+    <div class="status-group">
+      <div class="status-child-group">
+        <%= image_tag("task_alt", alt: "task_alt", width: 20, height: 20) %>
+        <div>構成提出</div>
+      </div>
+      <div class="status-child-group right-tatus-child-group">
+        <%= image_tag("schedule", alt: "schedule", width: 20, height: 20) %>
+        <div>2024-12-20</div>
+      </div>
     </div>
   </div>
 </div>
