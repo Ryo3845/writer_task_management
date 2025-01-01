@@ -51,26 +51,27 @@ footer {
 }
 
 :root {
-  --backgrond--color: #F9FAFB;
+  --backgrond--lightgray-color: #F9FAFB;
+  --backgrond--dimgray-color: #696969;
   --border-color: #d3d3d3;
 }
 
 /* header */
 
-header {
+.header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: white;
+  background: whitesmoke;
   position: fixed;
   width: 100%;
   border-bottom: .5px solid var(--border-color) ;
 }
 
-nav {
-  flex: 1 1 auto;
+.header-icon {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
 }
 
 #nav-name, #open-menu {
@@ -83,12 +84,6 @@ nav {
   margin-left: auto;
 }
 
-.header-icon {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
 #open-menu {
   cursor: pointer;
 }
@@ -97,51 +92,30 @@ nav {
   display: none;
 }
 
-.overlay {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+.dropdown-menu {
   position: fixed;
-  top: 75px;
-  right: 30px;
+  top: 55.7px;
+  left: -200px;
+  height: 100%;
   background: white;
-  width: 150px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  padding: 10px;
+  transition: transform .3s ease;
 }
 
-.overlay.show-menu {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.overlay a {
-  width: 100%;
-  color: var(main-background-color);
-  padding: 5px 0;
-  transition: background-color 0.3s, color 0.3s;
+.dropdown-menu.show {
   display: block;
+  transform: translateX(200px);
 }
 
-.overlay a:last-child {
-  margin-bottom: 0;
-}
-
-.overlay #show-menu {
-  display: flex;
+.dropdown-menu li {
+  padding: 5px 0;
 }
 
 /* main */
 
 main {
   background: var(--background-color);
-  padding-top: 75px; 
+  padding-top: 55.7px; 
 }
 
 /* signup and login form */
@@ -247,7 +221,7 @@ main {
 /* projects */
 
 .projects-container {
-  background: var(--backgrond--color);
+  background: var(--backgrond--lightgray-color);
   padding: 15px;
 }
 
@@ -289,7 +263,7 @@ main {
 }
 
 .calendar-box {
-  background: dimgray;
+  background: var(--backgrond--dimgray-color);
 }
 
 .second-group {
@@ -456,6 +430,7 @@ footer a {
     cursor: pointer;
     background-color: var(--light--silver);
   }
+
   .overlay a:hover {
     color: white;
     background: var(--main-color);

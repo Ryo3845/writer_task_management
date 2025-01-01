@@ -1,25 +1,22 @@
 <header>
-  <div class="header-icon" id="open-menu">
-  <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
+  <div class="header">
+    <div class="header-icon" id="open-menu">
+    <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
+    </div>
+    <div class="header-icon" id="close-menu">
+    <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
+    </div>
+    <div id="container logo-container">
+      <% if logged_in? %>
+        <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), projects_path %></h1>
+      <% else %>
+        <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), root_path %></h1>
+      <% end %>
+    </div>
+    <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
   </div>
-  <div class="header-icon" id="close-menu">
-  <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
-  </div>
-  <div id="container logo-container">
-    <% if logged_in? %>
-      <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), projects_path %></h1>
-    <% else %>
-      <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), root_path %></h1>
-    <% end %>
-  </div>
-  <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
-  <nav class="overlay">
-    <% if logged_in? %>
-      <li><%= link_to "設定", edit_user_path(current_user) %></li>
-      <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %></li>
-    <% else %>
-      <li><%= link_to "新規登録", signup_path %></li>
-      <li><%= link_to "ログイン", login_path %></li>
-    <% end %>
-  </nav> 
+  <div class="dropdown-menu">
+   <li>ドロップダウンメニュー</li>
+   <li>ドロップダウンメニュー</li>
+   <li>ドロップダウンメニュー</li>
 </header>

@@ -8,17 +8,13 @@
     const body = document.body;
     const closeMenu = document.getElementById('close-menu');
     const openMenu = document.getElementById('open-menu');
-    const overlay = document.querySelector('.overlay');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
 
     // open-menuをクリックしたときにメニューを開き、また閉じる
     openMenu.addEventListener('click', (e) => {
-      // 三本線メニュークリック確認
-      console.log("三本線メニューはクリックされています");
-      
       openMenu.style.display = 'none';
       closeMenu.style.display = 'block';
-      body.classList.add('menu-open');
-      overlay.classList.toggle('show-menu');
+      dropdownMenu.classList.add('show');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
 
@@ -26,8 +22,7 @@
     closeMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'block';
       closeMenu.style.display = 'none';
-      overlay.classList.remove('show-menu');
-      body.classList.remove('menu-open');
+      dropdownMenu.classList.remove('show');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     })
 
