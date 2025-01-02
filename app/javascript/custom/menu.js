@@ -4,6 +4,10 @@
   // ファイルの読み込み確認
   console.log("JavaScriptファイルは読み込まれています");
 
+  const menu = document.querySelector('.project-side-menu');
+  const originalTop = menu.offsetTop;  // 初期位置を保存
+  
+
   document.addEventListener('turbo:load', () => {
     const body = document.body;
     const closeMenu = document.getElementById('close-menu');

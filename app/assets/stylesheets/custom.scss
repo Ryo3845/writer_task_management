@@ -8,7 +8,7 @@ body {
   padding: 0;
   height: 100%;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-  color: #333;
+  color: var(--character-color);
 }
 
 h1,
@@ -51,9 +51,11 @@ footer {
 }
 
 :root {
-  --backgrond--lightgray-color: #F9FAFB;
+  --background--lightgray-color: #F9FAFB;
   --backgrond--dimgray-color: #696969;
   --border-color: #d3d3d3;
+  --menu-sidebar-color: whitesmoke;
+  --character-color: #333;
 }
 
 /* header */
@@ -62,7 +64,7 @@ footer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: whitesmoke;
+  background: var(--menu-sidebar-color);
   position: fixed;
   width: 100%;
   border-bottom: .5px solid var(--border-color) ;
@@ -77,7 +79,6 @@ footer {
 #nav-name, #open-menu {
   flex: 0 0 auto;
 }
-
 
 #nav-name {
   margin: 0 20px;
@@ -116,6 +117,7 @@ footer {
 main {
   background: var(--background-color);
   padding-top: 55.7px; 
+  z-index: 1;
 }
 
 /* signup and login form */
@@ -221,8 +223,41 @@ main {
 /* projects */
 
 .projects-container {
-  background: var(--backgrond--lightgray-color);
-  padding: 15px;
+  display: flex;
+  gap: 2%;
+  background: var(--background--lightgray-color);
+}
+
+.project-side-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 55.7px;
+  background: white;
+  border: 1px solid var(--border-color);
+  width: 200px;
+  max-width: 200px;
+  height: 100%;
+  background-color: var(--menu-sidebar-color);
+  z-index: 1000;
+}
+
+.project-side-menu li {
+  margin-top: 10px;
+}
+
+.project-group {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  margin: 0 20px 0 222px;
+}
+
+.left-project-container {
+  width: 70%;
+  max-width: 800px;
 }
 
 .project-container {
@@ -260,44 +295,18 @@ main {
 
 .new-task {
   background: blue;
+  box-shadow: 2px 2px 2px 2px;
 }
 
 .calendar-box {
   background: var(--backgrond--dimgray-color);
 }
 
-.second-group {
-  display: flex;
-  justify-content: space-between;
-}
-
 .project-box {
   border-radius: 5px;
   background: white;
   border: 1px solid var(--border-color);
-}
-
-.numerical-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 20%;
-  height: 150px;
-  gap: 20%;
-  cursor: pointer;
-}
-
-.numerical-display div {
-  width: 90%;
-  text-align: center;
-  overflow: hidden;
-  box-sizing: border-box;
-  text-overflow: ellipsis;
-}
-
-.numerical-display-number {
-  font-size: 24px;
+  box-shadow: 2px 2px 2px 2px var(--border-color);
 }
 
 .search-box {
@@ -327,8 +336,74 @@ main {
   gap: 15px;
 }
 
-.right-tatus-child-group {
+.url-group {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+}
+
+.url-group img, a {
+  cursor: pointer;
+}
+
+.right-status-child-group {
   justify-content: flex-end;
+}
+
+.right-project-container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  max-width: 250px;
+}
+
+.right-project-container .project-box {
+  margin: 20px 0;
+}
+
+.rewards-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+}
+
+.rewards-box div {
+  margin: 5px 0;
+  width: 80%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.schedule-display {
+  padding: 15px;
+}
+
+.schedule-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  border-left: 1px solid var(--border-color);
+  padding-top: 0;
+  position: relative;
+}
+
+.schedule-task div {
+  padding: 0;
+  margin-top: 0;
+}
+
+.schedule-task::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--border-color);
+  border-radius: 50%;
 }
 
 /* alert message */
@@ -380,7 +455,8 @@ main {
 footer {
   padding-top: 10px;
   padding-bottom: 10px;
-  background: darkgray;
+  background: var(--background--lightgray-color);
+  position: relative;
 }
 
 footer ul {
@@ -395,7 +471,7 @@ footer li {
 }
 
 footer a {
-  color: white;
+  color: var(--character-color);
 }
 
 /* miscellaneous */
@@ -461,7 +537,6 @@ footer a {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
   }
 
   header nav {
@@ -510,7 +585,6 @@ footer a {
     height: auto;
     max-height: calc(100% - 75px);
     overflow-y: auto;
-    z-index: 999;
   }
 
   .overlay li {
