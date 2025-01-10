@@ -8,13 +8,13 @@
     const body = document.body;
     const closeMenu = document.getElementById('close-menu');
     const openMenu = document.getElementById('open-menu');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const sideBar = document.querySelector('.sidebar');
 
     // open-menuをクリックしたときにメニューを開き、また閉じる
     openMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'none';
       closeMenu.style.display = 'block';
-      dropdownMenu.classList.add('show');
+      sideBar.classList.add('show');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
 
@@ -22,7 +22,7 @@
     closeMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'block';
       closeMenu.style.display = 'none';
-      dropdownMenu.classList.remove('show');
+      sideBar.classList.remove('show');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     })
 
