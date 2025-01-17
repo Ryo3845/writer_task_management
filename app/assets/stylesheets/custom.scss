@@ -117,11 +117,8 @@ footer {
 main {
   // background: var(--background-color);
   padding-top: 55.7px; 
-<<<<<<< HEAD
   background: var(--backgrond--lightgray-color);
-=======
   z-index: 1;
->>>>>>> 7b02578e98355f959dec93f6e663e67ee7fe779f
 }
 
 /* signup and login form */
@@ -227,47 +224,9 @@ main {
 /* projects */
 
 .projects-container {
-<<<<<<< HEAD
   padding: 15px;
   max-width: 700px;
   margin: 0 auto;
-=======
-  display: flex;
-  gap: 2%;
-  background: var(--background--lightgray-color);
-}
-
-.project-side-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  top: 55.7px;
-  background: white;
-  border: 1px solid var(--border-color);
-  width: 200px;
-  max-width: 200px;
-  height: 100%;
-  background-color: var(--menu-sidebar-color);
-  z-index: 1000;
-}
-
-.project-side-menu li {
-  margin-top: 10px;
-}
-
-.project-group {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-  margin: 0 20px 0 222px;
-}
-
-.left-project-container {
-  width: 70%;
-  max-width: 800px;
->>>>>>> 7b02578e98355f959dec93f6e663e67ee7fe779f
 }
 
 .project-container {
