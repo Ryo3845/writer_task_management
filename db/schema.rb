@@ -12,30 +12,24 @@
 
 ActiveRecord::Schema[7.0].define(version: 2024_08_17_180155) do
   create_table "projects", force: :cascade do |t|
+    t.integer "user_id", null: false
     t.string "client"
     t.string "title"
     t.integer "status"
-    t.date "task_deadline"
-    t.date "final_deadline"
-    t.boolean "final_deadline_not_applicable"
-    t.string "name"
     t.decimal "compensation", precision: 10, scale: 2
     t.string "url"
     t.text "note"
-    t.decimal "total_working_hours", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "other_task"
-    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
     t.string "remember_digest"
   end
 

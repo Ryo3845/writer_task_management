@@ -16,6 +16,7 @@ gem 'rails-controller-testing'
 gem 'bcrypt', '3.1.13'
 gem 'rails-i18n', '7.0.9'
 gem 'pg'
+gem 'seed_dump'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

@@ -1,10 +1,10 @@
 <header>
   <div class="header">
     <div class="header-icon" id="open-menu">
-    <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
+      <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
     </div>
     <div class="header-icon" id="close-menu">
-    <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
+      <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
     </div>
     <div id="container logo-container">
       <% if logged_in? %>
@@ -15,8 +15,11 @@
     </div>
     <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
   </div>
+<<<<<<< HEAD
   <div class="sidebar">
    <li>ドロップダウンメニュー</li>
    <li>ドロップダウンメニュー</li>
    <li>ドロップダウンメニュー</li>
+=======
+>>>>>>> 7b02578e98355f959dec93f6e663e67ee7fe779f
 </header>

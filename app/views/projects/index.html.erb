@@ -1,19 +1,102 @@
 <% provide(:title, "#{Date.today.strftime('%Y年%m月')}の案件一覧") %>
-
 <div class="projects-container">
-  <div class="project-container first-group">
-    <h1><%= yield(:title) %></h1>
-    <div class="first-child-group">
-      <div class="first-child-box new-task">
-        <%= image_tag("add_task", alt: "add_task", width: 20, height: 20) %>
-        <p>新規タスク</p>
+  <div class="project-side-menu">
+    <li>メニューバー</li>
+    <li>メニューバー</li>
+    <li>メニューバー</li>
+  </div>
+  <div class="project-group">
+    <div class="left-project-container">
+      <div class="project-container first-group">
+        <h1><%= yield(:title) %></h1>
+        <div class="first-child-group">
+          <div class="first-child-box new-task">
+            <%= image_tag("add_task", alt: "add_task", width: 20, height: 20) %>
+            <p>新規タスク</p>
+          </div>
+          <div class="first-child-box calendar-box">
+            <%= image_tag("calendar_month", alt: "calendar_month", width: 20, height: 20) %>
+            <p>カレンダー表示</p>
+          </div>
+        </div>
       </div>
-      <div class="first-child-box calendar-box">
-        <%= image_tag("calendar_month", alt: "calendar_month", width: 20, height: 20) %>
-        <p>カレンダー表示</p>
+      <div class="search-box">検索窓</div>
+      <div class="project-container project-box task-group">
+        <div class="first-task-group">
+          <h2>ECサイトのブログ記事</h2>
+          <div>構成作成中</div>
+        </div>
+        <div>
+          <div>A社</div>
+          <div class="status-group">
+            <div class="status-child-group">
+              <%= image_tag("task_alt", alt: "task_alt", width: 20, height: 20) %>
+              <div>構成提出</div>
+            </div>
+            <div class="url-group">
+              <%= image_tag("link", alt: "link", width: 20, height: 20) %>
+              <a href="#">URL</a>
+            </div>
+            <div class="status-child-group right-status-child-group">
+              <%= image_tag("schedule", alt: "schedule", width: 20, height: 20) %>
+              <div>2024-12-20</div>
+            </div>
+          </div>
+          <div class="status-group">
+            <div class="status-child-group">
+              <%= image_tag("task_alt", alt: "task_alt", width: 20, height: 20) %>
+              <div>構成提出</div>
+            </div>
+            <div class="url-group">
+              <%= image_tag("link", alt: "link", width: 20, height: 20) %>
+              <a href="#">URL</a>
+            </div>
+            <div class="status-child-group right-status-child-group">
+              <%= image_tag("schedule", alt: "schedule", width: 20, height: 20) %>
+              <div>2024-12-20</div>
+            </div>
+          </div>
+          <div class="status-group">
+            <div class="status-child-group">
+              <%= image_tag("task_alt", alt: "task_alt", width: 20, height: 20) %>
+              <div>構成提出</div>
+            </div>
+            <div class="url-group">
+              <%= image_tag("link", alt: "link", width: 20, height: 20) %>
+              <a href="#">URL</a>
+            </div>
+            <div class="status-child-group right-status-child-group">
+              <%= image_tag("schedule", alt: "schedule", width: 20, height: 20) %>
+              <div>2024-12-20</div>
+            </div>
+          </div>
+        </div>
+        <div>備考欄</div>
+      </div>
+    </div>
+    <div class="right-project-container">
+      <div class="project-box rewards-box">
+        <div>今月の報酬</div>
+        <div>200,000円</div>
+      </div>
+      <div class="project-box schedule-display">
+        <div>期日間近のタスク</div>
+        <div class="schedule-task">
+          <div>今日まで</div>
+          <div>構成作成（ECサイトのブログ記事）</div>
+        </div>
+        <div class="schedule-task">
+          <div>明日まで</div>
+          <div>構成作成（ECサイトのブログ記事）</div>
+        </div>
+        <div class="schedule-task">
+          <div>明後日まで</div>
+          <div>構成作成（ECサイトのブログ記事）</div>
+        </div>
       </div>
     </div>
   </div>
+<<<<<<< HEAD
   <div class="project-container second-group">
     <div class="project-box numerical-display">
       <div>進行中のタスク</div>
@@ -77,3 +160,6 @@
   </div>
 </div>
 
+=======
+</div>
+>>>>>>> 7b02578e98355f959dec93f6e663e67ee7fe779f

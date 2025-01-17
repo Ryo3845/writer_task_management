@@ -233,6 +233,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    seed_dump (3.3.1)
+      activerecord (>= 4)
+      activesupport (>= 4)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-i18n (= 7.0.9)
   sassc-rails (= 2.1.2)
+  seed_dump
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
