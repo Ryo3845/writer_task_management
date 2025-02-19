@@ -1,23 +1,26 @@
 <header>
   <div class="header">
-    <div class="header-icon" id="open-menu">
-      <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
+    <div class="header-container">
+      <div id="container logo-container">
+        <% if logged_in? %>
+          <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), projects_path %></h1>
+        <% else %>
+          <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), root_path %></h1>
+        <% end %>
+      </div>
+      <div class="header-right-container">
+        <div class="header-icon" id="open-menu">
+          <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
+        </div>
+        <div class="header-icon" id="close-menu">
+          <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
+        </div>
+        <div class="header-sidebar">
+          <ul>
+            <li>ログイン</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="header-icon" id="close-menu">
-      <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
-    </div>
-    <div id="container logo-container">
-      <% if logged_in? %>
-        <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), projects_path %></h1>
-      <% else %>
-        <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), root_path %></h1>
-      <% end %>
-    </div>
-    <p id="nav-name"><%= "#{current_user.name}さん" if logged_in?%></p>
-  </div>
-  <div class="sidebar">
-   <li>ドロップダウンメニュー</li>
-   <li>ドロップダウンメニュー</li>
-   <li>ドロップダウンメニュー</li>
   </div>
 </header>
