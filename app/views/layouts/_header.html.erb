@@ -1,5 +1,4 @@
 <header>
-  <div class="header">
     <div class="header-container">
       <div id="container logo-container">
         <% if logged_in? %>
@@ -8,7 +7,7 @@
           <h1><%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 50, height: 50), root_path %></h1>
         <% end %>
       </div>
-      <div class="header-right-container">
+      <div class="header-right-container">           
         <div class="header-icon" id="open-menu">
           <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
         </div>
@@ -17,10 +16,17 @@
         </div>
         <div class="header-sidebar">
           <ul>
-            <li>ログイン</li>
+            <li>
+              <div>ログイン</div>
+            </li>
+            <li>
+              <div>〇〇</div>
+            </li>
+            <li>
+              <div>〇〇</div>
+            </li>
           </ul>
         </div>
-      </div>
     </div>
   </div>
 </header>

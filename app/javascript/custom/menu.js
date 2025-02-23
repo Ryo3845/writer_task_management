@@ -2,23 +2,21 @@
 
 {
   // ファイルの読み込み確認
-  console.log("JavaScriptファイルは読み込まれています");
-
-  const menu = document.querySelector('.project-side-menu');
-  const originalTop = menu.offsetTop;  // 初期位置を保存
-  
+  console.log("JavaScriptファイルは読み込まれています");  
 
   document.addEventListener('turbo:load', () => {
     const body = document.body;
+    const main = document.main;
+    const footer = document.footer;
     const closeMenu = document.getElementById('close-menu');
     const openMenu = document.getElementById('open-menu');
-    const sideBar = document.querySelector('.sidebar');
+    const headerSidebar = document.querySelector('.header-sidebar');
 
     // open-menuをクリックしたときにメニューを開き、また閉じる
     openMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'none';
       closeMenu.style.display = 'block';
-      sideBar.classList.add('show');
+      headerSidebar.style.display = 'block';
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
 
@@ -26,7 +24,7 @@
     closeMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'block';
       closeMenu.style.display = 'none';
-      sideBar.classList.remove('show');
+      headerSidebar.style.display = 'none';
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     })
 
