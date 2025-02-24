@@ -16,7 +16,7 @@
     openMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'none';
       closeMenu.style.display = 'block';
-      headerSidebar.style.display = 'block';
+      headerSidebar.classList.add('active');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
 
@@ -24,7 +24,7 @@
     closeMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'block';
       closeMenu.style.display = 'none';
-      headerSidebar.style.display = 'none';
+      headerSidebar.classList.remove('active');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     })
 

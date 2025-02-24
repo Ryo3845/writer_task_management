@@ -69,7 +69,7 @@ table {
 
 header {
   width: 100%;
-  background: var(--background--lightgray-color);
+  background: white;
 }
 
 .header-container {
@@ -97,19 +97,35 @@ header {
   cursor: pointer;
 }
 
+.close-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #close-menu {
-  display: none;
+  text-align: center;
+  width: 40px;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
 }
 
 .header-sidebar {
   width: 300px;
   position: fixed;
   top: 0px;
-  left: calc(100% - 300px);
+  left: calc(100% + 300px);
   z-index: 1;
   height: 100vh;
-  display: none;
-  background: var(--background--lightgray-color);
+  opacity: 0;
+  visibility: hidden;
+  background: white;
+  transition: transform .2s ease;
+}
+
+.header-sidebar.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-600px);
 }
 
 .header-sidebar ul {
@@ -134,7 +150,7 @@ header {
 main {
   width: 100%;
   padding-top: 55.7px; 
-  background: var(--backgrond--lightgray-color);
+  background: var(--background--lightgray-color);
 }
 
 .main-container {
