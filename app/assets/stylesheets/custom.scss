@@ -114,7 +114,7 @@ header {
   position: fixed;
   top: 0px;
   left: calc(100% + 300px);
-  z-index: 1;
+  z-index: 11;
   height: 100vh;
   opacity: 0;
   visibility: hidden;
@@ -143,6 +143,24 @@ header {
 
 .header-sidebar li > div {
   margin: 0px 0px 15px 40px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 10; 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* main */
@@ -357,6 +375,7 @@ footer a {
   background-color: #FFF0F5;
 }
 
+
 /* hover */
 
 @media (hover: hover) and (pointer: fine) {
@@ -391,6 +410,7 @@ footer a {
     border-bottom: 2px solid white;
   }
 }
+
 
 /* tablet breakpoint =< 960px */
 

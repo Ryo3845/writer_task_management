@@ -11,12 +11,19 @@
     const closeMenu = document.getElementById('close-menu');
     const openMenu = document.getElementById('open-menu');
     const headerSidebar = document.querySelector('.header-sidebar');
+    
+    // オーバーレイの作成と追加
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    body.appendChild(overlay);
 
     // open-menuをクリックしたときにメニューを開き、また閉じる
     openMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'none';
       closeMenu.style.display = 'block';
       headerSidebar.classList.add('active');
+      overlay.classList.add('active');
+      body.style.overflow = 'hidden';
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
 
@@ -25,8 +32,10 @@
       openMenu.style.display = 'block';
       closeMenu.style.display = 'none';
       headerSidebar.classList.remove('active');
+      overlay.classList.remove('active');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     })
+
 
     // ドキュメント全体にイベントリスナーを追加
     document.addEventListener('click', (e) => {
