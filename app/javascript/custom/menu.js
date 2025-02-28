@@ -27,15 +27,24 @@
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
     });
 
-    // close-menuをクリックした時に、メニューを閉じる（スマホのみ）
-    closeMenu.addEventListener('click', (e) => {
+    // メニューを閉じる関数
+    const closeHeaderSidebar = (e) => {
       openMenu.style.display = 'block';
       closeMenu.style.display = 'none';
       headerSidebar.classList.remove('active');
       overlay.classList.remove('active');
       e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
-    })
+    };
 
+    // close-menuをクリックした時に、メニューを閉じる
+    closeMenu.addEventListener('click', closeHeaderSidebar);
+
+    // オーバーレイをクリックした時にメニューを閉じる
+    overlay.addEventListener('click', (e) => {
+      if (headerSidebar.classList.contains('active')) {
+        closeHeaderSidebar(e);
+      }
+    });
 
     // ドキュメント全体にイベントリスナーを追加
     document.addEventListener('click', (e) => {

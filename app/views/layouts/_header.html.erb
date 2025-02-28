@@ -12,23 +12,19 @@
           <%= image_tag("menu", alt: "menu", width: 30, height: 30)  %>
         </div>
         <div class="header-sidebar">
-        <div class="close-icon">           
-          <div id="close-menu">
-            <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
+          <div class="close-icon">           
+            <div id="close-menu">
+              <%= image_tag("close", alt: "menu", width: 30, height: 30) %>
+            </div>
           </div>
-        </div>             
-          <ul>
-            <li>
-              <div>ログイン</div>
-            </li>
-            <li>
-              <div>〇〇</div>
-            </li>
-            <li>
-              <div>〇〇</div>
-            </li>
-          </ul>
+          <div class="header-sidebar-menu">
+            <ul>
+              <li><%= link_to "ログイン", login_path %></li>
+              <li><%= link_to "アカウント作成", signup_path %></li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </header>

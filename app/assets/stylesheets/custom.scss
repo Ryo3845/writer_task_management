@@ -25,7 +25,7 @@ h1 {
 }
 
 a {
-  color: #0000ff;
+  color: var(--character-color);
   text-decoration: none;
 }
 
@@ -97,19 +97,9 @@ header {
   cursor: pointer;
 }
 
-.close-icon {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#close-menu {
-  text-align: center;
-  width: 40px;
-  margin: 10px 10px 0 0;
-  cursor: pointer;
-}
-
 .header-sidebar {
+  display: flex;
+  flex-direction: column;
   width: 300px;
   position: fixed;
   top: 0px;
@@ -117,32 +107,44 @@ header {
   z-index: 11;
   height: 100vh;
   opacity: 0;
-  visibility: hidden;
   background: white;
-  transition: transform .2s ease;
+  transition: transform .5s ease, opacity .5s ease;
+  border-radius: 10px 0 0 10px;
+}
+
+.close-icon {
+  display: flex;
+  justify-content: start;
+}
+
+#close-menu {
+  text-align: center;
+  width: 40px;
+  margin: 15px;
+  cursor: pointer;
 }
 
 .header-sidebar.active {
   opacity: 1;
-  visibility: visible;
   transform: translateX(-600px);
 }
 
-.header-sidebar ul {
+.header-sidebar-menu ul {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-top: 56px;
-}
-
-.header-sidebar li {
-  margin-top: 15px;
-  border-bottom: 0.1px solid var(--border-color); 
   width: 100%;
 }
 
-.header-sidebar li > div {
-  margin: 0px 0px 15px 40px;
+.header-sidebar-menu li {
+  margin: 0 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.header-sidebar-menu a {
+  width: 100%;
+  display: block;
 }
 
 .overlay {
@@ -191,16 +193,16 @@ main {
   margin-bottom: 15px;
   text-align: center;
   border-bottom: 1px solid var(--main-color);
+  font-weight: bold;
 }
 
 .form-container .form-group {
-  margin: 15px 30px 0;
+  margin: 25px 30px 0;
 }
 
 .form-container label {
   display: block;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
 .form-container input {
@@ -338,7 +340,7 @@ table, th, tr, td {
 footer {
   padding-top: 10px;
   padding-bottom: 10px;
-  background: var(--background--lightgray-color);
+  background: var(--backgrond--dimgray-color);
   position: relative;
 }
 
@@ -359,7 +361,7 @@ footer li {
 }
 
 footer a {
-  color: var(--character-color);
+  color: white;
 }
 
 /* miscellaneous */
@@ -377,6 +379,10 @@ footer a {
 
 
 /* hover */
+
+.header-sidebar-menu li:hover {
+  background-color: var(--background--lightgray-color);
+}
 
 @media (hover: hover) and (pointer: fine) {
   .btn-fill:hover {
