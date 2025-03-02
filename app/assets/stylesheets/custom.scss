@@ -112,6 +112,10 @@ header {
   border-radius: 10px 0 0 10px;
 }
 
+.header-sidebar-menu li:hover {
+  background-color: var(--background--lightgray-color);
+}
+
 .close-icon {
   display: flex;
   justify-content: start;
@@ -171,6 +175,7 @@ main {
   width: 100%;
   padding-top: 55.7px; 
   background: var(--background--lightgray-color);
+  min-height: 600px;
 }
 
 .main-container {
@@ -187,6 +192,7 @@ main {
   max-width: 600px;
   padding: 30px;
   margin: 30px auto;
+  border-radius: 15px;
 }
 
 .form-container h1 {
@@ -210,10 +216,6 @@ main {
   border: 1px solid lightgray;
 }
 
-.form-container input:focus {
-  border: 1px solid var(--main-color);
-  outline: none;
-}
 .checkbox {
   display: flex;
   align-items: center;
@@ -255,6 +257,16 @@ main {
   margin: 20px auto;
   font-size: 16px;
   padding: 10px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  opacity: .7;
 }
 
 /* errors form */
@@ -360,6 +372,10 @@ footer li {
   border-bottom: 2px solid transparent;
 }
 
+footer li:hover {
+  border-bottom: 2px solid white;
+}
+
 footer a {
   color: white;
 }
@@ -375,46 +391,6 @@ footer a {
   padding: 10px;
   color: red;
   background-color: #FFF0F5;
-}
-
-
-/* hover */
-
-.header-sidebar-menu li:hover {
-  background-color: var(--background--lightgray-color);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .btn-fill:hover {
-    opacity: .7;
-  }
-
-  .btn-outline:hover {
-    background: whitesmoke;
-  }
-
-  #nav-list li:hover {
-    border-bottom: 2px solid var(--main-color);
-  }
-
-  .header-icon:hover {
-    cursor: pointer;
-    background-color: var(--light--silver);
-  }
-
-  .overlay a:hover {
-    color: white;
-    background: var(--main-color);
-  }
-
-  .edit-header li:hover {
-    background: var(--sub-color);
-    border-bottom: 1px solid var(--main-color);
-  }
-
-  footer li:hover {
-    border-bottom: 2px solid white;
-  }
 }
 
 
