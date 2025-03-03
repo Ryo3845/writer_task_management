@@ -1,34 +1,43 @@
 <% provide(:title, "案件管理") %>
 
-<%= form_with(url: projects_path, method: :get, local: true, class: "month-selector") do |f| %>
-  <%= f.select :year, options_for_select(@years, @year) %>年
-  <%= f.select :month, options_for_select(@months, @month) %>月
-  <%= f.submit "表示", class: "btn btn-primary" %>
-<% end %>
-
-<table id="project-table">
-<tr>
-  <th rowspan="2">No</th>
-  <th rowspan="2">クライアント</th>
-  <th rowspan="2">タスク</th>
-  <th rowspan="2">開始</th>
-  <th rowspan="2">終了</th>
-  <th rowspan="2">期日</th>
-  <th rowspan="2">完了</th>
-  <% @calendar_data.each do |data| %>
-    <th><%= data[:date].day %></th>
-  <% end%>
-</tr>
-<tr>
-  <% @calendar_data.each do |data| %>
-    <th><%= @wday_jan[data[:date].wday] %></th>
-  <% end%>
-</tr>
-  <td>1</td>
-  <td>A社</td>
-  <td>構成作成</td>
-  <td>1月10日</td>
-  <td>1月15日</td>
-  <td>1月17日</td>
-  <td>☑</td>
-</table>
+<div class="container projects-container">
+  <%= form_with(url: projects_path, method: :get, local: true, class: "month-selector") do |f| %>
+    <%= f.select :year, options_for_select(@years, @year) %>年
+    <%= f.select :month, options_for_select(@months, @month) %>月
+    <%= f.submit "表示", class: "btn btn-month-selecter" %>
+  <% end %>
+  <div id="projects-table-container">  
+    <table id="projects-table">
+      <tr>
+        <th rowspan="2" class="completion">完了</th>
+        <th rowspan="2" class="numbers">No</th>
+        <th rowspan="2" class="client">クライアント</th>
+        <th rowspan="2" class="task">タスク</th>
+        <th rowspan="2" class="start-date">開始</th>
+        <th rowspan="2" class="end-date">終了</th>
+        <th rowspan="2" class="due-date">期日</th>
+        <th rowspan="2" class="url">URL</th>
+        <th rowspan="2" class="memo">メモ</th>
+        <% @calendar_data.each do |data| %>
+          <th class="calendar-day"><%= data[:date].day %></th>
+        <% end%>
+      </tr>
+      <tr>
+        <% @calendar_data.each do |data| %>
+          <th><%= @wday_jan[data[:date].wday] %></th>
+        <% end%>
+      </tr>
+      <tr>
+        <td><input type="checkbox"></td>
+        <td>1</td>
+        <td>A社</td>
+        <td>構成作成</td>
+        <td>1月10日</td>
+        <td>1月15日</td>
+        <td>1月17日</td>
+        <td class="url">https://docs.google.com/document/d/1e4dspF1rhsg8wXg_Ec5rO-ZF0oR3VC4c8P9uJwv1aJk/edit?usp=sharing</td>
+        <td>構成の作成を一旦ステイ</td>
+      </tr>
+    </table>
+  </div>
+</div>
