@@ -54,6 +54,7 @@ table {
 
 table, th, tr, td {
   border: 1px solid var(--border-color);
+  
 }
 
 
@@ -336,23 +337,27 @@ main {
   white-space: nowrap;
   table-layout: fixed;
   width: 1000px;
+  font-size: 12px;
 }
 
 .completion, .numbers {
-  width: 50px;
+  width: 30px;
 }
 
-.url, .client, .task, .start-date, .end-date, .due-date, .memo {
-  overflow: hidden;
-  width: 50px;
+.client {
+  width: 100px;
+}
+
+.project-name {
+  width: 150px;
+}
+
+.type, .status {
+  width: 70px;
 }
 
 .calendar-day {
   width: 30px;
-}
-
-.url {
-  width: 50px;
 }
 
 /* alert message */

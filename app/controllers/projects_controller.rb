@@ -34,34 +34,26 @@ class ProjectsController < ApplicationController
       @today = Date.today
       @wday_jan = ["日","月","火","水","木","金","土"]
       @this_year = @today.year
-      @this_month = @today.month
-      @this_day = @today.day
+      @this_year = @today.year
 
-      # プルダウンから年月を取得するか、現在の年月をデフォルトとして表示
-      @year = params[:year].present? ? params[:year].to_i : @this_year
-      @month = params[:month].present? ? params[:month].to_i : @this_month
+      # 今月の最初の日と最後の日を取得
+      @first_day = @today.beginning_of_month
+      @last_day = @today.end_of_month
 
-      # プルダウンで表示される年月
-      @selected_month = Date.new(@year, @month)
+      # 今月の合計日数を取得
+      @days_in_the_month = (@first_day..@last_day).count
 
-      # プルダウンで選択された年月の、最初の日と最後の日を取得
-      @first_day = @selected_month.beginning_of_month
-      @last_day = @selected_month.end_of_month
-
-      # プルダウンで選択された年月の日付を配列に格納
+      # 今月の日付を配列に格納
       @calendar_data = []
       (@first_day..@last_day).each do |date|
         @calendar_data << {
           date: date,
+          year: date.year,
           month: date.month,
           day: date.day,
           wday: date.wday,
           today: date == @today
         }
       end
-
-      # プルダウン用の年月の選択肢を用意
-      @years = (2024..2030).to_a
-      @months = (1..12).to_a
     end
 end
