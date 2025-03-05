@@ -31,22 +31,32 @@ class ProjectsController < ApplicationController
     end
 
     def date_today
+
+      # 基準日を設定（デフォルトは今月）
       @today = Date.today
+      @base_date = params[:base_date].present? ? Date.parse(params[:base_date]) : @today
+
+      # 基準月の最初と最後の日を取得
+      @current_month_first_day = @base_date.beginning_of_month
+      @current_month_last_day = @base_date.end_of_month
+      @next_month_first_day = @current_month_first_day.next_month
+      @next_month_last_day = @next_month_first_day.end_of_month
+
+      # 日付の設定
       @wday_jan = ["日","月","火","水","木","金","土"]
-      @this_year = @today.year
-      @this_year = @today.year
+      @current_month = @current_month_first_day.month
+      @next_month = @next_month_first_day.month
+      @current_year = @current_month_first_day.year
+      @next_year = @next_month_first_day.year
 
-      # 今月の最初の日と最後の日を取得
-      @first_day = @today.beginning_of_month
-      @last_day = @today.end_of_month
+      # 月の合計日数を取得
+      @current_days_in_month = (@current_month_first_day..@current_month_last_day).count
+      @next_days_in_month = (@next_month_first_day..@next_month_last_day).count
 
-      # 今月の合計日数を取得
-      @days_in_the_month = (@first_day..@last_day).count
-
-      # 今月の日付を配列に格納
-      @calendar_data = []
-      (@first_day..@last_day).each do |date|
-        @calendar_data << {
+      # 基準月の日付を配列に格納
+      @current_calendar_data = []
+      (@current_month_first_day..@current_month_last_day).each do |date|
+        @current_calendar_data << {
           date: date,
           year: date.year,
           month: date.month,
@@ -55,5 +65,21 @@ class ProjectsController < ApplicationController
           today: date == @today
         }
       end
+
+      # 次月の日付を配列に格納
+      @next_calendar_data = []
+      (@next_month_first_day..@next_month_last_day).each do |date|
+        @next_calendar_data << {
+          date: date,
+          year: date.year,
+          month: date.month,
+          day: date.day,
+          wday: date.wday,
+          today: date == @today
+        }
+      end
+
+      # 基準月から2か月分の日付を格納
+      @two_months_calendar_data = @current_calendar_data + @next_calendar_data
     end
 end

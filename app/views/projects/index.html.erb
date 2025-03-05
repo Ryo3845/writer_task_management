@@ -1,8 +1,13 @@
 <% provide(:title, "案件管理") %>
 
 <div class="container projects-container">
-  <%= @days_in_the_month %>
-  <div id="projects-table-container">  
+  <div class="projects-sidebar">
+    <li>○○○</li>
+    <li>○○○</li>
+    <li>○○○</li>
+  </div>
+  <div id="projects-table-container">
+    <%= %>
     <table id="projects-table">
       <tr>
         <th rowspan="2" class="numbers fixed">No</th>
@@ -10,10 +15,11 @@
         <th rowspan="2" class="project-name fixed">名前</th>
         <th rowspan="2" class="type fixed">種類</th>
         <th rowspan="2" class="status fixed">ステータス</th>
-        <th colspan="<%= @days_in_the_month %>" class="status fixed">2025/1</th>
+        <th colspan="<%= @current_days_in_month %>" class="year-month fixed"><%= @current_year %>/<%= @current_month %></th>
+        <th colspan="<%= @next_days_in_month %>" class="year-month fixed"><%= @next_year %>/<%= @next_month %></th>
       </tr>
       <tr>
-        <% @calendar_data.each do |data| %>
+        <% @two_months_calendar_data.each do |data| %>
           <th class="calendar-day"><%= data[:month] %>/<%= data[:date].day %></th>
         <% end%>
       </tr>

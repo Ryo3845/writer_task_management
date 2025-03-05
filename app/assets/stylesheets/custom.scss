@@ -73,8 +73,8 @@ table, th, tr, td {
 }
 
 :root {
-  --background--lightgray-color: #F9FAFB;
-  --backgrond--dimgray-color: #696969;
+  --background--whitesmoke: #f5f5f5;
+  --backgrond--dimgray: #696969;
   --border-color: #d3d3d3;
   --character-color: #333;
   --content-width: 1500px;
@@ -86,6 +86,7 @@ table, th, tr, td {
 header {
   width: 100%;
   background: white;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .header-container {
@@ -129,7 +130,7 @@ header {
 }
 
 .header-sidebar-menu li:hover {
-  background-color: var(--background--lightgray-color);
+  background-color: var(--background--whitesmoke);
 }
 
 .close-icon {
@@ -189,14 +190,9 @@ header {
 
 main {
   width: 100%;
-  padding-top: 55.7px; 
-  background: var(--background--lightgray-color);
+  background: var(--background--whitesmoke);
   min-height: 600px;
-}
-
-.main-container {
-  max-width: var(--content-width);
-  margin: 0 var(--content-margin-width);
+  overflow: auto;
 }
 
 /* signup and login form */
@@ -301,10 +297,21 @@ main {
 
 /* projects */
 
+.projects-sidebar {
+  width: 500px;
+  background-color: var(--backgrond--dimgray);
+  color: white;
+  text-align: center;
+  margin-right: 30px;
+  border-radius: 0 5px 5px 0;
+}
+
 .projects-container {
-  padding: 15px;
+  margin: 15px 15px 15px 0;
+  padding: 15px 15px 0 0;
   height: 100%;
   border-radius: 10px;
+  display: flex;
 }
 
 .month-selector {
@@ -336,7 +343,7 @@ main {
   text-align: center;
   white-space: nowrap;
   table-layout: fixed;
-  width: 1000px;
+  width: 5000px;
   font-size: 12px;
 }
 
@@ -409,7 +416,7 @@ main {
 footer {
   padding-top: 10px;
   padding-bottom: 10px;
-  background: var(--backgrond--dimgray-color);
+  background: var(--backgrond--dimgray);
   position: relative;
 }
 
@@ -486,10 +493,6 @@ footer a {
   }
 
   /* main */
-
-  main {
-    padding: 70px 10px 10px;
-  }
 
   body {
     overflow-x: hidden;
