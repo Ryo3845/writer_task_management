@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     date_today
+    project_table
   end
 
   def show
@@ -31,7 +32,6 @@ class ProjectsController < ApplicationController
     end
 
     def date_today
-
       # 基準日を設定（デフォルトは今月）
       @today = Date.today
       @base_date = params[:base_date].present? ? Date.parse(params[:base_date]) : @today
@@ -81,5 +81,9 @@ class ProjectsController < ApplicationController
 
       # 基準月から2か月分の日付を格納
       @two_months_calendar_data = @current_calendar_data + @next_calendar_data
+    end
+
+    def project_table
+      
     end
 end

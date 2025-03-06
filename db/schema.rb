@@ -14,11 +14,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_17_180155) do
   create_table "projects", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "client"
-    t.string "title"
-    t.integer "status"
-    t.decimal "compensation", precision: 10, scale: 2
-    t.string "url"
-    t.text "note"
+    t.string "project-name"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
