@@ -1,34 +1,40 @@
 <% provide(:title, "案件管理") %>
-
 <div class="container projects-container">
   <div class="projects-sidebar">
     <li>○○○</li>
     <li>○○○</li>
     <li>○○○</li>
   </div>
-  <div id="projects-table-container">
+  <div id="projects-item-table-container">
     <%= %>
-    <table id="projects-table">
+    <table id="projects-item-table">
       <tr>
-        <th rowspan="2" class="numbers fixed">No</th>
-        <th rowspan="2" class="client fixed">クライアント</th>
-        <th rowspan="2" class="project-name fixed">名前</th>
-        <th rowspan="2" class="type fixed">種類</th>
-        <th rowspan="2" class="status fixed">ステータス</th>
-        <th colspan="<%= @current_days_in_month %>" class="year-month fixed"><%= @current_year %>/<%= @current_month %></th>
-        <th colspan="<%= @next_days_in_month %>" class="year-month fixed"><%= @next_year %>/<%= @next_month %></th>
+        <th rowspan="2" class="numbers">No</th>
+        <th rowspan="2" class="client">クライアント</th>
+        <th rowspan="2" class="project-name">名前</th>
+        <th rowspan="2" class="type">種類</th>
+        <th rowspan="2" class="status">ステータス</th>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td class="numbers">1</td>
+        <td class="client">A社</td>
+        <td class="project-name">クレジットカード おすすめ</td>
+        <td class="type">構成</td>
+        <td class="status">未着手</td>
+      </tr>
+    </table>
+  </div>
+  <div id="projects-date-table-container">
+    <table id="projects-date-table">       
+      <tr>
+        <th colspan="<%= @current_days_in_month %>" class="year-month "><%= @current_year %>/<%= @current_month %></th>
+        <th colspan="<%= @next_days_in_month %>" class="year-month"><%= @next_year %>/<%= @next_month %></th>
       </tr>
       <tr>
         <% @two_months_calendar_data.each do |data| %>
           <th class="calendar-day"><%= data[:month] %>/<%= data[:date].day %></th>
         <% end%>
-      </tr>
-      <tr>
-        <td class="numbers fixed">1</td>
-        <td class="client fixed">A社</td>
-        <td class="project-name fixed">クレジットカード おすすめ</td>
-        <td class="type fixed">構成</td>
-        <td class="status fixed">未着手</td>
       </tr>
     </table>
   </div>

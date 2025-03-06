@@ -52,12 +52,6 @@ table {
   border-collapse: collapse;
 }
 
-table, th, tr, td {
-  border: 1px solid var(--border-color);
-  
-}
-
-
 .container {
   background-color: white;
 }
@@ -298,11 +292,11 @@ main {
 /* projects */
 
 .projects-sidebar {
-  width: 500px;
+  width: 250px;
   background-color: var(--backgrond--dimgray);
   color: white;
   text-align: center;
-  margin-right: 30px;
+  margin-right: 15px;
   border-radius: 0 5px 5px 0;
 }
 
@@ -312,6 +306,7 @@ main {
   height: 100%;
   border-radius: 10px;
   display: flex;
+  width: 100%;
 }
 
 .month-selector {
@@ -334,26 +329,43 @@ main {
   padding: 2px 5px;
 }
 
-
-#projects-table-container {
-  overflow-x: scroll;
+#projects-item-table {
+  width: 500px;
 }
 
-#projects-table {
+
+#projects-item-table-container {
+  width: 500px;
+}
+
+#projects-item-table tr,
+#projects-item-table th,
+#projects-item-table td,
+#projects-date-table tr,
+#projects-date-table th,
+#projects-date-table td {
   text-align: center;
-  white-space: nowrap;
-  table-layout: fixed;
-  width: 5000px;
   font-size: 12px;
+  border: 1px solid var(--border-color);
 }
 
-.completion, .numbers {
+#projects-item-table th,
+#projects-item-table td,
+#projects-date-table th,
+#projects-date-table td {
+  height: 20px;
+}
+
+
+.numbers {
   width: 30px;
+  left: 0;
 }
 
 .client {
   width: 100px;
 }
+
 
 .project-name {
   width: 150px;
@@ -363,8 +375,18 @@ main {
   width: 70px;
 }
 
+#projects-date-table-container {
+  margin-left: 10px;
+  overflow-x: scroll;
+  width: 100%;
+}
+
+#projects-date-table {
+  table-layout: fixed;
+}
+
 .calendar-day {
-  width: 30px;
+  min-width: 50px;
 }
 
 /* alert message */
