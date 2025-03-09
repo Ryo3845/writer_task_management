@@ -5,37 +5,71 @@
     <li>○○○</li>
     <li>○○○</li>
   </div>
-  <div id="projects-item-table-container">
-    <%= %>
-    <table id="projects-item-table">
-      <tr>
-        <th rowspan="2" class="numbers">No</th>
-        <th rowspan="2" class="client">クライアント</th>
-        <th rowspan="2" class="project-name">名前</th>
-        <th rowspan="2" class="type">種類</th>
-        <th rowspan="2" class="status">ステータス</th>
-      </tr>
-      <tr></tr>
-      <tr>
-        <td class="numbers">1</td>
-        <td class="client">A社</td>
-        <td class="project-name">クレジットカード おすすめ</td>
-        <td class="type">構成</td>
-        <td class="status">未着手</td>
-      </tr>
-    </table>
+  <div id="projects-main-container">
+    <div id="projects-top-container">
+      <div class="btn task-registration">
+        <%= image_tag("add_task", alt: "タスク登録", width: 18, height: 18, id: "project_add_task") %>
+        <div id="task-registration-character">タスク登録</div>
+      </div>
+    </div>
+    <div id="projects-center-container">
+      <div id="projects-item-table-container">
+        <%= %>
+        <table id="projects-item-table">
+          <tr>
+            <th rowspan="2" class="numbers">No</th>
+            <th rowspan="2" class="client">クライアント</th>
+            <th rowspan="2" class="project-name">名前</th>
+            <th rowspan="2" class="type">種類</th>
+            <th rowspan="2" class="status">ステータス</th>
+          </tr>
+          <tr></tr>
+          <tr>
+            <td class="numbers">1</td>
+            <td class="client">A社</td>
+            <td class="project-name">クレジットカード おすすめ</td>
+            <td class="type">構成</td>
+            <td class="status">未着手</td>
+          </tr>
+        </table>
+      </div>
+      <div id="projects-date-table-container">
+        <table id="projects-date-table">
+          <tr>
+            <th colspan="<%= @current_days_in_month %>" class="year-month "><%= @current_year %>/<%= @current_month %></th>
+            <th colspan="<%= @next_days_in_month %>" class="year-month"><%= @next_year %>/<%= @next_month %></th>
+          </tr>
+          <tr>
+            <% @two_months_calendar_data.each do |data| %>
+              <th class="calendar-day"><%= data[:month] %>/<%= data[:date].day %></th>
+            <% end%>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
-  <div id="projects-date-table-container">
-    <table id="projects-date-table">       
-      <tr>
-        <th colspan="<%= @current_days_in_month %>" class="year-month "><%= @current_year %>/<%= @current_month %></th>
-        <th colspan="<%= @next_days_in_month %>" class="year-month"><%= @next_year %>/<%= @next_month %></th>
-      </tr>
-      <tr>
-        <% @two_months_calendar_data.each do |data| %>
-          <th class="calendar-day"><%= data[:month] %>/<%= data[:date].day %></th>
-        <% end%>
-      </tr>
-    </table>
+</div>
+<div id="task_creation_screen">
+  <%= image_tag("close", alt: "メニューを閉じる", width: 20, height: 20, id: "task_creation_screen_closed") %>
+  <div id="task_creation_screen_container">
+    <%= form_with model: @project do |f| %>
+      <div class="add_client">
+        <label>クライアント</label>
+        <%= f.select :client, [["A社"], ["B社"], ["C社"]], include_blank: "選択して下さい" %>
+      </div>
+      <div class="add_procject_name">
+        <label>タスク名（キーワードなど）</label>
+        <%= f.select :projectname, [["クレジットカード おすすめ"], ["頭痛 直し方"], ["C社"]], include_blank: "選択して下さい" %>
+      </div>
+      <div class="add_type">
+        <label>タスクの種類</label>
+        <%= f.select :projectname, [["構成"], ["原稿"], ["CMS入稿"]], include_blank: "選択して下さい" %>
+      </div>
+      <div class="add_status">
+        <label>ステータス</label>
+        <%= f.select :status, [["進行中"], ["検品"], ["納品完了"]],{ selected: "未着手" }, {include_blank: "選択して下さい"
+      } %>
+      </div>
+    <% end %>
   </div>
 </div>

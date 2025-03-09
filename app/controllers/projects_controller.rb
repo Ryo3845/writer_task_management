@@ -84,6 +84,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_table
-      
+      @client
+
     end
 end

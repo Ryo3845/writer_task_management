@@ -306,7 +306,30 @@ main {
   height: 100%;
   border-radius: 10px;
   display: flex;
-  width: 100%;
+}
+
+#projects-main-container {
+  width: calc(100% - 250px);
+}
+
+#projects-top-container {
+  display: flex;
+  margin: 5px 0 15px;
+}
+
+.task-registration {
+  background: orange;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+
+#projects-center-container {
+  display: flex;
 }
 
 .month-selector {
@@ -387,6 +410,32 @@ main {
 
 .calendar-day {
   min-width: 50px;
+}
+
+#task_creation_screen {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  z-index: 11;
+  position: fixed;
+  top: 100px;
+  left: calc(50% - 250px);
+  display: none;
+  border-radius: 5px;
+}
+
+#task_creation_screen_container {
+  margin: 40px 20px;
+}
+
+#task_creation_screen_closed {
+  display: block;
+  cursor: pointer;
+  margin-right: 0;
+  border: 1px solid red;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 /* alert message */
