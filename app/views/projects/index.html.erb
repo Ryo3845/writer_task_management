@@ -53,19 +53,28 @@
   <%= image_tag("close", alt: "メニューを閉じる", width: 20, height: 20, id: "task_creation_screen_closed") %>
   <div id="task_creation_screen_container">
     <%= form_with model: @project do |f| %>
-      <div class="add_client">
+      <div class="add_task_form add_client">
         <label>クライアント</label>
         <%= f.select :client, [["A社"], ["B社"], ["C社"]], include_blank: "選択して下さい" %>
       </div>
-      <div class="add_procject_name">
+      <div class="add_task_form add_procject_name">
         <label>タスク名（キーワードなど）</label>
-        <%= f.select :projectname, [["クレジットカード おすすめ"], ["頭痛 直し方"], ["C社"]], include_blank: "選択して下さい" %>
+        <%= f.text_field :project_name %>
       </div>
-      <div class="add_type">
+      <div class="add_task_form add_type">
         <label>タスクの種類</label>
-        <%= f.select :projectname, [["構成"], ["原稿"], ["CMS入稿"]], include_blank: "選択して下さい" %>
+        <%= f.select :project_name, [["構成"], ["原稿"], ["CMS入稿"]], include_blank: "選択して下さい" %>
       </div>
-      <div class="add_status">
+      <div class="add_task_form add_status">
+        <label>ステータス</label>
+        <%= f.select :status, Project.status_select_options, { include_blank: '選択してください' } %>
+      </div>
+      <div class="add_task_form add_start_date">
+        <label>ステータス</label>
+        <%= f.select :status, [["進行中"], ["検品"], ["納品完了"]],{ selected: "未着手" }, {include_blank: "選択して下さい"
+      } %>
+      </div>
+      <div class="add_task_form add_status">
         <label>ステータス</label>
         <%= f.select :status, [["進行中"], ["検品"], ["納品完了"]],{ selected: "未着手" }, {include_blank: "選択して下さい"
       } %>

@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_17_180155) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_10_140036) do
   create_table "projects", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "client"
-    t.string "project-name"
+    t.text "project_name"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.date "due_date"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
