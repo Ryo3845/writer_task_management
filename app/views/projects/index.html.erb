@@ -1,6 +1,6 @@
 <% provide(:title, "案件管理") %>
 <div class="container projects-container">
-  <div class="projects-sidebar">
+  <div id="projects-sidebar">
     <li>○○○</li>
     <li>○○○</li>
     <li>○○○</li>
@@ -14,29 +14,36 @@
     </div>
     <div id="projects-center-container">
       <div id="projects-item-table-container">
-        <%= %>
         <table id="projects-item-table">
           <tr>
-            <th rowspan="2" class="numbers">No</th>
-            <th rowspan="2" class="client">クライアント</th>
-            <th rowspan="2" class="project-name">名前</th>
-            <th rowspan="2" class="type">種類</th>
-            <th rowspan="2" class="status">ステータス</th>
+            <th class="client">クライアント</th>
+            <th class="project-name"></th>
+            <th class="task"></th>
+            <th class="start-date">開始日</th>
+            <th class="due-date">納期</th>
+            <th class="number-of-characters">文字数</th>
+            <th class="rewards">報酬</th>
+            <th class="man-hour-measurement">工数計測</th>
+            <th class="status">ステータス</th>
           </tr>
-          <tr></tr>
-          <tr>
-            <td class="numbers">1</td>
-            <td class="client">A社</td>
-            <td class="project-name">クレジットカード おすすめ</td>
-            <td class="type">構成</td>
-            <td class="status">未着手</td>
-          </tr>
+          <% @projects.each do |f| %>
+            <tr>
+              <td class="client"><%= f.client %></td>
+              <td class="project-name"><%= f.project_name %></td>
+              <td class="start-date"><%= f.start_date %></td>
+              <td class="due-date"><%= f.due_date %></td>
+              <td class="number-of-characters"><%= f.number_of_characters %></td>
+              <td class="rewards"><%= f.rewards %></td>
+              <td class="man-hour-measurement"><%= f.man_hour_measurement %></td>
+              <td class="status"><%= f.status %></td>
+            </tr>
+          <% end %>
         </table>
       </div>
       <div id="projects-date-table-container">
         <table id="projects-date-table">
           <tr>
-            <th colspan="<%= @current_days_in_month %>" class="year-month "><%= @current_year %>/<%= @current_month %></th>
+            <th colspan="<%= @current_days_in_month %>" class="year-month"><%= @current_year %>/<%= @current_month %></th>
             <th colspan="<%= @next_days_in_month %>" class="year-month"><%= @next_year %>/<%= @next_month %></th>
           </tr>
           <tr>

@@ -70,6 +70,7 @@ table {
   --background--whitesmoke: #f5f5f5;
   --backgrond--dimgray: #696969;
   --border-color: #d3d3d3;
+  --box-shadow-color: #d3d3d3;
   --character-color: #333;
   --content-width: 1500px;
   --content-margin-width: 10%;
@@ -290,26 +291,32 @@ main {
 }
 
 /* projects */
-
-.projects-sidebar {
-  width: 250px;
-  background-color: var(--backgrond--dimgray);
-  color: white;
-  text-align: center;
-  margin-right: 15px;
-  border-radius: 0 5px 5px 0;
-}
-
 .projects-container {
   margin: 15px 15px 15px 0;
   padding: 15px 15px 0 0;
   height: 100%;
   border-radius: 10px;
   display: flex;
+  position: relative;
+}
+
+#projects-sidebar {
+  width: 150px;
+  background-color: var(--backgrond--dimgray);
+  color: white;
+  text-align: center;
+  margin-right: 10px;
+  border-radius: 0 5px 5px 0;
+  transition: transform .5s ease, opacity .5s ease;
 }
 
 #projects-main-container {
-  width: calc(100% - 250px);
+  width: 100%;
+  overflow: hidden;
+}
+
+#projects-main-container.active {
+  transform: translateX(120px);
 }
 
 #projects-top-container {
@@ -352,14 +359,14 @@ main {
   padding: 2px 5px;
 }
 
-#projects-item-table {
-  width: 500px;
-}
-
-
 #projects-item-table-container {
-  width: 500px;
+  min-width: 800px;
 }
+
+#projects-item-table {
+  box-shadow: 3px 0 0 0 var(--box-shadow-color);
+}
+
 
 #projects-item-table tr,
 #projects-item-table th,
@@ -379,37 +386,62 @@ main {
   height: 20px;
 }
 
+#projects-item-table {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-.numbers {
-  width: 30px;
-  left: 0;
+#projects-item-table td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
 }
 
 .client {
   width: 100px;
 }
 
-
 .project-name {
-  width: 150px;
+  width: 10px;
 }
 
-.type, .status {
+.task {
+  width: 200px;
+}
+
+.start-date, .due-date {
+  width: 100px;
+}
+
+.number-of-characters, .rewards {
   width: 70px;
 }
 
+.man-hour-measurement {
+  width: 100px;
+}
+
+.status {
+  width: 80px;
+}
+
 #projects-date-table-container {
-  margin-left: 10px;
   overflow-x: scroll;
   width: 100%;
 }
 
 #projects-date-table {
-  table-layout: fixed;
+  border-left-style: hidden;
+}
+
+#projects-date-table th {
+  font-weight: normal;
 }
 
 .calendar-day {
-  min-width: 50px;
+  min-width: 30px;
 }
 
 #task_creation_screen {

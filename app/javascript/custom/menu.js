@@ -13,13 +13,14 @@
     const headerSidebar = document.querySelector('.header-sidebar');
     const taskRegistration = document.querySelector('.task-registration');
     const taskCreationScreen = document.getElementById('task_creation_screen');
+    const taskCreationScreenClosed = document.getElementById('task_creation_screen_closed');
 
     // オーバーレイの作成と追加
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     body.appendChild(overlay);
 
-    // open-menuをクリックしたときにメニューを開き、また閉じる
+    // open-menuをクリックしたときにメニューを開く
     openMenu.addEventListener('click', (e) => {
       openMenu.style.display = 'none';
       closeMenu.style.display = 'block';
@@ -40,6 +41,7 @@
 
     // close-menuをクリックした時に、メニューを閉じる
     closeMenu.addEventListener('click', closeHeaderSidebar);
+
 
     // タスク登録をクリックした時に登録画面を表示する
     taskRegistration.addEventListener('click', (e) => {
@@ -62,21 +64,26 @@
         closeHeaderSidebar(e);
       }
       // タスク登録画面が表示されている時
-      else if(taskCreationScreen.style.display == 'block') {
+      else if (taskCreationScreen.style.display == 'block') {
         closetaskCreationScreen(e);
       }
     });
 
-    // ドキュメント全体にイベントリスナーを追加
-    document.addEventListener('click', (e) => {
-      if (overlay.classList.contains('show-menu') && !overlay.contains(e.target) && e.target !== openMenu) {
-        overlay.classList.remove('show-menu');
-        closeMenu.style.display = 'none';
-        openMenu.style.display = 'block';
-        e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
-      }
-    });
-    
+    // タスク登録画面の閉じるメニューをクリックした時に、タスク登録画面を閉じる
+    taskCreationScreenClosed.addEventListener('click', (e) => {
+      closetaskCreationScreen(e)
+    })
+
+    // // ドキュメント全体にイベントリスナーを追加
+    // document.addEventListener('click', (e) => {
+    //   if (overlay.classList.contains('show-menu') && !overlay.contains(e.target) && e.target !== openMenu) {
+    //     overlay.classList.remove('show-menu');
+    //     closeMenu.style.display = 'none';
+    //     openMenu.style.display = 'block';
+    //     e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
+    //   }
+    // });
+
     // ユーザー設定のヘッダーをクリックした時に、そのメニューに移る
     const editHeaders = document.querySelectorAll('.edit-header li');
     const editSections = document.querySelectorAll('.edit-profile, .edit-mail, .edit-password');
