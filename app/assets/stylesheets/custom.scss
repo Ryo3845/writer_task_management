@@ -374,7 +374,6 @@ main {
 #projects-date-table tr,
 #projects-date-table th,
 #projects-date-table td {
-  text-align: center;
   font-size: 12px;
   border: 1px solid var(--border-color);
 }
@@ -400,11 +399,11 @@ main {
 }
 
 .client {
-  width: 100px;
+  width: 200px;
 }
 
 .project-name {
-  width: 10px;
+  width: 30px;
 }
 
 .task {
@@ -413,6 +412,7 @@ main {
 
 .start-date, .due-date {
   width: 100px;
+  text-align: center;
 }
 
 .number-of-characters, .rewards {
@@ -425,6 +425,15 @@ main {
 
 .status {
   width: 80px;
+}
+
+.detail {
+  width: 30px;
+  text-align: center;
+}
+
+#project_detail {
+  cursor: pointer;
 }
 
 #projects-date-table-container {
@@ -441,7 +450,7 @@ main {
 }
 
 .calendar-day {
-  min-width: 30px;
+  min-width: 50px;
 }
 
 #task_creation_screen {

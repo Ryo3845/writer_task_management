@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: MyString
+  start_date: 2025-03-12
+  due_date: 2025-03-12
+  man_hour_measurement: 2025-03-12 23:42:52
+
+two:
+  task: MyString
+  start_date: 2025-03-12
+  due_date: 2025-03-12
+  man_hour_measurement: 2025-03-12 23:42:52

@@ -21,21 +21,29 @@
             <th class="task"></th>
             <th class="start-date">開始日</th>
             <th class="due-date">納期</th>
-            <th class="number-of-characters">文字数</th>
-            <th class="rewards">報酬</th>
-            <th class="man-hour-measurement">工数計測</th>
             <th class="status">ステータス</th>
+            <th class="man-hour-measurement">工数計測</th>
+            <th class="detail"></th>
           </tr>
           <% @projects.each do |f| %>
             <tr>
               <td class="client"><%= f.client %></td>
-              <td class="project-name"><%= f.project_name %></td>
+              <td colspan="2" class="project-name"><%= f.project_name %></td>
               <td class="start-date"><%= f.start_date %></td>
               <td class="due-date"><%= f.due_date %></td>
-              <td class="number-of-characters"><%= f.number_of_characters %></td>
-              <td class="rewards"><%= f.rewards %></td>
+              <td class="status"></td>
               <td class="man-hour-measurement"><%= f.man_hour_measurement %></td>
+              <td class="detail"><%= image_tag("more_horiz", alt: "案件の詳細", width: 18, height: 18, id: "project_detail") %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td class="task"><%= f.task %></td>
+              <td class="start-date"><%= f.start_date %></td>
+              <td class="due-date"><%= f.due_date %></td>
               <td class="status"><%= f.status %></td>
+              <td class="man-hour-measurement"><%= f.man_hour_measurement %></td>
+              <td class="detail"></td>
             </tr>
           <% end %>
         </table>

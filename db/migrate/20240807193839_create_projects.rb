@@ -8,6 +8,8 @@ class CreateProjects < ActiveRecord::Migration[7.0]
       t.decimal :compensation, precision: 10, scale: 2
       t.string :url
       t.text :note
+
+      t.references :task, foreign_key: true
       t.timestamps
     end
   end
