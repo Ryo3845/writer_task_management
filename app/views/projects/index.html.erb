@@ -25,24 +25,25 @@
             <th class="man-hour-measurement">工数計測</th>
             <th class="detail"></th>
           </tr>
-          <% @projects.each do |f| %>
+          <% @projects.each do |p| %>
             <tr>
-              <td class="client"><%= f.client %></td>
-              <td colspan="2" class="project-name"><%= f.project_name %></td>
-              <td class="start-date"><%= f.start_date %></td>
-              <td class="due-date"><%= f.due_date %></td>
+              <td class="client"><%= p.client %></td>
+              <td colspan="2" class="project-name"><%= p.project_name %></td>
+              <td class="start-date"><%= p.start_date %></td>
+              <td class="due-date"><%= p.due_date %></td>
               <td class="status"></td>
-              <td class="man-hour-measurement"><%= f.man_hour_measurement %></td>
+              <td class="man-hour-measurement"><%= p.man_hour_measurement %></td>
               <td class="detail"><%= image_tag("more_horiz", alt: "案件の詳細", width: 18, height: 18, id: "project_detail") %></td>
             </tr>
             <tr>
               <td></td>
               <td></td>
-              <td class="task"><%= f.task %></td>
-              <td class="start-date"><%= f.start_date %></td>
-              <td class="due-date"><%= f.due_date %></td>
-              <td class="status"><%= f.status %></td>
-              <td class="man-hour-measurement"><%= f.man_hour_measurement %></td>
+              <% p.tasks.each do |t| %>
+                <td class="task"><%= t.task %></td>
+                <td class="task-start-date"></td>
+                <td class="task_due_date"></td>
+                <td class="task-man-hour-measurement"></td>
+              <% end %>
               <td class="detail"></td>
             </tr>
           <% end %>

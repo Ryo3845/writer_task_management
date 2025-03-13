@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  has_many :tasks
+
   enum status: {
     not_started: 0, #未着手
     in_progress: 1, #進行中

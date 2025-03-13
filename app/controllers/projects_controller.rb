@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @project = Project.new
+    @tasks = Task.all
+    @task  = Task.new
     date_today
     project_table
   end
