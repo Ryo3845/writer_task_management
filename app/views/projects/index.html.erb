@@ -1,100 +1,89 @@
 <% provide(:title, "案件管理") %>
 <div class="container projects-container">
-  <div id="projects-sidebar">
-    <li>○○○</li>
-    <li>○○○</li>
-    <li>○○○</li>
+  <div id="delivery-date-alert">
+    <div class="today-deadline-container">
+      <span>本日が納期のタスク</span>
+      <div>○○</div>
+    </div>
+    <div class="this-week-container">
+      <span>今週が納期のタスク</span>
+      <div>○○</div>
+    </div>
+    <div class="delay-container">
+      <span>遅延しているタスク</span>
+      <div>○○</div>
+    </div>
   </div>
   <div id="projects-main-container">
-    <div id="projects-top-container">
+    <div id="projects-second-container">
       <div class="btn task-registration">
-        <%= image_tag("add_task", alt: "タスク登録", width: 18, height: 18, id: "project_add_task") %>
-        <div id="task-registration-character">タスク登録</div>
+        <%= image_tag("add_task", alt: "案件登録", width: 18, height: 18, id: "add_project") %>
+        <div id="project-registration-character">案件登録</div>
       </div>
     </div>
-    <div id="projects-center-container">
-      <div id="projects-item-table-container">
-        <table id="projects-item-table">
-          <tr>
-            <th class="client">クライアント</th>
-            <th class="project-name"></th>
-            <th class="task"></th>
-            <th class="start-date">開始日</th>
-            <th class="due-date">納期</th>
-            <th class="status">ステータス</th>
-            <th class="man-hour-measurement">工数計測</th>
-            <th class="detail"></th>
-          </tr>
-          <% @projects.each do |p| %>
-            <tr>
-              <td class="client"><%= p.client %></td>
-              <td colspan="2" class="project-name"><%= p.project_name %></td>
-              <td class="start-date"><%= p.start_date %></td>
-              <td class="due-date"><%= p.due_date %></td>
-              <td class="status"></td>
-              <td class="man-hour-measurement"><%= p.man_hour_measurement %></td>
-              <td class="detail"><%= image_tag("more_horiz", alt: "案件の詳細", width: 18, height: 18, id: "project_detail") %></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <% p.tasks.each do |t| %>
-                <td class="task"><%= t.task %></td>
-                <td class="task-start-date"></td>
-                <td class="task_due_date"></td>
-                <td class="task-man-hour-measurement"></td>
-              <% end %>
-              <td class="detail"></td>
-            </tr>
+    <div id="projects-third-container">
+      <input type="text">
+    </div>
+    <table id="projects-item-table">
+      <tr>
+        <th class="client">クライアント</th>
+        <th class="keyword">キーワード</th>
+        <th class="process">工程</th>
+        <th class="start-date">開始日</th>
+        <th class="due-date">納期</th>
+        <th class="remaining-days">残り日数</th>
+        <th class="status">ステータス</th>
+        <th class="progress-rate">進捗率</th>
+        <th class="man-hour-measurement">工数計測</th>
+      </tr>
+      <% @projects.each do |p| %>
+        <tr>
+          <td class="client"><%= p.client %></td>
+          <td class="keyword"></td>
+          <% p.tasks.each do |t| %>
+            <td class="process"><%= t.process %></td>
+            <td class="start-date"><%= t.task_start_date.strftime("%-m月%-d日") %></td>
+            <td class="due-date"><%= t.task_due_date.strftime("%-m月%-d日") %></td>
+            <td class="remaining-days">残り○日</td>
+            <td class="status"><%= t.task_status %></td>
+            <td class="progress-rate">進捗率</td>
+            <td class="man-hour-measurement">
+              <div class="timer-container">
+                <%= image_tag("play_allow", alt: "タスクのタイマー", width: 20, height: 20, class: "play-allow") %>
+                <%= t.task_man_hour_measurement.strftime("%H:%M:%S") if t.task_man_hour_measurement %>
+              </div>
+            </td>
           <% end %>
-        </table>
-      </div>
-      <div id="projects-date-table-container">
-        <table id="projects-date-table">
-          <tr>
-            <th colspan="<%= @current_days_in_month %>" class="year-month"><%= @current_year %>/<%= @current_month %></th>
-            <th colspan="<%= @next_days_in_month %>" class="year-month"><%= @next_year %>/<%= @next_month %></th>
-          </tr>
-          <tr>
-            <% @two_months_calendar_data.each do |data| %>
-              <th class="calendar-day"><%= data[:month] %>/<%= data[:date].day %></th>
-            <% end%>
-          </tr>
-        </table>
-      </div>
-    </div>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 <div id="task_creation_screen">
   <%= image_tag("close", alt: "メニューを閉じる", width: 20, height: 20, id: "task_creation_screen_closed") %>
   <div id="task_creation_screen_container">
+    <div>案件の基本情報</div>
     <%= form_with model: @project do |f| %>
-      <div class="add_task_form add_client">
+      <div class="add-task-form add-client">
         <label>クライアント</label>
-        <%= f.select :client, [["A社"], ["B社"], ["C社"]], include_blank: "選択して下さい" %>
+        <%= f.text_field :client %>
       </div>
-      <div class="add_task_form add_procject_name">
-        <label>タスク名（キーワードなど）</label>
+      <div class="add-task-form add-procject-name">
+        <label>案件名（キーワードなど）</label>
         <%= f.text_field :project_name %>
       </div>
-      <div class="add_task_form add_type">
-        <label>タスクの種類</label>
-        <%= f.select :project_name, [["構成"], ["原稿"], ["CMS入稿"]], include_blank: "選択して下さい" %>
+      <div class="add-task-form add-date">
+        <div class="add-task-form add-start-date">
+          <label>ka</label>
+          <%= f.text_field :project_name %>
+        </div>
+        <div class="add-task-form add-date"></div>
       </div>
-      <div class="add_task_form add_status">
-        <label>ステータス</label>
-        <%= f.select :status, Project.status_select_options, { include_blank: '選択してください' } %>
+      <div class="add-task-form add-procject-name">
+        <label>タスク</label>
+        <%= f.text_field :project_name %>
       </div>
-      <div class="add_task_form add_start_date">
-        <label>ステータス</label>
-        <%= f.select :status, [["進行中"], ["検品"], ["納品完了"]],{ selected: "未着手" }, {include_blank: "選択して下さい"
-      } %>
-      </div>
-      <div class="add_task_form add_status">
-        <label>ステータス</label>
-        <%= f.select :status, [["進行中"], ["検品"], ["納品完了"]],{ selected: "未着手" }, {include_blank: "選択して下さい"
-      } %>
-      </div>
+      <%= f.submit "登録", class: "submit-btn" %>
     <% end %>
   </div>
 </div>

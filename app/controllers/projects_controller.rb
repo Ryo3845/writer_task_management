@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
     @tasks = Task.all
     @task  = Task.new
     date_today
-    project_table
+    remaining_days
   end
 
   def show
@@ -86,8 +86,9 @@ class ProjectsController < ApplicationController
       @two_months_calendar_data = @current_calendar_data + @next_calendar_data
     end
 
-    def project_table
-      @client
+    def remaining_days
+      #工程の残り納期への日数を計算
+      # @remaining_days =
 
     end
 end
