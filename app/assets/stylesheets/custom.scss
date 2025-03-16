@@ -72,8 +72,14 @@ table {
   --border-color: #d3d3d3;
   --box-shadow-color: #d3d3d3;
   --character-color: #333;
-  --content-width: 1500px;
-  --content-margin-width: 10%;
+  --basic-blue-color: #1e90ff;
+}
+
+::-webkit-calendar-picker-indicator {
+  width: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
 }
 
 /* header */
@@ -459,7 +465,7 @@ main {
 }
 
 .project-coloring {
-  background-color: rgba(0, 255, 255, 0.205);
+  background-color: var(--basic-blue-color);
 }
 
 .timer-container {
@@ -489,7 +495,7 @@ main {
   min-width: 50px;
 }
 
-#task_creation_screen {
+#task-creation-screen {
   width: 500px;
   height: 500px;
   background-color: white;
@@ -497,28 +503,80 @@ main {
   position: fixed;
   top: 100px;
   left: calc(50% - 250px);
-  display: none;
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
-#task_creation_screen_container {
-  margin: 40px 20px;
+#new-case-registration-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #00008b;
+  color: white;
+  height: 50px;
+  padding: 0 15px;
 }
 
-#task_creation_screen_closed {
+#task-creation-screen-closed {
   display: block;
   cursor: pointer;
   margin-right: 0;
   position: absolute;
-  top: 10px;
+  top: 13px;
   right: 10px;
 }
 
-.add_task_form {
+#new-case-registration-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#new-case-registration-basic-information-tab, #new-case-registration-process-settings-tab {
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}
+
+#new-case-registration-basic-information-tab {
+  background: var(--basic-blue-color);
+  color: white;
+}
+
+#new-case-registration-process-settings-tab {
+  background: var(--background--whitesmoke);
+}
+
+#new-case-registration-basic-information-container {
+  margin: 15px 30px;
+}
+
+#new-case-registration-basic-information {
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 auto;
+  font-weight: bold;
+}
+
+.add-task-form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
+  margin-top: 10px;
 }
+
+.add-task-form-text-field {
+  height: 20px;
+}
+
+#process-settings {
+  margin-top: 15px;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: bold;
+}
+
 
 /* alert message */
 

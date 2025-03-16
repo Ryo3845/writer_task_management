@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   has_many :tasks
+  belongs_to :users
 
   enum status: {
     not_started: 0, #未着手
@@ -8,6 +9,7 @@ class Project < ApplicationRecord
     completed: 3, #納品完了
     on_hold: 4 #保留
   }
+
   def status_text
     I18n.t("enums.project.status.#{status}")
   end

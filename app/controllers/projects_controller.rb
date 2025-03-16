@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @tasks = Task.all
     @task  = Task.new
+    @client_options = current_user.projects.distinct.pluck(:client)
     date_today
     remaining_days
   end

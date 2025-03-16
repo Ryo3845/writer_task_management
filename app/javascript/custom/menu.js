@@ -15,6 +15,7 @@
     const taskCreationScreen = document.getElementById('task_creation_screen');
     const taskCreationScreenClosed = document.getElementById('task_creation_screen_closed');
 
+
     // オーバーレイの作成と追加
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
