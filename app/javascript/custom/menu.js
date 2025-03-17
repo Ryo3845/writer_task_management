@@ -4,6 +4,8 @@
   // ファイルの読み込み確認
   console.log("JavaScriptファイルは読み込まれています");
 
+  $('#datepicker').datepicker();
+
   document.addEventListener('turbo:load', () => {
     const body = document.body;
     const main = document.main;
@@ -14,7 +16,6 @@
     const taskRegistration = document.querySelector('.task-registration');
     const taskCreationScreen = document.getElementById('task_creation_screen');
     const taskCreationScreenClosed = document.getElementById('task_creation_screen_closed');
-
 
     // オーバーレイの作成と追加
     const overlay = document.createElement('div');

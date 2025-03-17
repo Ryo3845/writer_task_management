@@ -80,17 +80,17 @@
           <label>クライアント</label>
           <%= f.text_field :client, list: "client-options", class: "add-task-form-text-field" %>
           <datalist id="client-options">
-            <% @client_options.each do |option| %>
-              <option value="<%= option %>"></option>
+            <% @client_options.each do |o| %>
+              <option value="<%= o %>"></option>
             <% end %>
           </datalist>
         </div>
         <div class="add-task-form add-date">
           <label>全体の納期</label>
-          <%= f.date_field :start_date, class: "add-task-form-text-field add-start_date" %>
+          <input type="text" data-provide='datepicker'>
         </div>
+        <div id="process-settings">工程設定</div>
       <% end %>
-      <div id="process-settings">工程設定</div>
     </div>
     <div>
       <div>キャンセル</div>

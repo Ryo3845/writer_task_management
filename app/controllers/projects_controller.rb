@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     @tasks = Task.all
     @task  = Task.new
     @client_options = current_user.projects.distinct.pluck(:client)
+    @process_options = current_user.projects.distinct.pluck(:process)
     date_today
     remaining_days
   end
