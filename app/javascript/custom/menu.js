@@ -4,8 +4,6 @@
   // ファイルの読み込み確認
   console.log("JavaScriptファイルは読み込まれています");
 
-  $('#datepicker').datepicker();
-
   document.addEventListener('turbo:load', () => {
     const body = document.body;
     const main = document.main;
