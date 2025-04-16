@@ -60,105 +60,39 @@ table {
   --background--whitesmoke: #f5f5f5;
   --backgrond--dimgray: #696969;
   --border-color: #d3d3d3;
-  --box-shadow-color: #d3d3d3;
   --character-color: #333;
   --basic-blue-color: #1e90ff;
+  --header-color: #f8f9fa
 }
 
 /* header */
 
 header {
   width: 100%;
-  background: white;
   border-bottom: 1px solid var(--border-color);
+  background: var(--header-color);
+  display: block;
+  height: 50px;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
-}
-
-#task-list-nav, #gantt-chart-nav, #man-hour-report-nav {
-  margin-bottom: 0;
-  cursor: pointer;
-}
-
-#task-list-nav {
-  border-bottom: 2px solid #1e90ff;
-  box-sizing: border-box;
+  align-items: center;
+  height: 100%;
+  padding: 0 50px;
 }
 
 .header-right-container {
-  position: relative;
-}
-
-.header-icon-wrapper {
   display: flex;
-}
-
-.header-icon {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-
-#open-menu {
-  cursor: pointer;
-}
-
-.header-sidebar {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  position: fixed;
-  top: 0px;
-  left: calc(100% + 300px);
-  z-index: 11;
-  height: 100vh;
-  opacity: 0;
-  background: white;
-  transition: transform .5s ease, opacity .5s ease;
-  border-radius: 10px 0 0 10px;
-}
-
-.header-sidebar-menu li:hover {
-  background-color: var(--background--whitesmoke);
-}
-
-.close-icon {
-  display: flex;
-  justify-content: start;
-}
-
-#close-menu {
-  text-align: center;
-  width: 40px;
-  margin: 15px;
-  cursor: pointer;
-}
-
-.header-sidebar.active {
-  opacity: 1;
-  transform: translateX(-600px);
-}
-
-.header-sidebar-menu ul {
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
-  width: 100%;
+  gap: 10px;
 }
 
-.header-sidebar-menu li {
-  margin: 0 15px;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-
-.header-sidebar-menu a {
-  width: 100%;
-  display: block;
+.account_circle {
+  cursor: pointer;
 }
 
 .overlay {
@@ -186,6 +120,11 @@ main {
   background: var(--background--whitesmoke);
   min-height: 600px;
   overflow: auto;
+}
+
+/* home */
+.home-container {
+  margin: 15px 100px;
 }
 
 /* signup and login form */
