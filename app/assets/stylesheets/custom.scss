@@ -388,10 +388,19 @@ main {
 #projects-item-table th {
   background: whitesmoke;
   padding: 5px 0;
+  border-bottom: 2px solid var(--border-color);
 }
 
-#projects-item-table th {
-  border-bottom: 2px solid var(--border-color);
+.client {
+  width: 25%;
+}
+
+.keyword {
+  width: 15%;
+}
+
+.process, .due-date, .remaining-days, .status, .progress-rate {
+  width: 12%;
 }
 
 #projects-item-table td {

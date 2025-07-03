@@ -18,23 +18,20 @@
     <div id="projects-second-container">
       <div class="btn task-registration">
         <%= image_tag("add_task", alt: "案件登録", width: 18, height: 18, id: "add_project") %>
-        <div id="project-registration-character">案件登録</div>
+        <%= link_to "案件登録", new_project_path, id: "project-registration-character" %>
       </div>
-    </div>
-    <div id="projects-third-container">
-      <input type="text">
+      <div id="projects-third-container">
+        <input type="text">
+      </div>
     </div>
     <table id="projects-item-table">
       <tr>
         <th class="client">クライアント</th>
-        <th class="keyword">キーワード</th>
+        <th class="keyword">案件名（キーワード等）</th>
         <th class="process">工程</th>
-        <th class="start-date">開始日</th>
         <th class="due-date">納期</th>
         <th class="remaining-days">残り日数</th>
         <th class="status">ステータス</th>
-        <th class="progress-rate">進捗率</th>
-        <th class="man-hour-measurement">工数計測</th>
       </tr>
       <% @projects.each do |p| %>
         <tr>
@@ -42,59 +39,15 @@
           <td class="keyword"></td>
           <% p.tasks.each do |t| %>
             <td class="process"><%= t.process %></td>
-            <td class="start-date"><%= t.task_start_date.strftime("%-m月%-d日") %></td>
             <td class="due-date"><%= t.task_due_date.strftime("%-m月%-d日") %></td>
             <td class="remaining-days">残り○日</td>
             <td class="status"><%= t.task_status %></td>
-            <td class="progress-rate">進捗率</td>
-            <td class="man-hour-measurement">
-              <div class="timer-container">
-                <%= image_tag("play_allow", alt: "タスクのタイマー", width: 20, height: 20, class: "play-allow") %>
-                <%= t.task_man_hour_measurement.strftime("%H:%M:%S") if t.task_man_hour_measurement %>
-              </div>
-            </td>
           <% end %>
         </tr>
       <% end %>
     </table>
   </div>
 </div>
-<div id="task-creation-screen">
-  <div id="first-task-creation-screen">
-    <div id="new-case-registration-title">
-      <div>新規案件登録</div>
-      <%= image_tag("white_close", alt: "メニューを閉じる", width: 20, height: 20, id: "task-creation-screen-closed") %>
-    </div>
-    <div id="new-case-registration-tab">
-      <nav id="new-case-registration-basic-information-tab">基本情報</nav>
-      <nav id="new-case-registration-process-settings-tab">工程設定</nav>
-    </div>
-    <div id="new-case-registration-basic-information-container">
-      <div id="new-case-registration-basic-information">基本情報</div>
-      <%= form_with model: @project do |f| %>
-        <div class="add-task-form">
-          <label>案件名（キーワード）</label>
-          <%= f.text_field :keyword, class: "add-task-form-text-field add-keyword" %>
-        </div>
-        <div class="add-task-form add-client">
-          <label>クライアント</label>
-          <%= f.text_field :client, list: "client-options", class: "add-task-form-text-field" %>
-          <datalist id="client-options">
-            <% @client_options.each do |o| %>
-              <option value="<%= o %>"></option>
-            <% end %>
-          </datalist>
-        </div>
-        <div class="add-task-form add-date">
-          <label>全体の納期</label>
-          <input type="text" data-provide='datepicker'>
-        </div>
-        <div id="process-settings">工程設定</div>
-      <% end %>
-    </div>
-    <div>
-      <div>キャンセル</div>
-      <div>次へ</div>
-    </div>
-  </div>
+<div id="deal-registration">
+<div></div>
 </div>
