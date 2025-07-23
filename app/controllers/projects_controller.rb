@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  # before_action :set_project only: %i[ show edit update destroy ]
+
   def index
     @projects = Project.all
     @project = Project.new
@@ -12,6 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
   end
 
   def new
@@ -91,6 +94,9 @@ class ProjectsController < ApplicationController
     def remaining_days
       #工程の残り納期への日数を計算
       # @remaining_days =
+    end
 
+    def set_project
+      @project = Projects.find(params[:id])
     end
 end

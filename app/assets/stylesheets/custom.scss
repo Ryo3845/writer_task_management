@@ -250,7 +250,7 @@ main {
   margin-left: 0;
 }
 
-/* projects */
+/* projects-all */
 .projects-container {
   margin: 15px auto;
   padding: 15px;
@@ -262,6 +262,8 @@ main {
   width: 80%;
   max-width: 1700px;
 }
+
+/* projects-index.html.erb */
 
 #delivery-date-alert {
   display: flex;
@@ -354,6 +356,15 @@ main {
   padding: 5px;
   gap:5px;
   font-size: 16px;
+  box-shadow: 2px 2px 2px var(--border-color);
+}
+
+.task-registration:hover {
+  opacity: .7;
+}
+
+.task-registration:active {
+  transform: translateY(2px);
 }
 
 #projects-third-container {
@@ -369,7 +380,7 @@ main {
   white-space: nowrap;
   overflow: hidden;
   margin-top: 15px;
-  text-align: center;
+  text-align: left;
 }
 
 #projects-item-table tr,
@@ -391,16 +402,24 @@ main {
   border-bottom: 2px solid var(--border-color);
 }
 
+.zoom-in {
+  width: 4%;
+}
+
 .client {
-  width: 25%;
+  width: 20%;
 }
 
 .keyword {
-  width: 15%;
+  width: 20%;
 }
 
-.process, .due-date, .remaining-days, .status, .progress-rate {
-  width: 12%;
+.process, .due-date, .remaining-days, .status {
+  width: 14%;
+}
+
+#zoom-in-image {
+  cursor: pointer;
 }
 
 #projects-item-table td {
@@ -410,120 +429,11 @@ main {
   max-width: 0;
 }
 
-.project-coloring {
-  background-color: var(--basic-blue-color);
-}
-
-.timer-container {
-  display: flex;
-  justify-content: center;
-  gap: 2px;
-}
-
-#play-allow {
-  cursor: pointer;
-}
-
-#projects-date-table-container {
-  overflow-x: scroll;
-  width: 100%;
-}
-
-#projects-date-table {
-  border-left-style: hidden;
-}
-
-#projects-date-table th {
-  font-weight: normal;
-}
-
-.calendar-day {
-  min-width: 50px;
-}
-
-#task-creation-screen {
-  width: 500px;
-  height: 500px;
-  background-color: white;
-  z-index: 11;
-  position: fixed;
-  top: 100px;
-  left: calc(50% - 250px);
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: none;
-}
-
-#new-case-registration-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #00008b;
-  color: white;
-  height: 50px;
-  padding: 0 15px;
-}
-
-#task-creation-screen-closed {
-  display: block;
-  cursor: pointer;
-  margin-right: 0;
-  position: absolute;
-  top: 13px;
-  right: 10px;
-}
-
-#new-case-registration-tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#new-case-registration-basic-information-tab, #new-case-registration-process-settings-tab {
-  width: 100%;
+td.zoom-in  {
   text-align: center;
-  height: 40px;
-  line-height: 40px;
 }
 
-#new-case-registration-basic-information-tab {
-  background: var(--basic-blue-color);
-  color: white;
-}
-
-#new-case-registration-process-settings-tab {
-  background: var(--background--whitesmoke);
-}
-
-#new-case-registration-basic-information-container {
-  margin: 15px 30px;
-}
-
-#new-case-registration-basic-information {
-  border-bottom: 1px solid var(--border-color);
-  margin: 0 auto;
-  font-weight: bold;
-}
-
-.add-task-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.add-task-form-text-field {
-  height: 20px;
-}
-
-#process-settings {
-  margin-top: 15px;
-  border-bottom: 1px solid var(--border-color);
-  font-weight: bold;
-}
-
+/* projects-show.html.erb */
 
 /* alert message */
 

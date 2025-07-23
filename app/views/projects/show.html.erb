@@ -1,0 +1,13 @@
+<div class="projects-container">
+  <table>
+    <tr>
+      <th class="client">クライアント</th>
+      <th class="keyword">案件名（キーワード等）</th>
+    </tr>
+    <tr>
+      <td><%= @project.client %></td>
+      <td><%= @project.keyword %></td>
+    </tr>
+  </table>
+  <%= link_to "戻る", projects_path %>
+</div>
