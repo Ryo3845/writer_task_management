@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_07_26_071135) do
+ActiveRecord::Schema[7.0].define(version: 2025_07_26_140504) do
   create_table "projects", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "client"
@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_26_071135) do
     t.date "start_date"
     t.date "due_date"
     t.float "number_of_characters"
-    t.float "rewards"
+    t.integer "rewards"
     t.text "status"
     t.time "man_hour_measurement"
     t.datetime "created_at", null: false

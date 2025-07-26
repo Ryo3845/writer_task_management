@@ -26,7 +26,7 @@
         <input type="text">
       </div>
     </div>
-    <table id="projects-item-table">
+    <table class="projects-table">
       <tr>
         <th class="zoom-in"></th>
         <th class="client">クライアント</th>
@@ -34,7 +34,7 @@
         <th class="process">工程</th>
         <th class="due-date">納期</th>
         <th class="remaining-days">残り日数</th>
-        <th class="status">ステータス</th>
+        <th class="rewards">報酬</th>
       </tr>
       <% @projects.each do |p| %>
         <tr>
@@ -45,7 +45,7 @@
             <td class="process"><%= t.process %></td>
             <td class="due-date"><%= t.task_due_date.strftime("%-m月%-d日") %></td>
             <td class="remaining-days">残り○日</td>
-            <td class="status"><%= t.task_status %></td>
+            <td class="rewards"><%= number_to_currency(p.rewards) %></td>
           <% end %>
         </tr>
       <% end %>

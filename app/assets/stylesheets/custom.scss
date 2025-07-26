@@ -263,6 +263,35 @@ main {
   max-width: 1700px;
 }
 
+.projects-table {
+  border: 1px solid var(--border-color);
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.projects-table tr,
+.projects-table th,
+.projects-table td {
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.projects-table th,
+.projects-table td {
+  height: 20px;
+}
+
+.projects-table th {
+  background: whitesmoke;
+  padding: 5px 0;
+  border-bottom: 2px solid var(--border-color);
+}
+
 /* projects-index.html.erb */
 
 #delivery-date-alert {
@@ -373,35 +402,6 @@ main {
   margin-top: 10px;
 }
 
-#projects-item-table {
-  border: 1px solid var(--border-color);
-  width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  margin-top: 15px;
-  text-align: left;
-}
-
-#projects-item-table tr,
-#projects-item-table th,
-#projects-item-table td {
-  font-size: 15px;
-  border: none;
-  border-bottom: 1px solid var(--border-color);
-}
-
-#projects-item-table th,
-#projects-item-table td {
-  height: 20px;
-}
-
-#projects-item-table th {
-  background: whitesmoke;
-  padding: 5px 0;
-  border-bottom: 2px solid var(--border-color);
-}
-
 .zoom-in {
   width: 4%;
 }
@@ -422,7 +422,7 @@ main {
   cursor: pointer;
 }
 
-#projects-item-table td {
+.projects-table td {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -434,6 +434,7 @@ td.zoom-in  {
 }
 
 /* projects-show.html.erb */
+
 
 /* alert message */
 
