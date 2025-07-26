@@ -5,8 +5,6 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @project = Project.new
-    @tasks = Task.all
-    @task  = Task.new
     @client_options = current_user.projects.distinct.pluck(:client)
     @process_options = current_user.projects.distinct.pluck(:process)
     date_today
@@ -15,6 +13,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @task  = @project.tasks
   end
 
   def new

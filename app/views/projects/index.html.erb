@@ -38,7 +38,7 @@
       </tr>
       <% @projects.each do |p| %>
         <tr>
-        <td class="zoom-in"><%= link_to image_tag("zoom_in", alt: "案件の詳細", width: 22, height: 22, id: "zoom-in-image"), p %></td>
+          <td class="zoom-in"><%= link_to image_tag("zoom_in", alt: "案件の詳細", width: 22, height: 22, id: "zoom-in-image"), p %></td>
           <td class="client"><%= p.client %></td>
           <td class="keyword"><%= p.keyword %></td>
           <% p.tasks.each do |t| %>
