@@ -50,6 +50,13 @@ footer {
 
 table {
   border-collapse: collapse;
+  border: 1px solid var(--border-color);
+}
+
+tr,
+th,
+td {
+  border: 1px solid var(--border-color);
 }
 
 .container {
@@ -66,6 +73,17 @@ table {
   --basic-blue-color: #1e90ff;
   --header-color: #f8f9fa;
   --url-color: #0000ff;
+}
+
+/* common */
+.black-link {
+  display: block;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.black-link:hover {
+  color: var(--main-color);
 }
 
 /* header */
@@ -206,16 +224,6 @@ main {
   outline: 0;
 }
 
-.not-have-account {
-  display: block;
-  text-align: center;
-  text-decoration: underline;
-}
-
-.not-have-account:hover {
-  color: var(--main-color);
-}
-
 .login-sbumit-btn {
   margin: 0 auto;
   font-size: 16px;
@@ -227,6 +235,11 @@ main {
 .login-sbumit-btn:hover {
   color: var(--character-color);
   border-color: var(--main-color);
+}
+
+/* btn */
+.back-btn {
+  display: inline-block;
 }
 
 /* errors form */
@@ -251,7 +264,7 @@ main {
 }
 
 /* projects-all */
-.projects-container {
+.project-container {
   margin: 15px auto;
   padding: 15px;
   height: 100%;
@@ -263,30 +276,29 @@ main {
   max-width: 1700px;
 }
 
-.projects-table {
-  border: 1px solid var(--border-color);
+.project-table {
   width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   margin-top: 15px;
-  text-align: left;
+  text-align: center;
 }
 
-.projects-table tr,
-.projects-table th,
-.projects-table td {
+.project-table tr,
+.project-table th,
+.project-table td {
   font-size: 15px;
   border: none;
   border-bottom: 1px solid var(--border-color);
 }
 
-.projects-table th,
-.projects-table td {
+.project-table th,
+.project-table td {
   height: 20px;
 }
 
-.projects-table th {
+.project-table th {
   background: whitesmoke;
   padding: 5px 0;
   border-bottom: 2px solid var(--border-color);
@@ -359,7 +371,7 @@ main {
   font-weight: bold;
 }
 
-#projects-main-container {
+#project-main-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -371,7 +383,7 @@ main {
   justify-content: space-between;
 }
 
-#projects-second-container {
+#project-second-container {
   display: flex;
   justify-content: space-between;
 }
@@ -396,7 +408,7 @@ main {
   transform: translateY(2px);
 }
 
-#projects-third-container {
+#project-third-container {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
@@ -414,7 +426,10 @@ main {
   width: 20%;
 }
 
-.process, .due-date, .remaining-days, .status {
+.process,
+.due-date,
+.remaining-days,
+.status {
   width: 14%;
 }
 
@@ -422,7 +437,7 @@ main {
   cursor: pointer;
 }
 
-.projects-table td {
+.project-table td {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -434,7 +449,43 @@ td.zoom-in  {
 }
 
 /* projects-show.html.erb */
+.project-show-container {
+  display: flex;
+  gap: 15px;
+}
 
+.project-show-left-container {
+  width: 35%;
+}
+
+.project-show-container th,
+.project-show-container td {
+  border: 1px solid var(--border-color);
+}
+
+.project-top-table th,
+.project-second-table th {
+  width: 50%;
+}
+
+.project-top-table,
+.project-second-table {
+  margin: 0 auto;
+}
+
+.project-second-table {
+  margin-top: 15px;
+}
+
+.show-to-projects {
+  text-align: left;
+  margin-top: 15px;
+}
+
+/* projects-new.html.erb */
+.new-to-projects {
+  text-align: left;
+}
 
 /* alert message */
 

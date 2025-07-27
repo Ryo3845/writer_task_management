@@ -1,5 +1,5 @@
 <% provide(:title, "案件管理") %>
-<div class="container projects-container">
+<div class="container project-container">
   <div id="delivery-date-alert">
     <div class="today-deadline-container">
       <span>本日が納期のタスク</span>
@@ -14,19 +14,19 @@
       <div>○○</div>
     </div>
   </div>
-  <div id="projects-main-container">
-    <div id="projects-second-container">
+  <div id="project-main-container">
+    <div id="project-second-container">
       <%= link_to new_project_path, id: "project-registration-character" do %>
         <div class="task-registration">
           <%= image_tag("add_task", alt: "案件登録", width: 18, height: 18, id: "add_project") %>
           案件登録
         </div>
       <% end %>
-      <div id="projects-third-container">
+      <div id="project-third-container">
         <input type="text">
       </div>
     </div>
-    <table class="projects-table">
+    <table class="project-table">
       <tr>
         <th class="zoom-in"></th>
         <th class="client">クライアント</th>
@@ -41,12 +41,10 @@
           <td class="zoom-in"><%= link_to image_tag("zoom_in", alt: "案件の詳細", width: 22, height: 22, id: "zoom-in-image"), p %></td>
           <td class="client"><%= p.client %></td>
           <td class="keyword"><%= p.keyword %></td>
-          <% p.tasks.each do |t| %>
-            <td class="process"><%= t.process %></td>
-            <td class="due-date"><%= t.task_due_date.strftime("%-m月%-d日") %></td>
-            <td class="remaining-days">残り○日</td>
-            <td class="rewards"><%= number_to_currency(p.rewards) %></td>
-          <% end %>
+          <td class="process"><%= p.process %></td>
+          <td class="due-date"></td>
+          <td class="remaining-days"></td>
+          <td class="rewards"><%= number_to_currency(p.rewards) %></td>
         </tr>
       <% end %>
     </table>

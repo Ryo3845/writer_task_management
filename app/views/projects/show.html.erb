@@ -1,25 +1,30 @@
-<div class="projects-container">
-  <table class="projects-table">
-    <tr>
-      <th class="client">クライアント</th>
-      <th class="keyword">案件名（キーワード等）</th>
-    </tr>
-    <tr>
-      <td><%= @project.client %></td>
-      <td><%= @project.keyword %></td>
-    </tr>
-  </table>
-  <table class="projects-table">
-    <tr>
-      <th class="task_status">タスク</th>
-      <th class="task_due_date">期日</th>
-    </tr>
-    <% @task.each do |t| %>
-      <tr>
-        <td><%= t.process %></td>
-        <td><%= t.task_due_date %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= link_to "戻る", projects_path %>
+<div class="container project-container">
+  <div class="project-show-container">
+    <div class="project-show-left-container">
+      <table class="project-table project-top-table">
+        <tr>
+          <th class="client">クライアント</th>
+          <td><%= @project.keyword %></td>
+        </tr>
+        <tr>
+          <th class="keyword">案件名（キーワード等）</th>
+          <td><%= @project.client %></td>
+        </tr>
+      </table>
+      <table class="project-table project-second-table">
+        <tr>
+          <th class="task_status">タスク</th>
+          <th class="task_due_date">期日</th>
+        </tr>
+        <% @task.each do |t| %>
+          <tr>
+            <td><%= t.process %></td>
+            <td><%= t.task_due_date %></td>
+          </tr>
+        <% end %>
+      </table>
+      <%= link_to "<< タスク一覧に戻る", projects_path, class: "black-link show-to-projects" %>
+    </div>
+    <div class="projects-show-right-container">ガントチャート入れる予定</div>
+  </div>
 </div>

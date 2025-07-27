@@ -18,12 +18,13 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @process_options = Task.distinct.pluck(:process).compact  # 重複なし、nil除去
   end
 
   def create
     @project = current_user.projects.build(project_params)
      if @project.save
-      redirect_to projects_path, notice: 'プロジェクトが正常に作成されました。'
+      redirect_to projects_path, notice: '案件が正しく登録されました'
     else
       @projects = Project.all
       render :index, status: :unprocessable_entity
@@ -35,7 +36,7 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:client, :title, :status, :other_task, :task_deadline, :final_deadline, :final_deadline_not_applicable, :compensation, :url, :note)
+      params.require(:project).permit(:client, :keyword, :process, :start_date, :due_date, :task_deadline, :rewards)
     end
 
     def date_today

@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   has_many :tasks
-  belongs_to :users
+  belongs_to :user
 
   enum status: {
     not_started: 0, #未着手

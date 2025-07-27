@@ -1,5 +1,21 @@
-<h1>タスクの登録</h1>
-
-<%= form_with(model: @project) do |f| =%>
-
-<%= link_to "タスク一覧の画面に戻る", projects_path %>
+<div class="container project-container">
+  <h1>タスクの登録</h1>
+  <%= form_with(model: @project) do |p| %>
+    <div>
+      <%= p.label :client, "クライアント" %>
+      <%= p.text_field :client, required: true %>
+    </div>
+    <div>
+      <%= p.label :keyword, "案件名（キーワード等）" %>
+      <%= p.text_field :keyword, required: true %>
+    </div>
+    <div>
+      <%= p.label :process, "工程" %>
+      <%= p.text_field :process, required: true %>
+    </div>
+    <div>
+      <%= p.submit "登録" %>
+    </div>
+  <% end %>
+  <%= link_to "タスク一覧に戻る", projects_path, class: "black-link new-to-projects" %>
+</div>
