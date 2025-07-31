@@ -1,5 +1,6 @@
-<div class="container project-container">
-  <h1>タスクの登録</h1>
+<% provide(:title, "案件登録") %>
+<div class="container form-container">
+  <h1 class="form-header">案件の登録</h1>
   <%= form_with(model: @project) do |p| %>
     <div>
       <%= p.label :client, "クライアント" %>

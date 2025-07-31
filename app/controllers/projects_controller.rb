@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
 
-  # before_action :set_project only: %i[ show edit update destroy ]
-
   def index
     @projects = Project.all
     @project = Project.new
@@ -32,6 +30,12 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @project.destroy!
+    redirect_to projects_path, notice: '案件が削除されました'  
+    head :no_content
   end
 
   private

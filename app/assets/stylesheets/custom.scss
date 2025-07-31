@@ -77,7 +77,7 @@ td {
 
 /* common */
 .black-link {
-  display: block;
+  display:inline-block;
   text-align: center;
   text-decoration: underline;
 }
@@ -86,80 +86,56 @@ td {
   color: var(--main-color);
 }
 
-/* header */
+/* btn(Bootstrap) */
 
-header {
-  width: 100%;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--header-color);
-  display: block;
-  height: 50px;
+.my-btn {
+  padding: 7px 13px;  
+  border-radius: 5px;
+  display: inline-block;
+  transition: all 0.2s ease;
 }
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  padding: 0 50px;
+.my-btn:hover {
+  opacity: .7;
 }
 
-.header-right-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  gap: 10px;
+.my-btn:active{
+  opacity: .4;
+  transform: translateY(1.5px);
+  box-shadow: 0 1.5px 2px rgba(0,0,0,0.2);
 }
 
-.account_circle {
-  cursor: pointer;
+.my-btn:focus {
+  box-shadow: none;
+  outline: none;
 }
 
-.header-login-btn, .header-new-registration-btn {
+
+.login-btn,
+.signup-btn {
   color: white;
 }
 
-.header-login-btn {
+.login-btn {
   background-color: var(--main-color);
-}
-
-.header-new-registration-btn {
-  background-color: var(--sub-color);
-}
-
-.header-login-btn:hover a {
-  background-color: white;
-}
-
-.header-login-btn:hover, .header-new-registration-btn:hover {
-  background-color: white;
-  color: var(--character-color);
-}
-
-.header-login-btn:hover {
   border-color: var(--main-color);
 }
 
-.header-new-registration-btn:hover {
+.signup-btn {
+  background-color: var(--sub-color);
   border-color: var(--sub-color);
 }
 
-/* main */
-
-main {
-  width: 100%;
-  background: var(--background--whitesmoke);
-  min-height: 600px;
-  overflow: auto;
+.submit-btn {
+  margin: 0 auto;
 }
 
-/* home */
-.home-container {
-  margin: 15px 100px;
+.login-btn:focus,
+.signup-btn:focus {
+  opacity: 1;
 }
 
-/* signup and login form */
+/* form */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -171,14 +147,14 @@ main {
   background-color: var(--background-whitesmoke);
 }
 
-.form-container h1 {
+.form-header {
   margin-bottom: 15px;
   border-bottom: 1px solid var(--main-color);
   padding-bottom: 5px;
   text-align: center;
 }
 
-.form-group {
+.form {
   display: flex;
   flex-direction: column;
   margin: 25px 30px 0;
@@ -224,22 +200,60 @@ main {
   outline: 0;
 }
 
-.login-sbumit-btn {
-  margin: 0 auto;
-  font-size: 16px;
-  background-color: var(--main-color);
-  color: white;
-  border: none;
-}
-
-.login-sbumit-btn:hover {
-  color: var(--character-color);
-  border-color: var(--main-color);
-}
-
-/* btn */
+/* common(all) */
 .back-btn {
   display: inline-block;
+}
+
+.main-header {
+  border-bottom: 1.5px solid var(--main-color);
+  padding-bottom: 5px;
+  width: 25%;
+}
+
+/* header */
+
+header {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--header-color);
+  display: block;
+  height: 50px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 50px;
+}
+
+.header-right-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+}
+
+.account_circle {
+  cursor: pointer;
+}
+
+
+/* main */
+
+main {
+  width: 100%;
+  background: var(--background--whitesmoke);
+  min-height: 600px;
+  overflow: auto;
+}
+
+/* home */
+.home-container {
+  margin: 15px 100px;
 }
 
 /* errors form */
@@ -263,7 +277,10 @@ main {
   margin-left: 0;
 }
 
-/* projects-all */
+/* new.html.erb(sessions) */
+
+
+/* common(projects) */
 .project-container {
   margin: 15px auto;
   padding: 15px;
@@ -304,7 +321,7 @@ main {
   border-bottom: 2px solid var(--border-color);
 }
 
-/* projects-index.html.erb */
+/* index.html.erb(projects) */
 
 #delivery-date-alert {
   display: flex;
@@ -411,7 +428,8 @@ main {
 #project-third-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 10px;
+  align-items: center;
+  gap: 5px;
 }
 
 .zoom-in {
@@ -419,18 +437,18 @@ main {
 }
 
 .client {
-  width: 20%;
+  width: 25%;
 }
 
 .keyword {
-  width: 20%;
+  width: 25%;
 }
 
 .process,
 .due-date,
 .remaining-days,
 .status {
-  width: 14%;
+  width: (100% - 4% - 25% -25%) / 4;
 }
 
 #zoom-in-image {
@@ -448,7 +466,10 @@ td.zoom-in  {
   text-align: center;
 }
 
-/* projects-show.html.erb */
+/* show.html.erb(projects) */
+.project-new-header {
+  margin-bottom: 15px;
+}
 .project-show-container {
   display: flex;
   gap: 15px;
@@ -482,9 +503,14 @@ td.zoom-in  {
   margin-top: 15px;
 }
 
-/* projects-new.html.erb */
+/* new.html.erb(projects) */
+.project-registration-form {
+  margin: 0 auto;
+}
+
 .new-to-projects {
-  text-align: left;
+  text-align: center;
+  width: 130px;
 }
 
 /* alert message */
@@ -619,7 +645,7 @@ footer a {
     -webkit-tap-highlight-color: transparent; 
   }
 
-  .form-container .form-group {
+  .form-container .form {
     margin: 15px 0;
   }
 

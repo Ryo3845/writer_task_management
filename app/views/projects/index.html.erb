@@ -23,6 +23,7 @@
         </div>
       <% end %>
       <div id="project-third-container">
+        <%= image_tag("search", alt: "案件検索", width: 21, height: 21, id: "project_search") %>
         <input type="text">
       </div>
     </div>
@@ -39,8 +40,8 @@
       <% @projects.each do |p| %>
         <tr>
           <td class="zoom-in"><%= link_to image_tag("zoom_in", alt: "案件の詳細", width: 22, height: 22, id: "zoom-in-image"), p %></td>
-          <td class="client"><%= p.client %></td>
-          <td class="keyword"><%= p.keyword %></td>
+          <td class="client truncateable"><%= p.client %></td>
+          <td class="keyword truncateable"><%= p.keyword %></td>
           <td class="process"><%= p.process %></td>
           <td class="due-date"></td>
           <td class="remaining-days"></td>
