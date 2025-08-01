@@ -1,4 +1,5 @@
 <% provide(:title, "案件管理") %>
+<%= @all_processes %>
 <div class="container project-container">
   <div id="delivery-date-alert">
     <div class="today-deadline-container">
@@ -32,7 +33,6 @@
         <th class="zoom-in"></th>
         <th class="client">クライアント</th>
         <th class="keyword">案件名（キーワード等）</th>
-        <th class="process">工程</th>
         <th class="due-date">納期</th>
         <th class="remaining-days">残り日数</th>
         <th class="rewards">報酬</th>
@@ -40,9 +40,8 @@
       <% @projects.each do |p| %>
         <tr>
           <td class="zoom-in"><%= link_to image_tag("zoom_in", alt: "案件の詳細", width: 22, height: 22, id: "zoom-in-image"), p %></td>
-          <td class="client truncateable"><%= p.client %></td>
-          <td class="keyword truncateable"><%= p.keyword %></td>
-          <td class="process"><%= p.process %></td>
+          <td class="client"><%= p.client %></td>
+          <td class="keyword"><%= p.keyword %></td>
           <td class="due-date"></td>
           <td class="remaining-days"></td>
           <td class="rewards"><%= number_to_currency(p.rewards) %></td>

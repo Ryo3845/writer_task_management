@@ -444,11 +444,15 @@ main {
   width: 25%;
 }
 
+.url {
+  width: 10%;
+}
+
 .process,
 .due-date,
 .remaining-days,
 .status {
-  width: (100% - 4% - 25% -25%) / 4;
+  width: (100% - 4% - 25% -25% -10%) / 4;
 }
 
 #zoom-in-image {
@@ -504,9 +508,7 @@ td.zoom-in  {
 }
 
 /* new.html.erb(projects) */
-.project-registration-form {
-  margin: 0 auto;
-}
+
 
 .new-to-projects {
   text-align: center;

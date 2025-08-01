@@ -10,20 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_07_27_152429) do
+ActiveRecord::Schema[7.0].define(version: 2025_08_01_154801) do
+  create_table "project_processes", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.string "process"
+    t.date "process_due_date"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "project_url"
+    t.index ["project_id"], name: "index_project_processes_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "client"
     t.string "keyword"
-    t.date "start_date"
-    t.date "due_date"
-    t.float "number_of_characters"
     t.integer "rewards"
     t.text "status"
-    t.time "man_hour_measurement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "process"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -48,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_07_27_152429) do
     t.string "remember_digest"
   end
 
+  add_foreign_key "project_processes", "projects"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
 end

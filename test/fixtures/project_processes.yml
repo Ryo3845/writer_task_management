@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  process: MyString
+  task_due_date: 2025-08-02
+  status: MyString
+  notes: MyText
+
+two:
+  project: two
+  process: MyString
+  task_due_date: 2025-08-02
+  status: MyString
+  notes: MyText
