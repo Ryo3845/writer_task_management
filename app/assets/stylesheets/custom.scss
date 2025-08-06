@@ -306,8 +306,6 @@ main {
 .project-table th,
 .project-table td {
   font-size: 15px;
-  border: none;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .project-table th,
@@ -316,9 +314,7 @@ main {
 }
 
 .project-table th {
-  background: whitesmoke;
   padding: 5px 0;
-  border-bottom: 2px solid var(--border-color);
 }
 
 /* index.html.erb(projects) */
@@ -432,28 +428,40 @@ main {
   gap: 5px;
 }
 
-.zoom-in {
-  width: 4%;
+.project-header {
+  background-color: var(--background-whitesmoke);
+  border: none;
 }
 
-.client {
-  width: 25%;
+// .project-table .task-header {
+//   background-color: white;
+// }
+
+
+
+.task-completed {
+  width: 2%;
 }
 
-.keyword {
-  width: 25%;
-}
+// .client {
+//   width: 25%;
+// }
 
-.url {
-  width: 10%;
-}
+// .keyword {
+//   width: 25%;
+// }
 
-.process,
-.due-date,
-.remaining-days,
-.status {
-  width: (100% - 4% - 25% -25% -10%) / 4;
-}
+// .url {
+//   width: 10%;
+// }
+
+// .process,
+// .project_url,
+// .due-date,
+// .remaining-days,
+// .status {
+//   width: (100% - 4% - 25% -25% -10%) / 5;
+// }
 
 #zoom-in-image {
   cursor: pointer;

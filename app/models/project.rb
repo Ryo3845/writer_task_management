@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   has_many :tasks
+  has_many :project_processes
   belongs_to :user
 
   enum status: {
