@@ -11,17 +11,27 @@
       <%= p.text_field :keyword, required: true %>
     </div>
     <div>
-      <%= p.label :url, "URL" %>
-      <%= p.text_field :url %>
-    </div>
-    <div>
-      <%= p.label :process, "工程" %>
-      <%= p.text_field :process %>
-    </div>
-    <div>
       <%= p.label :rewards, "報酬" %>
-      <%= p.text_field :rewards, required: true %>
+      <%= p.text_field :rewards %>
     </div>
+    <%= p.fields_for :tasks do |t| %>
+      <div>
+        <%= t.label :task, "タスク" %>
+        <%= t.text_field :task %>
+      </div>
+      <div>
+        <%= t.label :due_date, "タスクの期日" %>
+        <%= t.text_field :due_date %>
+      </div>
+      <div>
+        <%= t.label :task_url, "タスクのURL" %>
+        <%= t.url_field :task_url %>
+      </div>
+      <div>
+        <%= t.label :notes, "タスクのメモ" %>
+        <%= t.text_field :notes %>
+      </div>
+    <% end %>
     <div>
       <%= p.submit "登録" %>
     </div>

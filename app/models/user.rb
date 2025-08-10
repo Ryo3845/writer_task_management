@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   has_secure_password
   has_many :projects
+  has_many :tasks, through: :projects
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)

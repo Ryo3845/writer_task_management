@@ -404,27 +404,12 @@ main {
   gap: 5px;
 }
 
-.project-table:first-child {
-  border-top: 1px solid var(--border-color);;
-}
-
 .project-table-header {
-  border-top: 1px solid var(--border-color);
-  margin-top: 15px;
-}
-.project-section {
-  margin: 15px 0;
+  margin-top: 20px;
 }
 
-.project-info-row {
-  display: flex;
-}
-
-.project-info-cell {
-  width: calc(100% / 3);
-  background-color: var(--background-whitesmoke);
-  padding: 5px;
-  box-sizing: border-box;
+.project-table-header th:nth-child(n+2) {
+    border-top: 1px solid var(--border-color);
 }
 
 .project-table {
@@ -438,28 +423,12 @@ main {
 .project-table tr,
 .project-table th,
 .project-table td {
-  font-size: 15px;
+  font-size: 16x;
 }
 
 .project-table th,
 .project-table td {
-  height: 20px;
-}
-
-.project-table th:nth-child(n+2),
-.project-table td:nth-child(n+2) {
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.project-table th:last-child,
-.project-table td:last-child {
-  height: 20px;
-  border-right: none;
-}
-
-.project-table th {
-  padding: 5px 0;
+  height: 9px;
 }
 
 .project-table td {
@@ -467,16 +436,60 @@ main {
   white-space: nowrap;
   overflow: hidden;
   max-width: 0;
+  padding: 3px 0;
+}
+
+.project-table th:nth-child(2),
+.project-table td:nth-child(2) {
+  border-right: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-table th:nth-child(n+3),
+.project-table td:nth-child(n+3) {
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.project-table th:last-child,
+.project-table td:last-child {
+  border-right: none;
+}
+
+.project-section {
+  margin: 15px 0;
   padding: 5px;
+}
+
+.project-info-row {
+  display: flex;
+}
+
+.project-info-cell {
+  width: 100%;
+  background-color: var(--background-whitesmoke);
+  padding: 5px;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .project-blank {
   width: 5%;
+  border: none !important;
 }
 
 .task-completed {
   width: 5%;
   min-width: 25px;
+}
+
+.task,
+.due-date,
+.status,
+.time-spent,
+.task_url,
+.notes {
+  cursor: pointer;
 }
 
 .task {
@@ -489,6 +502,10 @@ main {
 .task_url,
 .notes {
   width: calc((100% - 5% - 5% - 30%) / 5)
+}
+
+#task_url_character {
+  color: var(--url-color);
 }
 
 #task-completed {

@@ -1,21 +1,22 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     @project = Project.new
-    @client_options = current_user.projects.distinct.pluck(:client)
+    @tasks = current_user.tasks
     date_today
     remaining_days
   end
 
   def show
-    @project = Project.find(params[:id])
-    @task  = @project.tasks
+    @project = current_user.projects.find(params[:id])
+    @tasks = current_user.tasks
   end
 
   def new
     @project = Project.new
-    @process_options = Task.distinct.pluck(:process).compact  # 重複なし、nil除去
+    @project.tasks.build
+    @process_options = Task.distinct.pluck(:process).compact
   end
 
   def create
@@ -23,23 +24,24 @@ class ProjectsController < ApplicationController
      if @project.save
       redirect_to projects_path, notice: '案件が正しく登録されました'
     else
-      @projects = Project.all
+      @projects = current_user.projects
       render :index, status: :unprocessable_entity
     end
   end
 
   def edit
+    @project = current_user.projects.find(params[:id])
   end
 
   def destroy
+    @project = current_user.projects.find(params[:id])
     @project.destroy!
-    redirect_to projects_path, notice: '案件が削除されました'  
-    head :no_content
+    redirect_to projects_path, notice: '案件が削除されました'
   end
 
   private
     def project_params
-      params.require(:project).permit(:client, :keyword, :process, :start_date, :due_date, :task_deadline, :rewards)
+      params.require(:project).permit(:client, :keyword, :process, :start_date, :due_date, :task_deadline, :rewards, tasks_attributes: [:task, :due_date, :task_url, :notes])
     end
 
     def date_today

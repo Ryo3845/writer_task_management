@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   has_many :tasks
-  has_many :project_processes
   belongs_to :user
+  accepts_nested_attributes_for :tasks
 
   enum status: {
     not_started: 0, #未着手

@@ -11,39 +11,27 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2025_08_06_152526) do
-  create_table "project_processes", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.text "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "project_url"
-    t.string "task"
-    t.string "status"
-    t.date "due_date"
-    t.index ["project_id"], name: "index_project_processes_on_project_id"
-  end
-
   create_table "projects", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.string "project"
     t.string "client"
     t.integer "rewards"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "project"
     t.date "url"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "project_id"
-    t.string "process"
-    t.date "task_start_date"
-    t.date "task_due_date"
-    t.time "task_man_hour_measurement"
+    t.integer "project_id", null: false
+    t.string "task"
+    t.date "due_date"
+    t.string "status"
+    t.string "task_url"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "task_status"
-    t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["project_id"], name: "index_project_processes_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_08_06_152526) do
     t.string "remember_digest"
   end
 
-  add_foreign_key "project_processes", "projects"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
 end
