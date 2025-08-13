@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:client, :keyword, :process, :start_date, :due_date, :task_deadline, :rewards, tasks_attributes: [:task, :due_date, :task_url, :notes])
+      params.require(:project).permit(:client, :project, :process, :start_date, :due_date, :task_deadline, :rewards, tasks_attributes: [:task, :due_date, :task_url, :notes])
     end
 
     def date_today

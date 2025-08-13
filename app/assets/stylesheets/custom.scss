@@ -50,13 +50,6 @@ footer {
 
 table {
   border-collapse: collapse;
-  border: none;
-}
-
-tr,
-th,
-td {
-  border: none;
 }
 
 .container {
@@ -69,10 +62,13 @@ td {
   --background-whitesmoke: #f5f5f5;
   --backgrond--dimgray: #696969;
   --border-color: #d3d3d3;
+  --light-gray: #f8f8f8;
+  --light-orange: #fff3e0;
   --character-color: #333;
   --basic-blue-color: #1e90ff;
   --header-color: #f8f9fa;
   --url-color: #0000ff;
+  --project-info-row-color: #f7f8fa;
 }
 
 /* common */
@@ -216,7 +212,7 @@ td {
 header {
   width: 100%;
   border-bottom: 1px solid var(--border-color);
-  background: var(--header-color);
+  background: var(--light-gray);
   display: block;
   height: 50px;
 }
@@ -285,7 +281,6 @@ main {
   margin: 15px auto;
   padding: 15px;
   height: 100%;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -408,10 +403,6 @@ main {
   margin-top: 20px;
 }
 
-.project-table-header th:nth-child(n+2) {
-    border-top: 1px solid var(--border-color);
-}
-
 .project-table {
   width: 100%;
   text-overflow: ellipsis;
@@ -428,32 +419,18 @@ main {
 
 .project-table th,
 .project-table td {
-  height: 9px;
+  border: 1px solid var(--border-color);
 }
 
-.project-table td {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 0;
-  padding: 3px 0;
-}
-
-.project-table th:nth-child(2),
-.project-table td:nth-child(2) {
-  border-right: none;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.project-table th:nth-child(n+3),
-.project-table td:nth-child(n+3) {
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+.project-table th:first-child,
+.project-table td:first-child {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
 }
 
 .project-table th:last-child,
 .project-table td:last-child {
-  border-right: none;
+  border-right: 1px solid transparent;
 }
 
 .project-section {
@@ -463,19 +440,23 @@ main {
 
 .project-info-row {
   display: flex;
+  box-shadow: 0px 2px 2px 1px var(--border-color);
+  border-radius: 5px;
+  width: 100%;
+  background-color: var(--project-info-row-color);
+  margin-bottom: 3px;
+}
+
+.project-info-row>.project-info-cell:first-child {
+  width: 20%;
 }
 
 .project-info-cell {
-  width: 100%;
-  background-color: var(--background-whitesmoke);
+  width: 30%;
   padding: 5px;
   box-sizing: border-box;
   text-align: left;
-}
-
-.project-blank {
-  width: 5%;
-  border: none !important;
+  border-bottom: 1.5px solid var(--border-color);
 }
 
 .task-completed {
@@ -493,7 +474,8 @@ main {
 }
 
 .task {
-  width: 30%;
+  width: 20%;
+  min-width: 250px;
 }
 
 .due-date,
@@ -501,8 +483,27 @@ main {
 .time-spent,
 .task_url,
 .notes {
-  width: calc((100% - 5% - 5% - 30%) / 5)
+  width: calc((100% - 5% - 5% - 20%) / 5)
 }
+
+.project-table td {
+  box-sizing: border-box;
+}
+
+tr:hover .task-cell {
+  background-color: var(--background-whitesmoke);
+}
+
+td.task:hover,
+td.due-date:hover,
+td.status:hover,
+td.time-spent:hover,
+td.task_url:hover,
+td.notes:hover {
+  background-color: var(--light-orange);
+}
+
+
 
 #task_url_character {
   color: var(--url-color);
@@ -530,10 +531,7 @@ td.zoom-in {
   width: 35%;
 }
 
-.project-show-container th,
-.project-show-container td {
-  border: 1px solid var(--border-color);
-}
+
 
 .project-top-table th,
 .project-second-table th {

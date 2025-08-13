@@ -30,7 +30,6 @@
     </div>
     <table class="project-table-header project-table">
       <tr>
-        <th class="project-blank"></th>
         <th class="task-completed task-header"></th>
         <th class="task task-header">タスク</th>
         <th class="due-date task-header">期日</th>
@@ -42,29 +41,26 @@
     </table>
     <% @projects.each do |p| %>
       <div class="project-section">
-        <div class="project-info-header">
-          <div class="project-info-row">
-            <div class="project-info-cell">案件名：<%= p.project %></div>
-            <div class="project-info-cell">クライアント：<%= p.client %></div>
-            <div class="project-info-cell">報酬：<%= number_to_currency(p.rewards) %></div>
-          </div>
+        <div class="project-info-row">
+          <div class="project-info-cell">案件名：<%= p.project %></div>
+          <div class="project-info-cell">クライアント：<%= p.client %></div>
+          <div class="project-info-cell">報酬：<%= number_to_currency(p.rewards) %></div>
         </div>
         <table class="project-table">
           <% p.tasks.each do |t| %>
-            <tr>
-              <td class="project-blank"></td>
-              <td class="task-completed"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
-              <td class="task"><%= t.task %></td>
-              <td class="due-date"><%= t.due_date %></td>
-              <td class="status"><%= t.status %></td>
-              <td class="time-spent"></td>
-              <td class="task_url">
+            <tr class="task-row">
+              <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
+              <td class="task task-cell"><%= t.task %></td>
+              <td class="due-date task-cell"><%= t.due_date %></td>
+              <td class="status task-cell"><%= t.status %></td>
+              <td class="time-spent task-cell"></td>
+              <td class="task_url task-cell">
                 <% if t.task_url.present? %>
                   <%= link_to image_tag("open_in_new", alt: "新しくリンクを開く", width: 22, height: 22), t.task_url, target: "_blank", rel: "noopener nofollow noreferrer" %>
                   <%= link_to t.task_url, t.task_url, target: "_blank", rel: "noopener nofollow noreferrer", id: "task_url_character" %>
                 <% end %>
               </td>
-              <td class="notes"><%= t.notes %></td>
+              <td class="notes task-cell"><%= t.notes %></td>
             </tr>
           <% end %>
         </table>
