@@ -6,11 +6,3 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
-  enums:
-    project:
-      status:
-        not_started: "未着手"
-        in_progress: "進行中"
-        reviewing: "検品"
-        completed: "納品完了"
-        on_hold: "保留"

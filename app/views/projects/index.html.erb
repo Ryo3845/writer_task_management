@@ -39,7 +39,7 @@
         <th class="notes task-header">メモ</th>
       </tr>
     </table>
-    <% @projects.each do |p| %>
+    <% @always_visible_projects.each do |p| %>
       <div class="project-section">
         <div class="project-info-row">
           <div class="project-info-cell">案件名：<%= p.project %></div>
@@ -52,7 +52,7 @@
               <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
               <td class="task task-cell"><%= t.task %></td>
               <td class="due-date task-cell"><%= t.due_date %></td>
-              <td class="status task-cell"><%= t.status %></td>
+              <td class="status task-cell"></td>
               <td class="time-spent task-cell"></td>
               <td class="task_url task-cell">
                 <% if t.task_url.present? %>
@@ -66,8 +66,28 @@
         </table>
       </div>
     <% end %>
+    <% @conditional_projects.each do |p| %>
+      <div class="project-section">
+        <div class="project-info-row">
+          <div class="project-info-cell">案件名：<%= p.project %></div>
+          <div class="project-info-cell">クライアント：<%= p.client %></div>
+          <div class="project-info-cell">報酬：<%= number_to_currency(p.rewards) %></div>
+        </div>
+        <table class="project-table">
+          <% p.tasks.each do |t| %>
+            <tr class="task-row">
+              <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
+              <td class="task task-cell"><%= t.task %></td>
+              <td class="due-date task-cell"><%= t.due_date %></td>
+              <td class="status task-cell"></td>
+              <td class="time-spent task-cell"></td>
+              <td class="task_url task-cell"></td>
+              <td class="notes task-cell"><%= t.notes %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    <% end %>
   </div>
 </div>
-<div id="deal-registration">
-  <div></div>
-</div>
+

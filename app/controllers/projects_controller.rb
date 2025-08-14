@@ -4,8 +4,15 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
     @project = Project.new
     @tasks = current_user.tasks
+    @task = Task.new
     date_today
     remaining_days
+
+  # 最初の3つのプロジェクトは常に表示
+  @always_visible_projects = @projects.limit(3)
+
+  # 4つ目以降はprojectsテーブルにレコードがある限り表示
+  @conditional_projects = @projects.offset(3)
   end
 
   def show
@@ -42,6 +49,11 @@ class ProjectsController < ApplicationController
   private
     def project_params
       params.require(:project).permit(:client, :project, :process, :start_date, :due_date, :task_deadline, :rewards, tasks_attributes: [:task, :due_date, :task_url, :notes])
+    end
+
+    # タスクのステータスリスト
+    def status_list
+      @status_list = [@tasks.status]
     end
 
     def date_today
