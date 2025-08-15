@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = current_user.projects
     @project = Project.new
+    @projects = current_user.projects
     @tasks = current_user.tasks
-    @task = Task.new
     date_today
     remaining_days
 
@@ -38,6 +37,8 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = current_user.projects.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
+    @tasks = current_user.tasks
   end
 
   def destroy

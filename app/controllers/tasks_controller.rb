@@ -13,6 +13,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task = current_user.tasks.find(params[:id])
+    @tasks = current_user.all
   end
 
   def destroy
@@ -27,6 +29,6 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:status)
+      params.require(:task).permit(:due_date, :status)
     end
 end

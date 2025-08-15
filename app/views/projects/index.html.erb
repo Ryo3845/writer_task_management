@@ -48,12 +48,21 @@
         </div>
         <table class="project-table">
           <% p.tasks.each do |t| %>
-            <tr class="task-row">
+            <tr>
               <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
               <td class="task task-cell"><%= t.task %></td>
-              <td class="due-date task-cell"><%= t.due_date %></td>
-              <td class="status task-cell"></td>
-              <td class="time-spent task-cell"></td>
+              <td class="due-date task-cell">
+                <%= form_with model: t, local: true do |f| %>
+                  <%= f.date_field :due_date %>
+                <% end %>
+              </td>
+              <td class="status task-cell">
+                <%= form_with model: t, local: true do |f| %>
+                  <%= f.collection_select :status, @tasks, :id, :status %>
+                <% end %>
+              </td>
+              <td class="time-spent task-cell">
+              </td>
               <td class="task_url task-cell">
                 <% if t.task_url.present? %>
                   <%= link_to image_tag("open_in_new", alt: "新しくリンクを開く", width: 22, height: 22), t.task_url, target: "_blank", rel: "noopener nofollow noreferrer" %>
@@ -90,4 +99,3 @@
     <% end %>
   </div>
 </div>
-
