@@ -53,13 +53,17 @@ table {
 }
 
 .container {
-  background-color: white;
+  background-color: var(--background-sub-color);
+  width: 100%;
+  max-width: none;
+  padding: 30px 250px;
 }
 
 :root {
   --main-color: orange;
-  --sub-color: #223a70;
+  --sub-color: #2a4a96;
   --background-whitesmoke: #f5f5f5;
+  --background-sub-color: #2a4a961d;
   --backgrond--dimgray: #696969;
   --border-color: #d3d3d3;
   --light-gray: #f8f8f8;
@@ -399,64 +403,57 @@ main {
   gap: 5px;
 }
 
-.project-table-header {
-  margin-top: 20px;
-}
-
 .project-table {
   width: 100%;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
   text-align: center;
+  margin-top: 20px;
+  table-layout: fixed;
+  border: none;
 }
 
 .project-table tr,
 .project-table th,
 .project-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 16x;
 }
 
-.project-table th,
+.project-table td {
+  background-color: white;
+}
+
 .project-table td {
   border: 1px solid var(--border-color);
 }
 
-.project-table th:first-child,
 .project-table td:first-child {
-  border-left: 1px solid transparent;
-  border-right: 1px solid transparent;
+  border-right: none;
 }
 
-.project-table th:last-child,
-.project-table td:last-child {
-  border-right: 1px solid transparent;
+.project-table-header th {
+  background-color: white;
+  border: 1px solid var(--border-color);
 }
 
-.project-section {
+.project-blank-cell {
+  height: 30px;
+}
+
+.project-info-section {
   margin: 15px 0;
   padding: 5px;
 }
 
-.project-info-row {
-  display: flex;
-  box-shadow: 0px 2px 2px 1px var(--border-color);
-  border-radius: 5px;
-  width: 100%;
-  background-color: var(--project-info-row-color);
-  margin-bottom: 3px;
-}
-
-.project-info-row>.project-info-cell:first-child {
-  width: 20%;
-}
-
 .project-info-cell {
-  width: 30%;
   padding: 5px;
   box-sizing: border-box;
   text-align: left;
-  border-bottom: 1.5px solid var(--border-color);
+  // border-bottom: 1.5px solid var(--border-color);
+  background-color: var(--sub-color);
+  color: white;
 }
 
 .task-completed {
@@ -483,11 +480,8 @@ main {
 .time-spent,
 .task_url,
 .notes {
-  width: calc((100% - 5% - 5% - 20%) / 5)
-}
-
-.project-table td {
-  box-sizing: border-box;
+  width: calc((100% - 5% - 5% - 20%) / 5);
+  max-width: calc((100% - 5% - 5% - 20%) / 5);
 }
 
 tr:hover .task-cell {
@@ -503,8 +497,6 @@ td.notes:hover {
   background-color: var(--light-orange);
 }
 
-
-
 #task_url_character {
   color: var(--url-color);
 }
@@ -513,8 +505,10 @@ td.notes:hover {
   cursor: pointer;
 }
 
-td.zoom-in {
-  text-align: center;
+.project-blank-section td {
+  height: 30px;
+  border: none;
+  background-color: transparent; 
 }
 
 /* show.html.erb(projects) */

@@ -1,6 +1,6 @@
 <% provide(:title, "案件管理") %>
 <%= @all_processes %>
-<div class="container project-container">
+<div class="container">
   <div id="delivery-date-alert">
     <div class="today-deadline-container">
       <span>本日が納期のタスク</span>
@@ -28,25 +28,26 @@
         <input type="text">
       </div>
     </div>
-    <table class="project-table-header project-table">
-      <tr>
-        <th class="task-completed task-header"></th>
-        <th class="task task-header">タスク</th>
-        <th class="due-date task-header">期日</th>
-        <th class="status task-header">ステータス</th>
-        <th class="time-spent task-header">費やした時間</th>
-        <th class="task_url task-header">URL</th>
-        <th class="notes task-header">メモ</th>
-      </tr>
-    </table>
-    <% @always_visible_projects.each do |p| %>
-      <div class="project-section">
-        <div class="project-info-row">
-          <div class="project-info-cell">案件名：<%= p.project %></div>
-          <div class="project-info-cell">クライアント：<%= p.client %></div>
-          <div class="project-info-cell">報酬：<%= number_to_currency(p.rewards) %></div>
-        </div>
-        <table class="project-table">
+    <table class="project-table">
+      <thead class="project-table-header">
+        <tr>
+          <th class="task-completed task-header"></th>
+          <th class="task task-header">タスク</th>
+          <th class="due-date task-header">期日</th>
+          <th class="status task-header">ステータス</th>
+          <th class="time-spent task-header">費やした時間</th>
+          <th class="task_url task-header">URL</th>
+          <th class="notes task-header">メモ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |p| %>
+          <tr class="project-info-section">
+            <th class="project-info-cell" colspan="2">案件名：<%= p.project %></th>
+            <th class="project-info-cell" colspan="2">クライアント：<%= p.client %></th>
+            <th class="project-info-cell" colspan="2">報酬：<%= number_to_currency(p.rewards) %></th>
+            <th class="project-info-cell"></th>
+          </tr>
           <% p.tasks.each do |t| %>
             <tr>
               <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
@@ -72,30 +73,11 @@
               <td class="notes task-cell"><%= t.notes %></td>
             </tr>
           <% end %>
-        </table>
-      </div>
-    <% end %>
-    <% @conditional_projects.each do |p| %>
-      <div class="project-section">
-        <div class="project-info-row">
-          <div class="project-info-cell">案件名：<%= p.project %></div>
-          <div class="project-info-cell">クライアント：<%= p.client %></div>
-          <div class="project-info-cell">報酬：<%= number_to_currency(p.rewards) %></div>
-        </div>
-        <table class="project-table">
-          <% p.tasks.each do |t| %>
-            <tr class="task-row">
-              <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
-              <td class="task task-cell"><%= t.task %></td>
-              <td class="due-date task-cell"><%= t.due_date %></td>
-              <td class="status task-cell"></td>
-              <td class="time-spent task-cell"></td>
-              <td class="task_url task-cell"></td>
-              <td class="notes task-cell"><%= t.notes %></td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    <% end %>
+          <tr class="project-blank-section">
+            <td colspan="7"></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
