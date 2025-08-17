@@ -14,65 +14,93 @@
     const taskRegistration = document.querySelector('.task-registration');
     const taskCreationScreen = document.getElementById('task_creation_screen');
     const taskCreationScreenClosed = document.getElementById('task_creation_screen_closed');
+    const overlay = document.querySelector('.overlay');
+    const headerOpenMenu = document.querySelector('.header-open-menu');
+    const headerCloseMenu = document.querySelector('.header-close-menu');
+    const headerHamburgerMenu = document.querySelector('.header-hamburger-menu');
 
-    // オーバーレイの作成と追加
-    const overlay = document.createElement('div');
-    overlay.className = 'overlay';
-    body.appendChild(overlay);
-
-    // open-menuをクリックしたときにメニューを開く
-    openMenu.addEventListener('click', (e) => {
-      openMenu.style.display = 'none';
-      closeMenu.style.display = 'block';
-      headerSidebar.classList.add('active');
-      overlay.classList.add('active');
-      body.style.overflow = 'hidden';
-      e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
+    // ヘッダーのオープンメニューをタップした時にハンバーガーメニューを表示する
+    headerOpenMenu.addEventListener('click', (e) => {
+      headerOpenMenu.style.display = 'none';
+      headerCloseMenu.style.display = 'block';
+      headerHamburgerMenu.classList.add('show');
+      overlay.classList.add('show');
     });
 
-    // メニューを閉じる関数
-    const closeHeaderSidebar = (e) => {
-      openMenu.style.display = 'block';
-      closeMenu.style.display = 'none';
-      headerSidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
-    };
+    // ヘッダーのオープンメニューをタップした時にハンバーガーメニューを表示する
+    headerCloseMenu.addEventListener('click', (e) => {
+      headerOpenMenu.style.display = 'block';
+      headerCloseMenu.style.display = 'none';
+      headerHamburgerMenu.classList.remove('show');
+      overlay.classList.remove('show');
+    });
 
-    // close-menuをクリックした時に、メニューを閉じる
-    closeMenu.addEventListener('click', closeHeaderSidebar);
-
-
-    // タスク登録をクリックした時に登録画面を表示する
-    taskRegistration.addEventListener('click', (e) => {
-      taskCreationScreen.style.display = 'block';
-      body.style.overflow = 'hidden';
-      e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
-      overlay.classList.add('active');
-    })
-
-    // タスク登録画面を閉じる
-    const closetaskCreationScreen = (e) => {
-      taskCreationScreen.style.display = 'none';
-      overlay.classList.remove('active');
-    }
-
-    // オーバーレイをクリックした時にメニューを閉じる
+    // オーバーレイをタップした時にハンバーガーメニューを閉じる
     overlay.addEventListener('click', (e) => {
-      // メニューが表示されている時
-      if (headerSidebar.classList.contains('active')) {
-        closeHeaderSidebar(e);
-      }
-      // タスク登録画面が表示されている時
-      else if (taskCreationScreen.style.display == 'block') {
-        closetaskCreationScreen(e);
-      }
-    });
-
-    // タスク登録画面の閉じるメニューをクリックした時に、タスク登録画面を閉じる
-    taskCreationScreenClosed.addEventListener('click', (e) => {
-      closetaskCreationScreen(e)
+      headerOpenMenu.style.display = 'block';
+      headerCloseMenu.style.display = 'none';
+      headerHamburgerMenu.classList.remove('show');
+      overlay.classList.remove('show');
     })
+
+    // // オーバーレイの作成と追加
+    // const overlay = document.createElement('div');
+    // overlay.className = 'overlay';
+    // body.appendChild(overlay);
+
+    // // open-menuをクリックしたときにメニューを開く
+    // openMenu.addEventListener('click', (e) => {
+    //   openMenu.style.display = 'none';
+    //   closeMenu.style.display = 'block';
+    //   headerSidebar.classList.add('active');
+    //   overlay.classList.add('active');
+    //   body.style.overflow = 'hidden';
+    //   e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
+    // });
+
+    // // メニューを閉じる関数
+    // const closeHeaderSidebar = (e) => {
+    //   openMenu.style.display = 'block';
+    //   closeMenu.style.display = 'none';
+    //   headerSidebar.classList.remove('active');
+    //   overlay.classList.remove('active');
+    //   e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
+    // };
+
+    // // close-menuをクリックした時に、メニューを閉じる
+    // closeMenu.addEventListener('click', closeHeaderSidebar);
+
+
+    // // タスク登録をクリックした時に登録画面を表示する
+    // taskRegistration.addEventListener('click', (e) => {
+    //   taskCreationScreen.style.display = 'block';
+    //   body.style.overflow = 'hidden';
+    //   e.stopPropagation(); // ほかのドキュメントに伝播するのを防止
+    //   overlay.classList.add('active');
+    // })
+
+    // // タスク登録画面を閉じる
+    // const closetaskCreationScreen = (e) => {
+    //   taskCreationScreen.style.display = 'none';
+    //   overlay.classList.remove('active');
+    // }
+
+    // // オーバーレイをクリックした時にメニューを閉じる
+    // overlay.addEventListener('click', (e) => {
+    //   // メニューが表示されている時
+    //   if (headerSidebar.classList.contains('active')) {
+    //     closeHeaderSidebar(e);
+    //   }
+    //   // タスク登録画面が表示されている時
+    //   else if (taskCreationScreen.style.display == 'block') {
+    //     closetaskCreationScreen(e);
+    //   }
+    // });
+
+    // // タスク登録画面の閉じるメニューをクリックした時に、タスク登録画面を閉じる
+    // taskCreationScreenClosed.addEventListener('click', (e) => {
+    //   closetaskCreationScreen(e)
+    // })
 
     // // ドキュメント全体にイベントリスナーを追加
     // document.addEventListener('click', (e) => {
@@ -84,9 +112,9 @@
     //   }
     // });
 
-    // ユーザー設定のヘッダーをクリックした時に、そのメニューに移る
-    const editHeaders = document.querySelectorAll('.edit-header li');
-    const editSections = document.querySelectorAll('.edit-profile, .edit-mail, .edit-password');
+    // // ユーザー設定のヘッダーをクリックした時に、そのメニューに移る
+    // const editHeaders = document.querySelectorAll('.edit-header li');
+    // const editSections = document.querySelectorAll('.edit-profile, .edit-mail, .edit-password');
 
     editHeaders.forEach((header, index) => {
       header.addEventListener('click', () => {

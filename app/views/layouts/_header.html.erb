@@ -20,9 +20,13 @@
           </ul>
         </div>
       <% else %>
-        <div><%= link_to "ログイン", login_path, class: "my-btn login-btn" %></div>
-        <div><%= link_to "新規登録", signup_path, class: "my-btn signup-btn" %></div>
+        <div class="header-btn-group">        
+          <div><%= link_to "ログイン", login_path, class: "my-btn login-btn" %></div>
+          <div><%= link_to "新規登録", signup_path, class: "my-btn signup-btn" %></div>
+        </div>
       <% end %>
+      <%= image_tag "menu.png", alt: "ヘッダーオープンメニュー", width: 30, height: 30, class: "header-open-menu" %>
+      <%= image_tag "close.png", alt: "ヘッダークローズメニュー", width: 30, height: 30, class: "header-close-menu" %>
     </div>
   </div>
 </header>
