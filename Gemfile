@@ -16,7 +16,6 @@ gem 'bcrypt', '3.1.13'
 gem 'rails-i18n', '7.0.9'
 gem 'pg'
 gem 'seed_dump'
-gem 'bootstrap', '~> 5.3.3'
 gem 'dartsass-sprockets'
 gem 'jquery-rails'
 
