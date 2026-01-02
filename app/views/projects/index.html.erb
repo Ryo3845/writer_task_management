@@ -1,83 +1,93 @@
 <% provide(:title, "案件管理") %>
 <%= @all_processes %>
 <div class="project-container">
-  <div id="delivery-date-alert">
-    <div class="today-deadline-container">
-      <span>本日が納期のタスク</span>
-      <div>○○</div>
+  <div class="left-navigation">
+    <div class="left-navigation-icon">
+      <%= image_tag "assignment.png", alt: "タスク一覧形式", width: 25, height: 25 %>
     </div>
-    <div class="this-week-container">
-      <span>今週が納期のタスク</span>
-      <div>○○</div>
-    </div>
-    <div class="delay-container">
-      <span>遅延しているタスク</span>
-      <div>○○</div>
+    <div class="left-navigation-icon">
+      <%= image_tag "calendar_month", alt: "タスクカレンダー形式", width: 25, height: 25 %>
     </div>
   </div>
-  <div id="project-main-container">
-    <div id="project-second-container">
-      <%= link_to new_project_path, id: "project-registration-character" do %>
-        <div class="task-registration">
-          <%= image_tag("add_task", alt: "案件登録", width: 18, height: 18, id: "add_project") %>
-          案件登録
-        </div>
-      <% end %>
-      <div id="project-third-container">
-        <%= image_tag("search", alt: "案件検索", width: 21, height: 21, id: "project_search") %>
-        <input type="text">
+  <div class="project-main-container">
+    <div id="delivery-date-alert">
+      <div class="today-deadline-container">
+        <span>本日が納期のタスク</span>
+        <div>○○</div>
+      </div>
+      <div class="this-week-container">
+        <span>今週が納期のタスク</span>
+        <div>○○</div>
+      </div>
+      <div class="delay-container">
+        <span>遅延しているタスク</span>
+        <div>○○</div>
       </div>
     </div>
-    <table class="project-table">
-      <thead class="project-table-header">
-        <tr>
-          <th class="task-completed task-header"></th>
-          <th class="task task-header">タスク</th>
-          <th class="due-date task-header">期日</th>
-          <th class="status task-header">ステータス</th>
-          <th class="time-spent task-header">費やした時間</th>
-          <th class="task_url task-header">URL</th>
-          <th class="notes task-header">メモ</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @projects.each do |p| %>
-          <tr class="project-info-section">
-            <th class="project-info-cell" colspan="2">案件名：<%= p.project %></th>
-            <th class="project-info-cell" colspan="2">クライアント：<%= p.client %></th>
-            <th class="project-info-cell" colspan="2">報酬：<%= number_to_currency(p.rewards) %></th>
-            <th class="project-info-cell"></th>
+    <div id="project-task-container">
+      <div id="project-task-second-container">
+        <%= link_to new_project_path, id: "project-registration-character" do %>
+          <div class="task-registration">
+            <%= image_tag("add_task", alt: "案件登録", width: 18, height: 18, id: "add_project") %>
+            案件登録
+          </div>
+        <% end %>
+        <div id="project-task-third-container">
+          <%= image_tag("search", alt: "案件検索", width: 21, height: 21, id: "project_search") %>
+          <input type="text">
+        </div>
+      </div>
+      <table class="project-table">
+        <thead class="project-table-header">
+          <tr>
+            <th class="task-completed task-header"></th>
+            <th class="task task-header">タスク</th>
+            <th class="due-date task-header">期日</th>
+            <th class="status task-header">ステータス</th>
+            <th class="time-spent task-header">費やした時間</th>
+            <th class="task_url task-header">URL</th>
+            <th class="notes task-header">メモ</th>
           </tr>
-          <% p.tasks.each do |t| %>
-            <tr>
-              <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
-              <td class="task task-cell"><%= t.task %></td>
-              <td class="due-date task-cell">
-                <%= form_with model: t, local: true do |f| %>
-                  <%= f.date_field :due_date %>
-                <% end %>
-              </td>
-              <td class="status task-cell">
-                <%= form_with model: t, local: true do |f| %>
-                  <%= f.collection_select :status, @tasks, :id, :status %>
-                <% end %>
-              </td>
-              <td class="time-spent task-cell">
-              </td>
-              <td class="task_url task-cell">
-                <% if t.task_url.present? %>
-                  <%= link_to image_tag("open_in_new", alt: "新しくリンクを開く", width: 22, height: 22), t.task_url, target: "_blank", rel: "noopener nofollow noreferrer" %>
-                  <%= link_to t.task_url, t.task_url, target: "_blank", rel: "noopener nofollow noreferrer", id: "task_url_character" %>
-                <% end %>
-              </td>
-              <td class="notes task-cell"><%= t.notes %></td>
+        </thead>
+        <tbody>
+          <% @projects.each do |p| %>
+            <tr class="project-info-section">
+              <th class="project-info-cell" colspan="2">案件名：<%= p.project %></th>
+              <th class="project-info-cell" colspan="2">クライアント：<%= p.client %></th>
+              <th class="project-info-cell" colspan="2">報酬：<%= number_to_currency(p.rewards) %></th>
+              <th class="project-info-cell"></th>
+            </tr>
+            <% p.tasks.each do |t| %>
+              <tr>
+                <td class="task-completed task-cell"><%= image_tag("no_completed", alt: "タスク未完了", width: 22, height: 22, id: "task-completed") %></td>
+                <td class="task task-cell"><%= t.task %></td>
+                <td class="due-date task-cell">
+                  <%= form_with model: t, local: true do |f| %>
+                    <%= f.date_field :due_date %>
+                  <% end %>
+                </td>
+                <td class="status task-cell">
+                  <%= form_with model: t, local: true do |f| %>
+                    <%= f.collection_select :status, @tasks, :id, :status %>
+                  <% end %>
+                </td>
+                <td class="time-spent task-cell">
+                </td>
+                <td class="task_url task-cell">
+                  <% if t.task_url.present? %>
+                    <%= link_to image_tag("open_in_new", alt: "新しくリンクを開く", width: 22, height: 22), t.task_url, target: "_blank", rel: "noopener nofollow noreferrer" %>
+                    <%= link_to t.task_url, t.task_url, target: "_blank", rel: "noopener nofollow noreferrer", id: "task_url_character" %>
+                  <% end %>
+                </td>
+                <td class="notes task-cell"><%= t.notes %></td>
+              </tr>
+            <% end %>
+            <tr class="project-blank-section">
+              <td colspan="7"></td>
             </tr>
           <% end %>
-          <tr class="project-blank-section">
-            <td colspan="7"></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

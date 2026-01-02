@@ -2,7 +2,7 @@
   <div class="header-container">
     <h1>
       <% if logged_in? %>
-        <%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 40, height: 40, class: "nav-link active", aria: { current: "page" } ), projects_path %>
+      <%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 40, height: 40, class: "nav-link active", aria: { current: "page" } ), projects_path %>  
       <% else %>
         <%= link_to image_tag("WriterTaskLogo", alt: "WriterTaskロゴ", width: 40, height: 40, class: "nav-link active", aria: { current: "page" } ), root_path %>
       <% end %>
@@ -10,17 +10,11 @@
     <div class="header-right-container">
       <% if logged_in? %>
         <div><%= current_user.name %>さん</div>
-        <div class="dropdown">
-          <div class="account_circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= image_tag "account_circle.png", alt: "アカウント編集ロゴ", width: 30, height: 30 %>
-          </div>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">設定</a></li>
-            <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete },  class: "dropdown-item" %></li>
-          </ul>
+        <div class="account_circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= image_tag "account_circle.png", alt: "アカウント編集ロゴ", width: 30, height: 30 %>
         </div>
       <% else %>
-        <div class="header-btn-group">        
+        <div class="header-btn-group">
           <div><%= link_to "ログイン", login_path, class: "my-btn login-btn" %></div>
           <div><%= link_to "新規登録", signup_path, class: "my-btn signup-btn" %></div>
         </div>
@@ -28,5 +22,11 @@
       <%= image_tag "menu.png", alt: "ヘッダーオープンメニュー", width: 30, height: 30, class: "header-open-menu" %>
       <%= image_tag "close.png", alt: "ヘッダークローズメニュー", width: 30, height: 30, class: "header-close-menu" %>
     </div>
+  </div>
+  <div class="header-dropdown-list">
+    <ul>
+      <li><a class="dropdown-item" href="#">設定</a></li>
+      <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete },  class: "dropdown-item" %></li>
+    </ul>
   </div>
 </header>

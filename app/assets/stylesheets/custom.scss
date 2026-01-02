@@ -64,13 +64,14 @@ table {
 
 :root {
   --main-color: orange;
+  --main2-color: #ede1d5;
   --sub-color: #2a4a96;
   --form-background: #f5f5f5;
-  --project-background: #2a4a961d;
+  --project-background: #fafaf5;
   --footer-backgrond: #696969;
   --border-color: #d3d3d3;
   --table-header-background: #d3d3d310;
-  --header-background: #f8f8f8;
+  --navigation-background: #f8f8f8;
   --hover-light-orange: #fff3e0;
   --character-color: #333;
   --url-color: #0000ff;
@@ -208,10 +209,10 @@ table {
 
 header {
   width: 100%;
-  border-bottom: 1px solid var(--border-color);
-  background: var(--header-background);
+  background: var(--navigation-background);
   display: block;
   height: 50px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .header-container {
@@ -219,7 +220,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  padding: 0 100px 0 50px;
+  padding: 0 30px 0 10px;
 }
 
 .header-right-container {
@@ -245,6 +246,10 @@ header {
   display: none;
 }
 
+/* ヘッダーのハンバーガーメニュー途中なので一旦非表示 */
+.header-dropdown-list {
+  display: none;
+}
 
 /* main */
 
@@ -271,12 +276,10 @@ main {
   display: block;
 }
 
-.container {
-}
 
 /* home */
 .header-hamburger-menu {
-  background-color: var(--header-background);
+  background-color: var(--navigation-background);
   position: fixed;
   width: 200px;
   height: 100%;
@@ -338,16 +341,35 @@ main {
 
 /* index.html.erb(projects) */
 .project-container {
+  display: flex;
   background-color: var(--project-background);
-  width: calc(100% - 200px);
-  padding: 30px 100px;
+}
+
+.left-navigation {
+  flex-shrink: 0;
+  width: 50px;
+  background-color: var(--navigation-background);
+  border-right: 1px solid var(--border-color);
+}
+
+.left-navigation-icon {
+  text-align: center;
+  padding: 7px 0 5px 0;
+  cursor: pointer;
+}
+
+.left-navigation-icon:hover {
+  background-color: var(--main2-color);
+}
+
+.project-main-container {
+  padding: 30px;
 }
 
 #delivery-date-alert {
   display: flex;
   gap: 5%;
   margin: 0 auto;
-
   width: 100%;
   text-align: center;
 }
@@ -410,7 +432,7 @@ main {
   font-weight: bold;
 }
 
-#project-main-container {
+#project-task-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -422,7 +444,7 @@ main {
   justify-content: space-between;
 }
 
-#project-second-container {
+#project-task-second-container {
   display: flex;
   justify-content: space-between;
 }
@@ -447,7 +469,7 @@ main {
   transform: translateY(2px);
 }
 
-#project-third-container {
+#project-task-third-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -511,8 +533,9 @@ main {
   padding: 5px;
   box-sizing: border-box;
   text-align: left;
-  background-color: var(--sub-color);
-  color: white;
+  background-color: var(--main2-color);
+  color: #333333;
+  font-weight: normal;
 }
 
 .task-completed {
